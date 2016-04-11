@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="qlcb" match-name="ban"/>
+  <table-filter match-catalog="qlcb" match-name="can_bo"/>
+  <table-filter match-catalog="qlcb" match-name="cap_chuc_vu"/>
+  <table-filter match-catalog="qlcb" match-name="chieu_huong_phat_trien"/>
+  <table-filter match-catalog="qlcb" match-name="chuc_vu"/>
+  <table-filter match-catalog="qlcb" match-name="cong_tac_nuoc_ngoai"/>
+  <table-filter match-catalog="qlcb" match-name="cong_tac_vien"/>
+  <table-filter match-catalog="qlcb" match-name="controller"/>
+  <table-filter match-catalog="qlcb" match-name="dac_diem_lich_su"/>
+  <table-filter match-catalog="qlcb" match-name="dan_toc"/>
+  <table-filter match-catalog="qlcb" match-name="danh_gia_can_bo"/>
+  <table-filter match-catalog="qlcb" match-name="dao_tao_boi_duong"/>
+  <table-filter match-catalog="qlcb" match-name="dien_khen_thuong"/>
+  <table-filter match-catalog="qlcb" match-name="don_vi"/>
+  <table-filter match-catalog="qlcb" match-name="hop_dong_cong_tac"/>
+  <table-filter match-catalog="qlcb" match-name="khen_thuong"/>
+  <table-filter match-catalog="qlcb" match-name="khoi"/>
+  <table-filter match-catalog="qlcb" match-name="kien_nghi"/>
+  <table-filter match-catalog="qlcb" match-name="kieu_loai_hinh_ban"/>
+  <table-filter match-catalog="qlcb" match-name="kq_xet_thi_dua"/>
+  <table-filter match-catalog="qlcb" match-name="ky_luat"/>
+  <table-filter match-catalog="qlcb" match-name="loai_hinh_ban"/>
+  <table-filter match-catalog="qlcb" match-name="ly_lich"/>
+  <table-filter match-catalog="qlcb" match-name="module"/>
+  <table-filter match-catalog="qlcb" match-name="muc_do_hoan_thanh"/>
+  <table-filter match-catalog="qlcb" match-name="muc_sua_doi"/>
+  <table-filter match-catalog="qlcb" match-name="muc_thuong_theo_dien"/>
+  <table-filter match-catalog="qlcb" match-name="ngach_luong"/>
+  <table-filter match-catalog="qlcb" match-name="ngoai_ngu"/>
+  <table-filter match-catalog="qlcb" match-name="privilege"/>
+  <table-filter match-catalog="qlcb" match-name="profile"/>
+  <table-filter match-catalog="qlcb" match-name="qua_trinh_cong_tac"/>
+  <table-filter match-catalog="qlcb" match-name="qua_trinh_luong"/>
+  <table-filter match-catalog="qlcb" match-name="role"/>
+  <table-filter match-catalog="qlcb" match-name="role_privilege_relation"/>
+  <table-filter match-catalog="qlcb" match-name="status"/>
+  <table-filter match-catalog="qlcb" match-name="thanh_vien_gia_dinh"/>
+  <table-filter match-catalog="qlcb" match-name="thong_tin_tham_gia_ban"/>
+  <table-filter match-catalog="qlcb" match-name="to_cong_tac"/>
+  <table-filter match-catalog="qlcb" match-name="ton_giao"/>
+  <table-filter match-catalog="qlcb" match-name="trinh_do_chuyen_mon"/>
+  <table-filter match-catalog="qlcb" match-name="trinh_do_ly_luan_chinh_tri"/>
+  <table-filter match-catalog="qlcb" match-name="tt_tai_don_vi"/>
+  <table-filter match-catalog="qlcb" match-name="user"/>
+  <table-filter match-catalog="qlcb" match-name="user_log"/>
+  <table-filter match-catalog="qlcb" match-name="yeu_cau_thay_doi_tt_cb"/>
+</hibernate-reverse-engineering>
