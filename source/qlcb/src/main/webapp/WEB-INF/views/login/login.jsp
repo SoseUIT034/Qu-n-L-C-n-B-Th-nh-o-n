@@ -14,6 +14,7 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--//Custom Theme files -->
 <link href="<c:url value="/resources/login/css/style.css"/>" rel="stylesheet" type="text/css" media="all" /> 
+ <link href="resources/login/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
 </head>
 <body>
 	<!-- main -->

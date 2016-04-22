@@ -60,8 +60,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="email">
 						<ul>
-							
-							<li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login" >Login</a></li>
+							 
+							<li>
+								<%if(request.getAttribute("KEY_LOGINED").toString().equals("1"))
+									{%>
+										Xin Chào: <%=request.getAttribute("NAME_LOGINED") %>
+										<i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="logout" >Logout</a>
+									<%
+									}
+									 else
+									
+									{%>
+										 
+										<i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login" >Login</a>
+									<%
+									}%>
+									 
+								 
+							</li>
 							
 						</ul>
 						</div>

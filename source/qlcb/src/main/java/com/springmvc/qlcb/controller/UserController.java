@@ -24,28 +24,44 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String showLoginForm(Model model) {
+	public String showLoginForm(HttpSession session,Model model) {
+		
 		model.addAttribute("Taikhoan", new Taikhoan()); 
-		logger.info("Page Login");
-		return "/login/login";
+		
+		Taikhoan tk= (Taikhoan) session.getAttribute("loggedInUser");
+		
+		if(tk!=null)
+		{
+			return "redirect:/create";
+		}
+		else
+		{
+			return "/login/login";
+		}
+		
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String verifyLogin(@ModelAttribute(value = "Taikhoan") Taikhoan tk, ModelMap modelMap, HttpSession session) {
+		
 		if (userService.getUser(tk) == null) {
-			modelMap.put("loginError", "Error logging in. Please try again");
-			logger.info("Login Fail");
+			
+			//modelMap.put("loginError", "Error logging in. Please try again");
+			
 			return "/login/login";
-		} 
-		session.setAttribute("loggedInUser", tk);
-		logger.info("Login Success");
-		  
-		return "redirect:/home";
+		}
+		else
+		{
+			session.setAttribute("loggedInUser", tk);
+			logger.info("Login Success");
+			  
+			return "redirect:/create";
+		}
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedInUser");
-		return "/login/login";
+		return "redirect:/login";
 	}
 }
