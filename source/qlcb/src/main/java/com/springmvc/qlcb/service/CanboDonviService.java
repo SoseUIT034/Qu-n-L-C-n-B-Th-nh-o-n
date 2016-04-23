@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.springmvc.qlcb.model.CanboDonvi;
 
-public interface CanboDonviDAO {
+public interface CanboDonviService {
 	public int save(CanboDonvi canboDonvi);
 	public CanboDonvi getCanboDonviById(int id);
 	public void update(CanboDonvi canboDonvi);

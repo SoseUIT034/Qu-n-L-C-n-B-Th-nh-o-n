@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.springmvc.qlcb.dao.BanDAO;
 import com.springmvc.qlcb.dao.CanboBanDAO;
+import com.springmvc.qlcb.dao.CanboDonviDAO;
 import com.springmvc.qlcb.dao.ChucvuBanDAO;
 import com.springmvc.qlcb.dao.ChucvuDonviDAO;
 import com.springmvc.qlcb.dao.DacDiemLichSuBanThanDAO;
@@ -32,7 +33,6 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private static final Logger logger = LoggerFactory.getLogger(LyLichServiceImpl.class);
 	
 	@Autowired
-//	@Qualifier("LyLichDAOImpl")
 	private LyLichDAO lyLichDAO;
 	
 	@Autowired
