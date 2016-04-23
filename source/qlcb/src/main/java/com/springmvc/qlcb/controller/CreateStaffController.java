@@ -5,13 +5,10 @@ import javax.servlet.http.HttpSession;
 
  
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mysql.jdbc.log.Log;
 import com.springmvc.qlcb.model.Taikhoan;
-import com.springmvc.qlcb.model._Toanbothongtincanbo;
 @Controller
 public class CreateStaffController {
 
@@ -34,11 +31,11 @@ public class CreateStaffController {
 	}
 	
 	
-	@RequestMapping(value = { "/create"}, method = RequestMethod.POST)
-	public String create(HttpSession session, HttpServletRequest request,@ModelAttribute(value = "Taikhoan1") _Toanbothongtincanbo data) {
- 
-		 
-		  
-		return "redirect:/home";
-	}
+//	@RequestMapping(value = { "/create"}, method = RequestMethod.POST)
+//	public String create(HttpSession session, HttpServletRequest request,@ModelAttribute(value = "Taikhoan1") _Toanbothongtincanbo data) {
+// 
+//		 
+//		  
+//		return "redirect:/home";
+//	}
 }
