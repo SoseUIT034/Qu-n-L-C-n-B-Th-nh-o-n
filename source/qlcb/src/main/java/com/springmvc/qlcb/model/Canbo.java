@@ -39,7 +39,7 @@ public class Canbo implements java.io.Serializable {
 	private Set<Kyluat> kyluats = new HashSet<Kyluat>(0);
 	private Set<Dacdienlichsubanthan> dacdienlichsubanthans = new HashSet<Dacdienlichsubanthan>(0);
 
-	public Canbo() {
+	public Canbo() { 
 	}
 
 	public Canbo(int maCanBo) {

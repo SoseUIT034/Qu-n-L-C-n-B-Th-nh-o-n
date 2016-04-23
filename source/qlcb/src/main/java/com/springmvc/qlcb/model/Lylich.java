@@ -1,7 +1,10 @@
 package com.springmvc.qlcb.model;
 // Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +17,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -72,7 +77,95 @@ public class Lylich implements java.io.Serializable {
 	private String soBhxh;
 	private String nhanXetCapTren;
 	private Boolean daXacNhan;
+	//------------------------------------------ tự định nghĩa, không mapping
+	 @Transient  
+	 private ArrayList<Lichsucongtac> lsct;  
+	 @Transient  
+	 private String noisinh_tinh;  
+	 @Transient  
+	 private String noisinh_huyen;
+	 @Transient  
+	 private String noisinh_xa;
+	 @Transient  
+	 private String quequan_tinh;  
+	 @Transient  
+	 private String quequan_huyen;
+	 @Transient  
+	 private String quequan_xa;
+	 @Transient  
+	 private Dacdienlichsubanthan lsbt;
+	 
+	 
+	public Dacdienlichsubanthan getLsbt() {
+		return lsbt;
+	}
 
+	public void setLsbt(Dacdienlichsubanthan lsbt) {
+		this.lsbt = lsbt;
+	}
+
+	public ArrayList<Lichsucongtac> getLsct() {
+		return lsct;
+	}
+
+	public void setLsct(ArrayList<Lichsucongtac> lsct) {
+		this.lsct = lsct;
+	}
+	
+	public String getNoisinh_tinh() {
+		return noisinh_tinh;
+	}
+
+	public void setNoisinh_tinh(String noisinh_tinh) {
+		this.noisinh_tinh = noisinh_tinh;
+	}
+
+	public String getNoisinh_huyen() {
+		return noisinh_huyen;
+	}
+
+	public void setNoisinh_huyen(String noisinh_huyen) {
+		this.noisinh_huyen = noisinh_huyen;
+	}
+
+	public String getNoisinh_xa() {
+		return noisinh_xa;
+	}
+
+	public void setNoisinh_xa(String noisinh_xa) {
+		this.noisinh_xa = noisinh_xa;
+	}
+
+	public String getQuequan_tinh() {
+		return quequan_tinh;
+	}
+
+	public void setQuequan_tinh(String quequan_tinh) {
+		this.quequan_tinh = quequan_tinh;
+	}
+
+	public String getQuequan_huyen() {
+		return quequan_huyen;
+	}
+
+	public void setQuequan_huyen(String quequan_huyen) {
+		this.quequan_huyen = quequan_huyen;
+	}
+
+	public String getQuequan_xa() {
+		return quequan_xa;
+	}
+
+	public void setQuequan_xa(String quequan_xa) {
+		this.quequan_xa = quequan_xa;
+	}
+
+	
+	
+	
+	//---------------------------------------------------------------------------
+	
+	
 	public Lylich() {
 	}
 

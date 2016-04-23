@@ -212,7 +212,7 @@ $(function() {
 		$('.datepicker').datepicker();
 	});
 	$('#themQTCT').click(function() {
-		$('#tbodyQTCT').append('<tr><td><input class="form-control datepicker" type="date" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control datepicker" type="date" id="ttqtctdtntxt1" name="ttqtctdtntxt1"/></td><td><input class="form-control" type="text" id="cdcvdvtxt1" name="cdcvdvtxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRow(this, "tableQTCT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
+		//$('#tbodyQTCT').append('<tr><td><form:input path="canboByMaCanBo.congtacnuocngoais[].tuNgay" class="form-control datepicker" type="date" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control datepicker" type="date" id="ttqtctdtntxt1" name="ttqtctdtntxt1"/></td><td><input class="form-control" type="text" id="cdcvdvtxt1" name="cdcvdvtxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRow(this, "tableQTCT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 		var i = 1;
 		$('#tbodyQTCT tr').each(function() {
 			var $tr = $(this);
@@ -226,6 +226,7 @@ $(function() {
 			i++;
         });
 		$('.datepicker').datepicker();	
+		$('#tbodyQTCT').append('<tr><td><form:input path="canboByMaCanBo.congtacnuocngoais['+(i-1)+'].tuNgay" class="form-control datepicker" type="date" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control datepicker" type="date" id="ttqtctdtntxt1" name="ttqtctdtntxt1"/></td><td><input class="form-control" type="text" id="cdcvdvtxt1" name="cdcvdvtxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRow(this, "tableQTCT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 	});
 	
 	$('#themVBT').click(function(){
