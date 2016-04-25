@@ -1,10 +1,10 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -29,10 +30,11 @@ import org.hibernate.annotations.Parameter;
 @Table(name = "lylich", catalog = "qlcb")
 public class Lylich implements java.io.Serializable {
 
-	private int maCanBo;
+	private int macanbo;
+	private Canbo canboByNguoixacnhan;
 	private Canbo canboByMaCanBo;
-	private Canbo canboByNguoiXacNhan;
 	private Dantoc dantoc;
+	private Ngoaingu ngoaingu;
 	private Tongiao tongiao;
 	private Trinhdochinhtri trinhdochinhtri;
 	private Trinhdochuyenmon trinhdochuyenmon;
@@ -48,7 +50,7 @@ public class Lylich implements java.io.Serializable {
 	private Date ngayTuyenDung;
 	private String chucVuBenNgoaiHienTai;
 	private String congViecChinhDuocGiao;
-	private Integer ngachCongChuc;
+	private String ngachCongChuc;
 	private Float maNgach;
 	private Float bacLuong;
 	private Float heSo;
@@ -77,9 +79,23 @@ public class Lylich implements java.io.Serializable {
 	private String soBhxh;
 	private String nhanXetCapTren;
 	private Boolean daXacNhan;
-	//------------------------------------------ tự định nghĩa, không mapping
+	private String hinhanh;
+	private String sohieucongchuc;
+	private String soTruong;
+	private String khenThuongCaoNhat;
+	private String kyLuatCaoNhat;
+	private Set<Dienbienluong> dienbienluongs = new HashSet<Dienbienluong>(0);
+	//------------------------------------------ t? d?nh nghia, kh�ng mapping
 	 @Transient  
 	 private ArrayList<Lichsucongtac> lsct;  
+	 @Transient  
+	 private ArrayList<Daotaochuyenmon> ldtcm;  
+	 @Transient  
+	 private ArrayList<Dienbienluong> ldbl;  
+	 @Transient  
+	 private ArrayList<CanboGiadinhBanthan> lqhbt; 
+	 @Transient  
+	 private ArrayList<CanboGiadinhDoitac> lqhdt; 
 	 @Transient  
 	 private String noisinh_tinh;  
 	 @Transient  
@@ -94,8 +110,82 @@ public class Lylich implements java.io.Serializable {
 	 private String quequan_xa;
 	 @Transient  
 	 private Dacdienlichsubanthan lsbt;
+	 @Transient  
+	 private String noiquanly;
+	 @Transient  
+	 private String noisudung;
+	 @Transient  
+	 private String lngaySinh ;
+	 @Transient  
+	 private String lngayTuyenDung ;
+	 @Transient  
+	 private String lngayHuong ;
+	 @Transient  
+	 private String lngayVaoDang ;
+	 @Transient  
+	 private String lngayChinhThuc ;
+	 @Transient  
+	 private String lngayNhapNgu ;
+	 @Transient  
+	 private String lngayXuatNgu ;
+	 @Transient  
+	 private String lngayCap ;
+	 @Transient  
+	 private String lsoTruongCongTac ;
+	 @Transient  
+	 private String lkhenThuongCaoNhat ;
+	 @Transient  
+	 private String lkyLuatCaoNhat ;
 	 
 	 
+	public ArrayList<CanboGiadinhBanthan> getLqhbt() {
+		return lqhbt;
+	}
+
+	public void setLqhbt(ArrayList<CanboGiadinhBanthan> lqhbt) {
+		this.lqhbt = lqhbt;
+	}
+
+	public ArrayList<CanboGiadinhDoitac> getLqhdt() {
+		return lqhdt;
+	}
+
+	public void setLqhdt(ArrayList<CanboGiadinhDoitac> lqhdt) {
+		this.lqhdt = lqhdt;
+	}
+
+	public ArrayList<Dienbienluong> getLdbl() {
+		return ldbl;
+	}
+
+	public void setLdbl(ArrayList<Dienbienluong> ldbl) {
+		this.ldbl = ldbl;
+	}
+
+	public ArrayList<Daotaochuyenmon> getLdtcm() {
+		return ldtcm;
+	}
+
+	public void setLdtcm(ArrayList<Daotaochuyenmon> ldtcm) {
+		this.ldtcm = ldtcm;
+	}
+
+	public String getNoiquanly() {
+		return noiquanly;
+	}
+
+	public void setNoiquanly(String noiquanly) {
+		this.noiquanly = noiquanly;
+	}
+	
+	public String getNoisudung() {
+		return noisudung;
+	}
+
+	public void setNoisudung(String noisudung) {
+		this.noisudung = noisudung;
+	}
+
 	public Dacdienlichsubanthan getLsbt() {
 		return lsbt;
 	}
@@ -159,39 +249,121 @@ public class Lylich implements java.io.Serializable {
 	public void setQuequan_xa(String quequan_xa) {
 		this.quequan_xa = quequan_xa;
 	}
+	public String getLngaySinh() {
+		return lngaySinh;
+	}
 
+	public void setLngaySinh(String lngaySinh) {
+		this.lngaySinh = lngaySinh;
+	}
+
+	public String getLngayTuyenDung() {
+		return lngayTuyenDung;
+	}
+
+	public void setLngayTuyenDung(String lngayTuyenDung) {
+		this.lngayTuyenDung = lngayTuyenDung;
+	}
+
+	public String getLngayHuong() {
+		return lngayHuong;
+	}
+
+	public void setLngayHuong(String lngayHuong) {
+		this.lngayHuong = lngayHuong;
+	}
+
+	public String getLngayVaoDang() {
+		return lngayVaoDang;
+	}
+
+	public void setLngayVaoDang(String lngayVaoDang) {
+		this.lngayVaoDang = lngayVaoDang;
+	}
+
+	public String getLngayChinhThuc() {
+		return lngayChinhThuc;
+	}
+
+	public void setLngayChinhThuc(String lngayChinhThuc) {
+		this.lngayChinhThuc = lngayChinhThuc;
+	}
+
+	public String getLngayNhapNgu() {
+		return lngayNhapNgu;
+	}
+
+	public void setLngayNhapNgu(String lngayNhapNgu) {
+		this.lngayNhapNgu = lngayNhapNgu;
+	}
+
+	public String getLngayXuatNgu() {
+		return lngayXuatNgu;
+	}
+
+	public void setLngayXuatNgu(String lngayXuatNgu) {
+		this.lngayXuatNgu = lngayXuatNgu;
+	}
+
+	public String getLngayCap() {
+		return lngayCap;
+	}
+
+	public void setLngayCap(String lngayCap) {
+		this.lngayCap = lngayCap;
+	}
+
+	public String getLsoTruongCongTac() {
+		return lsoTruongCongTac;
+	}
+	
+	public String getLkhenThuongCaoNhat() {
+		return lkhenThuongCaoNhat;
+	}
+
+	public void setLkhenThuongCaoNhat(String lkhenThuongCaoNhat) {
+		this.lkhenThuongCaoNhat = lkhenThuongCaoNhat;
+	}
+
+	public String getLkyLuatCaoNhat() {
+		return lkyLuatCaoNhat;
+	}
+
+	public void setLkyLuatCaoNhat(String lkyLuatCaoNhat) {
+		this.lkyLuatCaoNhat = lkyLuatCaoNhat;
+	}
+
+	public void setLsoTruongCongTac(String lsoTruongCongTac) {
+		this.lsoTruongCongTac = lsoTruongCongTac;
+	}
 	
 	
-	
+
+ 
 	//---------------------------------------------------------------------------
-	
-	
 	public Lylich() {
 	}
 
-	public Lylich(Canbo canboByMaCanBo, Dantoc dantoc, Tongiao tongiao, Trinhdochinhtri trinhdochinhtri,
-			Trinhdochuyenmon trinhdochuyenmon) {
+	public Lylich(Canbo canboByMaCanBo) {
 		this.canboByMaCanBo = canboByMaCanBo;
-		this.dantoc = dantoc;
-		this.tongiao = tongiao;
-		this.trinhdochinhtri = trinhdochinhtri;
-		this.trinhdochuyenmon = trinhdochuyenmon;
 	}
 
-	public Lylich(Canbo canboByMaCanBo, Canbo canboByNguoiXacNhan, Dantoc dantoc, Tongiao tongiao,
+	public Lylich(Canbo canboByNguoixacnhan, Canbo canboByMaCanBo, Dantoc dantoc, Ngoaingu ngoaingu, Tongiao tongiao,
 			Trinhdochinhtri trinhdochinhtri, Trinhdochuyenmon trinhdochuyenmon, String tenGoiKhac, String tenCanBo,
 			Date ngaySinh, Boolean gioiTinh, String noiSinh, String queQuan, String hoKhauThuongTru, String noiOhienNay,
 			String ngheNgiepKhiDuocTuyenDung, Date ngayTuyenDung, String chucVuBenNgoaiHienTai,
-			String congViecChinhDuocGiao, Integer ngachCongChuc, Float maNgach, Float bacLuong, Float heSo,
+			String congViecChinhDuocGiao, String ngachCongChuc, Float maNgach, Float bacLuong, Float heSo,
 			Date ngayHuong, Double phuCapChucVu, Double phuCapKhac, String trinhDoPhoThong, String quanLyNhaNuoc,
 			String tinHoc, Date ngayVaoDang, Date ngayChinhThuc, String ngayThamGiaToChucChinhTri, Date ngayNhapNgu,
 			Date ngayXuatNgu, String quanHamCaoNhat, String danhHieuPhongTangCaoNhat, String soTruongCongTac,
 			String tinhTrangSucKhoe, Float chieuCao, Float canNang, String nhomMau, String laThuongBinhHang,
 			String laConGiaDinhChinhSach, String soCmnd, Date ngayCap, String soBhxh, String nhanXetCapTren,
-			Boolean daXacNhan) {
+			Boolean daXacNhan, String hinhanh, String sohieucongchuc, String soTruong, String khenThuongCaoNhat,
+			String kyLuatCaoNhat, Set<Dienbienluong> dienbienluongs) {
+		this.canboByNguoixacnhan = canboByNguoixacnhan;
 		this.canboByMaCanBo = canboByMaCanBo;
-		this.canboByNguoiXacNhan = canboByNguoiXacNhan;
 		this.dantoc = dantoc;
+		this.ngoaingu = ngoaingu;
 		this.tongiao = tongiao;
 		this.trinhdochinhtri = trinhdochinhtri;
 		this.trinhdochuyenmon = trinhdochuyenmon;
@@ -236,19 +408,35 @@ public class Lylich implements java.io.Serializable {
 		this.soBhxh = soBhxh;
 		this.nhanXetCapTren = nhanXetCapTren;
 		this.daXacNhan = daXacNhan;
+		this.hinhanh = hinhanh;
+		this.sohieucongchuc = sohieucongchuc;
+		this.soTruong = soTruong;
+		this.khenThuongCaoNhat = khenThuongCaoNhat;
+		this.kyLuatCaoNhat = kyLuatCaoNhat;
+		this.dienbienluongs = dienbienluongs;
 	}
 
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "canboByMaCanBo"))
 	@Id
 	@GeneratedValue(generator = "generator")
 
-	@Column(name = "MaCanBo", unique = true, nullable = false)
-	public int getMaCanBo() {
-		return this.maCanBo;
+	@Column(name = "Macanbo", unique = true, nullable = false)
+	public int getMacanbo() {
+		return this.macanbo;
 	}
 
-	public void setMaCanBo(int maCanBo) {
-		this.maCanBo = maCanBo;
+	public void setMacanbo(int macanbo) {
+		this.macanbo = macanbo;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Nguoixacnhan")
+	public Canbo getCanboByNguoixacnhan() {
+		return this.canboByNguoixacnhan;
+	}
+
+	public void setCanboByNguoixacnhan(Canbo canboByNguoixacnhan) {
+		this.canboByNguoixacnhan = canboByNguoixacnhan;
 	}
 
 	@OneToOne(fetch = FetchType.LAZY)
@@ -262,17 +450,7 @@ public class Lylich implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "NguoiXacNhan")
-	public Canbo getCanboByNguoiXacNhan() {
-		return this.canboByNguoiXacNhan;
-	}
-
-	public void setCanboByNguoiXacNhan(Canbo canboByNguoiXacNhan) {
-		this.canboByNguoiXacNhan = canboByNguoiXacNhan;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MaDanToc", nullable = false)
+	@JoinColumn(name = "MaDanToc")
 	public Dantoc getDantoc() {
 		return this.dantoc;
 	}
@@ -282,7 +460,17 @@ public class Lylich implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MaTonGiao", nullable = false)
+	@JoinColumn(name = "NgoaiNgu")
+	public Ngoaingu getNgoaingu() {
+		return this.ngoaingu;
+	}
+
+	public void setNgoaingu(Ngoaingu ngoaingu) {
+		this.ngoaingu = ngoaingu;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MaTonGiao")
 	public Tongiao getTongiao() {
 		return this.tongiao;
 	}
@@ -292,7 +480,7 @@ public class Lylich implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MaTrinhDoChinhTri", nullable = false)
+	@JoinColumn(name = "MaTrinhDoChinhTri")
 	public Trinhdochinhtri getTrinhdochinhtri() {
 		return this.trinhdochinhtri;
 	}
@@ -302,7 +490,7 @@ public class Lylich implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MaTrinhDoChuyenMon", nullable = false)
+	@JoinColumn(name = "MaTrinhDoChuyenMon")
 	public Trinhdochuyenmon getTrinhdochuyenmon() {
 		return this.trinhdochuyenmon;
 	}
@@ -421,12 +609,12 @@ public class Lylich implements java.io.Serializable {
 		this.congViecChinhDuocGiao = congViecChinhDuocGiao;
 	}
 
-	@Column(name = "NgachCongChuc")
-	public Integer getNgachCongChuc() {
+	@Column(name = "NgachCongChuc", length = 500)
+	public String getNgachCongChuc() {
 		return this.ngachCongChuc;
 	}
 
-	public void setNgachCongChuc(Integer ngachCongChuc) {
+	public void setNgachCongChuc(String ngachCongChuc) {
 		this.ngachCongChuc = ngachCongChuc;
 	}
 
@@ -686,6 +874,60 @@ public class Lylich implements java.io.Serializable {
 
 	public void setDaXacNhan(Boolean daXacNhan) {
 		this.daXacNhan = daXacNhan;
+	}
+
+	@Column(name = "hinhanh", length = 555)
+	public String getHinhanh() {
+		return this.hinhanh;
+	}
+
+	public void setHinhanh(String hinhanh) {
+		this.hinhanh = hinhanh;
+	}
+
+	@Column(name = "Sohieucongchuc", length = 405)
+	public String getSohieucongchuc() {
+		return this.sohieucongchuc;
+	}
+
+	public void setSohieucongchuc(String sohieucongchuc) {
+		this.sohieucongchuc = sohieucongchuc;
+	}
+
+	@Column(name = "SoTruong", length = 555)
+	public String getSoTruong() {
+		return this.soTruong;
+	}
+
+	public void setSoTruong(String soTruong) {
+		this.soTruong = soTruong;
+	}
+
+	@Column(name = "KhenThuongCaoNhat", length = 555)
+	public String getKhenThuongCaoNhat() {
+		return this.khenThuongCaoNhat;
+	}
+
+	public void setKhenThuongCaoNhat(String khenThuongCaoNhat) {
+		this.khenThuongCaoNhat = khenThuongCaoNhat;
+	}
+
+	@Column(name = "KyLuatCaoNhat", length = 555)
+	public String getKyLuatCaoNhat() {
+		return this.kyLuatCaoNhat;
+	}
+
+	public void setKyLuatCaoNhat(String kyLuatCaoNhat) {
+		this.kyLuatCaoNhat = kyLuatCaoNhat;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "lylich")
+	public Set<Dienbienluong> getDienbienluongs() {
+		return this.dienbienluongs;
+	}
+
+	public void setDienbienluongs(Set<Dienbienluong> dienbienluongs) {
+		this.dienbienluongs = dienbienluongs;
 	}
 
 }

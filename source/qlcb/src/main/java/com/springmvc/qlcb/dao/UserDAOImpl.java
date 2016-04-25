@@ -13,32 +13,20 @@ import org.springframework.stereotype.Repository;
 import com.springmvc.qlcb.model.Taikhoan;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl extends HibernateUtils implements UserDAO {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	private Session getSession() {
-		Session sess = getSessionFactory().getCurrentSession();
-		if (sess == null) {
-			sess = getSessionFactory().openSession();
-		}
-		return sess;
-	}
-
-	private SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
+	@Override
 	public void saveUser(Taikhoan tk) {
 		
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<Taikhoan> listUser() {
 		return getSession().createCriteria(Taikhoan.class).list();
 	}
 
+	@Override
 	public Taikhoan getUser(Taikhoan tk) {
 		String hsql = "from Taikhoan as tk where tk.tenDangNhap=? and tk.matKhau=?";
 		Query query = getSession().createQuery(hsql);
@@ -48,6 +36,7 @@ public class UserDAOImpl implements UserDAO {
 		return (Taikhoan) query.uniqueResult();
 	}
 
+	@Override
 	public void deleteUser(Taikhoan tk) {
 
 	}

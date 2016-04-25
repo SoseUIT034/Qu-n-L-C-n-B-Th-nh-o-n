@@ -1,5 +1,5 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -30,12 +30,9 @@ public class Congtacnuocngoai implements java.io.Serializable {
 	public Congtacnuocngoai() {
 	}
 
-	public Congtacnuocngoai(int maCtnn, Canbo canbo, Date tuNgay, Date toiNgay, String noiDung) {
+	public Congtacnuocngoai(int maCtnn, Canbo canbo) {
 		this.maCtnn = maCtnn;
 		this.canbo = canbo;
-		this.tuNgay = tuNgay;
-		this.toiNgay = toiNgay;
-		this.noiDung = noiDung;
 	}
 
 	public Congtacnuocngoai(int maCtnn, Canbo canbo, Date tuNgay, Date toiNgay, String diaDiem, String noiDung,
@@ -71,7 +68,7 @@ public class Congtacnuocngoai implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "TuNgay", nullable = false, length = 10)
+	@Column(name = "TuNgay", length = 10)
 	public Date getTuNgay() {
 		return this.tuNgay;
 	}
@@ -81,7 +78,7 @@ public class Congtacnuocngoai implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "ToiNgay", nullable = false, length = 10)
+	@Column(name = "ToiNgay", length = 10)
 	public Date getToiNgay() {
 		return this.toiNgay;
 	}
@@ -99,7 +96,7 @@ public class Congtacnuocngoai implements java.io.Serializable {
 		this.diaDiem = diaDiem;
 	}
 
-	@Column(name = "NoiDung", nullable = false, length = 2000)
+	@Column(name = "NoiDung", length = 2000)
 	public String getNoiDung() {
 		return this.noiDung;
 	}

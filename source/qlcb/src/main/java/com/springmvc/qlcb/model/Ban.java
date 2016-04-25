@@ -1,5 +1,5 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,7 +23,7 @@ import javax.persistence.TemporalType;
 public class Ban implements java.io.Serializable {
 
 	private int maBan;
-	private int maDonVi;
+	private Donvi donvi;
 	private String tenBan;
 	private Date ngayThanhLap;
 	private Integer maTruongBan;
@@ -30,16 +32,16 @@ public class Ban implements java.io.Serializable {
 	public Ban() {
 	}
 
-	public Ban(int maBan, int maDonVi, String tenBan, Date ngayThanhLap) {
+	public Ban(int maBan, Donvi donvi, String tenBan, Date ngayThanhLap) {
 		this.maBan = maBan;
-		this.maDonVi = maDonVi;
+		this.donvi = donvi;
 		this.tenBan = tenBan;
 		this.ngayThanhLap = ngayThanhLap;
 	}
 
-	public Ban(int maBan, int maDonVi, String tenBan, Date ngayThanhLap, Integer maTruongBan, Set<CanboBan> canboBans) {
+	public Ban(int maBan, Donvi donvi, String tenBan, Date ngayThanhLap, Integer maTruongBan, Set<CanboBan> canboBans) {
 		this.maBan = maBan;
-		this.maDonVi = maDonVi;
+		this.donvi = donvi;
 		this.tenBan = tenBan;
 		this.ngayThanhLap = ngayThanhLap;
 		this.maTruongBan = maTruongBan;
@@ -57,13 +59,14 @@ public class Ban implements java.io.Serializable {
 		this.maBan = maBan;
 	}
 
-	@Column(name = "MaDonVi", nullable = false)
-	public int getMaDonVi() {
-		return this.maDonVi;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MaDonVi", nullable = false)
+	public Donvi getDonvi() {
+		return this.donvi;
 	}
 
-	public void setMaDonVi(int maDonVi) {
-		this.maDonVi = maDonVi;
+	public void setDonvi(Donvi donvi) {
+		this.donvi = donvi;
 	}
 
 	@Column(name = "TenBan", nullable = false, length = 45)

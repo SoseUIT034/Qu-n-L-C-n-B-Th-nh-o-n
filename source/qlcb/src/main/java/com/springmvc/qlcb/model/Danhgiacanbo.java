@@ -1,5 +1,5 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -33,16 +33,12 @@ public class Danhgiacanbo implements java.io.Serializable {
 	public Danhgiacanbo() {
 	}
 
-	public Danhgiacanbo(int maDanhGiaCanBo, Canbo canboByMaNguoiDanhGia, Canbo canboByMaCanBoDuocDanhGia,
-			Mucdohoanthanh mucdohoanthanh, Quy quy, String noiDung, Date ngayDanhGia, int nam,
-			boolean laQuanLyHienTai) {
+	public Danhgiacanbo(int maDanhGiaCanBo, Canbo canboByMaNguoiDanhGia, Canbo canboByMaCanBoDuocDanhGia, Quy quy,
+			int nam, boolean laQuanLyHienTai) {
 		this.maDanhGiaCanBo = maDanhGiaCanBo;
 		this.canboByMaNguoiDanhGia = canboByMaNguoiDanhGia;
 		this.canboByMaCanBoDuocDanhGia = canboByMaCanBoDuocDanhGia;
-		this.mucdohoanthanh = mucdohoanthanh;
 		this.quy = quy;
-		this.noiDung = noiDung;
-		this.ngayDanhGia = ngayDanhGia;
 		this.nam = nam;
 		this.laQuanLyHienTai = laQuanLyHienTai;
 	}
@@ -94,7 +90,7 @@ public class Danhgiacanbo implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MucDoHoanThanh", nullable = false)
+	@JoinColumn(name = "MucDoHoanThanh")
 	public Mucdohoanthanh getMucdohoanthanh() {
 		return this.mucdohoanthanh;
 	}
@@ -113,7 +109,7 @@ public class Danhgiacanbo implements java.io.Serializable {
 		this.quy = quy;
 	}
 
-	@Column(name = "NoiDung", nullable = false, length = 65535)
+	@Column(name = "NoiDung", length = 65535)
 	public String getNoiDung() {
 		return this.noiDung;
 	}
@@ -123,7 +119,7 @@ public class Danhgiacanbo implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayDanhGia", nullable = false, length = 10)
+	@Column(name = "NgayDanhGia", length = 10)
 	public Date getNgayDanhGia() {
 		return this.ngayDanhGia;
 	}

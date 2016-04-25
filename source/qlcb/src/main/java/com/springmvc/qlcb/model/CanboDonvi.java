@@ -1,5 +1,5 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

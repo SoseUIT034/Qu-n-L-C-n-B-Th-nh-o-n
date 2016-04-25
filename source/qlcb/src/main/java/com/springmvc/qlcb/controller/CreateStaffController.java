@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,13 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.mysql.jdbc.log.Log;
 import com.springmvc.qlcb.model.Canbo;
 import com.springmvc.qlcb.model.Congtacnuocngoai;
 import com.springmvc.qlcb.model.Dantoc;
 import com.springmvc.qlcb.model.Lylich;
 import com.springmvc.qlcb.model.Taikhoan;
-import com.springmvc.qlcb.model._Toanbothongtincanbo;
 @Controller
 public class CreateStaffController {
 
@@ -52,6 +51,7 @@ public class CreateStaffController {
 		model.addAttribute("listtocgiao", null);
 		model.addAttribute("listchuyenmon", null );
 		model.addAttribute("listchinhtri", null);
+		model.addAttribute("listngoaingu", null);
 		// model
 		model.addAttribute("Lylich", new Lylich()); 
 		
@@ -60,13 +60,15 @@ public class CreateStaffController {
 	}
 	
 	
+
 	@RequestMapping(value = { "/create"}, method = RequestMethod.POST)
-	public String create(@ModelAttribute(value = "Lylich") Lylich  data) 
+	public String create(@ModelAttribute(value = "Lylich") Lylich  data, HttpServletRequest request) 
 	{
- 
- 
+		
+		request.getParameter("fileupload");
 		 
 		
 		return "redirect:/home";
 	}
+
 }

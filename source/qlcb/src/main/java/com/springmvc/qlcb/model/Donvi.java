@@ -1,5 +1,5 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,31 +23,32 @@ import javax.persistence.TemporalType;
 public class Donvi implements java.io.Serializable {
 
 	private int maDonVi;
+	private Khoi khoi;
 	private String tenDonVi;
-	private int maKhoi;
 	private Integer maTruongDonVi;
 	private Date ngayThanhLap;
 	private String moTa;
+	private Set<Ban> bans = new HashSet<Ban>(0);
 	private Set<CanboDonvi> canboDonvis = new HashSet<CanboDonvi>(0);
 
 	public Donvi() {
 	}
 
-	public Donvi(int maDonVi, String tenDonVi, int maKhoi, Date ngayThanhLap) {
+	public Donvi(int maDonVi, String tenDonVi, Date ngayThanhLap) {
 		this.maDonVi = maDonVi;
 		this.tenDonVi = tenDonVi;
-		this.maKhoi = maKhoi;
 		this.ngayThanhLap = ngayThanhLap;
 	}
 
-	public Donvi(int maDonVi, String tenDonVi, int maKhoi, Integer maTruongDonVi, Date ngayThanhLap, String moTa,
-			Set<CanboDonvi> canboDonvis) {
+	public Donvi(int maDonVi, Khoi khoi, String tenDonVi, Integer maTruongDonVi, Date ngayThanhLap, String moTa,
+			Set<Ban> bans, Set<CanboDonvi> canboDonvis) {
 		this.maDonVi = maDonVi;
+		this.khoi = khoi;
 		this.tenDonVi = tenDonVi;
-		this.maKhoi = maKhoi;
 		this.maTruongDonVi = maTruongDonVi;
 		this.ngayThanhLap = ngayThanhLap;
 		this.moTa = moTa;
+		this.bans = bans;
 		this.canboDonvis = canboDonvis;
 	}
 
@@ -60,6 +63,16 @@ public class Donvi implements java.io.Serializable {
 		this.maDonVi = maDonVi;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MaKhoi")
+	public Khoi getKhoi() {
+		return this.khoi;
+	}
+
+	public void setKhoi(Khoi khoi) {
+		this.khoi = khoi;
+	}
+
 	@Column(name = "TenDonVi", nullable = false, length = 250)
 	public String getTenDonVi() {
 		return this.tenDonVi;
@@ -67,15 +80,6 @@ public class Donvi implements java.io.Serializable {
 
 	public void setTenDonVi(String tenDonVi) {
 		this.tenDonVi = tenDonVi;
-	}
-
-	@Column(name = "MaKhoi", nullable = false)
-	public int getMaKhoi() {
-		return this.maKhoi;
-	}
-
-	public void setMaKhoi(int maKhoi) {
-		this.maKhoi = maKhoi;
 	}
 
 	@Column(name = "MaTruongDonVi")
@@ -104,6 +108,15 @@ public class Donvi implements java.io.Serializable {
 
 	public void setMoTa(String moTa) {
 		this.moTa = moTa;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "donvi")
+	public Set<Ban> getBans() {
+		return this.bans;
+	}
+
+	public void setBans(Set<Ban> bans) {
+		this.bans = bans;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "donvi")

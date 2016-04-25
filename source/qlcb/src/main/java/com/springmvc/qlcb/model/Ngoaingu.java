@@ -1,5 +1,5 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,9 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,7 +19,7 @@ public class Ngoaingu implements java.io.Serializable {
 
 	private int maNgoaiNgu;
 	private String tenNgoaiNgu;
-	private Set<Canbo> canbos = new HashSet<Canbo>(0);
+	private Set<Lylich> lyliches = new HashSet<Lylich>(0);
 
 	public Ngoaingu() {
 	}
@@ -31,10 +29,10 @@ public class Ngoaingu implements java.io.Serializable {
 		this.tenNgoaiNgu = tenNgoaiNgu;
 	}
 
-	public Ngoaingu(int maNgoaiNgu, String tenNgoaiNgu, Set<Canbo> canbos) {
+	public Ngoaingu(int maNgoaiNgu, String tenNgoaiNgu, Set<Lylich> lyliches) {
 		this.maNgoaiNgu = maNgoaiNgu;
 		this.tenNgoaiNgu = tenNgoaiNgu;
-		this.canbos = canbos;
+		this.lyliches = lyliches;
 	}
 
 	@Id
@@ -57,16 +55,13 @@ public class Ngoaingu implements java.io.Serializable {
 		this.tenNgoaiNgu = tenNgoaiNgu;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "canbo_ngoaingu", catalog = "qlcb", joinColumns = {
-			@JoinColumn(name = "MaNgoaiNgu", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "MaCanBo", nullable = false, updatable = false) })
-	public Set<Canbo> getCanbos() {
-		return this.canbos;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ngoaingu")
+	public Set<Lylich> getLyliches() {
+		return this.lyliches;
 	}
 
-	public void setCanbos(Set<Canbo> canbos) {
-		this.canbos = canbos;
+	public void setLyliches(Set<Lylich> lyliches) {
+		this.lyliches = lyliches;
 	}
 
 }

@@ -46,18 +46,21 @@
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
 		<form:form class="container" commandName="Lylich" action="create" style="border: rebeccapurple; border-style: dotted;" method="POST" >
+			  <div class="col-xs-12" style="display: none">
+			      <form:input path="macanbo" id="maCanBo"  class="form-control" type="text"/>
+			  </div>
 			  <div class="row">
 			    <div class="col-xs-12 col-md-4">
 			      <label>Cơ quan, đơn vị có thẩm quyền quản lý cán bộ công chức</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <input id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/>
+			      <form:input path="noiquanly" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label> Số hiệu cán bộ, công chức </label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <input id="shcbtxt"   name="shcbtxt" class="form-control" type="text"/>
+			      <form:input path="Sohieucongchuc" id="shcbtxt"   name="shcbtxt" class="form-control" type="text"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -65,7 +68,7 @@
 			      <label>Cơ quan, đơn vị sử dụng cán bộ công chức </label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <input id="cqdvsdtxt" name="cqdvsdtxt" type="text" class="form-control"/>
+			      <form:input path="noisudung" id="cqdvsdtxt" name="cqdvsdtxt" type="text" class="form-control"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -102,7 +105,7 @@
 			            <label>3) Sinh ngày </label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:input path="ngaySinh"  class="datepicker form-control" type="date-time" id="sinhngaytxt" name="sinhngaytxt"/>
+			            <form:input path="lngaySinh"  class="datepicker form-control" type="date-time" id="sinhngaytxt" name="sinhngaytxt"/>
 			          </div>
 			          <div class="col-xs-12 col-md-3" style="text-align:right">
 			            <label>Giới tính: </label>
@@ -221,7 +224,7 @@
 			      <label>11) Ngày tuyển dụng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="ngayTuyenDung" type="date-time" class="form-control datepicker" id="ntdtxt" name="ntdtxt"/>
+			      <form:input path="lngayTuyenDung" type="date-time" class="form-control datepicker" id="ntdtxt" name="ntdtxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>Cơ quan tuyển dụng</label>
@@ -331,7 +334,7 @@
 			      <label>Ngày hưởng</label>
 			    </div>
 			    <div class="col-xs-6 col-md-2">
-			      <form:input path="ngayHuong"  class="datepicker form-control" type ="date-time" id="nhtxt" name="nhtxt"/>
+			      <form:input path="lngayHuong"  class="datepicker form-control" type ="date-time" id="nhtxt" name="nhtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -425,15 +428,14 @@
 			      <label>15.5) Ngoại ngữ</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <select class="form-control" id="nnsel" name="nnsel">
-			        <option value="0">Không</option>
-			        <option value="1">Anh</option>
-			        <option value="2">Pháp</option>
-			        <option value="3">Nhật</option>
-			        <option value="4">Hàn Quốc</option>
-			        <option value="5">Hoa</option>
-			        <option value="6">Thái</option>
-			      </select>
+			    	<form:select path="ngoaingu.maNgoaiNgu" class="form-control" id="tongiaosel" >
+				             <c:if test="${not empty listngoaingu}">
+					              <c:forEach items="${listngoaingu}" var="item">
+					           	  	<option value=${item.maNgoaiNgu}>${item.tenNgoaiNgu}</option>
+					           	  </c:forEach>
+				           	  </c:if>
+			       </form:select>
+			      
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label>15.6) Tin học</label>
@@ -443,6 +445,7 @@
 			        <form:option value="A">A</form:option>
 			        <form:option value="B">B</form:option>
 			        <form:option value="C">C</form:option>
+			        <form:option value="C">Khac</form:option>
 			      </form:select>
 			    </div>
 			  </div>
@@ -451,13 +454,13 @@
 			      <label>16) Ngày vào Đảng Cộng Sản Việt Nam</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="ngayVaoDang" class="form-control datepicker" type="date-time" id="nvdcstxt" name="nvdcstxt"/>
+			      <form:input path="lngayVaoDang" class="form-control datepicker" type="date-time" id="nvdcstxt" name="nvdcstxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label>Ngày chính thức</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="ngayChinhThuc" class="form-control datepicker" type="date-time" id="ncttxt" name="ncttxt"/>
+			      <form:input path="lngayChinhThuc" class="form-control datepicker" type="date-time" id="ncttxt" name="ncttxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -473,13 +476,13 @@
 			      <label>18) Ngày nhập ngũ </label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="ngayNhapNgu"  class="form-control datepicker" type="date-time" id="nnntxt" name="nnntxt"/>
+			      <form:input path="lngayNhapNgu"  class="form-control datepicker" type="date-time" id="nnntxt" name="nnntxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>Ngày xuất ngũ</label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="ngayXuatNgu" class="form-control datepicker" type="date-time" id="nxntxt" name="nxntxt"/>
+			      <form:input path="lngayXuatNgu" class="form-control datepicker" type="date-time" id="nxntxt" name="nxntxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>Quân hàm cao nhất</label>
@@ -507,7 +510,7 @@
 			      <label>20) Sở trường công tác</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
+			      <form:input path="lsoTruongCongTac" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -515,13 +518,13 @@
 			      <label>21) Khen thưởng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <input class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" id="kttxt"/>
+			      <form:input path="lkhenThuongCaoNhat" class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" />
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>22) Kỷ luật</label>
 			    </div>
 			    <div class="col-xs-12 col-md-5">
-			      <input class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
+			      <form:input path="lkyLuatCaoNhat" class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -586,7 +589,7 @@
 			      <label>Ngày cấp</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="ngayCap" class="form-control datepicker" type="date-time" id="nctxt" name="nctxt"/>
+			      <form:input path="lngayCap" class="form-control datepicker" type="date-time" id="nctxt" name="nctxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -696,20 +699,20 @@
 			    <label>Khai rõ: Bị bắt, bị tù (từ ngày thángn ăm nào đến ngày tháng năm nào, ở đâu), đã khai báo cho ai, những vấn đề gì? Bản thân có làm việc tỏng chế độ cũ(cơ quan, đơn vị nào, địa điểm, chức danh, chức vụ, thời gian làm việc...)</label>
 			  </div>
 			  <div class="row">
-			    <form:textarea path=""  class="form-control" id="bbbttxt" name="bbbttxt"></form:textarea>
+			    <form:textarea path="lsbt.noidung1"  class="form-control" id="bbbttxt" name="bbbttxt"></form:textarea>
 			  </div>
 			  <div class="row">
 			    <label>Tham gia hoặc có quan hệ với các tổ chức chính trị, kinh tế, xã hội nào ở nước ngoài(làm gì, tổ chức nào, đặt trụ sở ở đâu....?)</label>
 			  </div>
 			  <div class="row">
-			    <form:textarea path="" class="form-control" id="tghqhtxt" name="tghqhtxt"></form:textarea>
+			    <form:textarea path="lsbt.noidung2" class="form-control" id="tghqhtxt" name="tghqhtxt"></form:textarea>
 			  </div>
 			  <div class="row">
 			  <label>
 			  Có thân nhân (Cha, Mẹ, Vợ, Chồng, con, anh chị em ruột) ở nước ngoài (làm gì, địa chỉ....)?
 			  </div>
 			  <div class="row">
-			    <form:textarea path="" class="form-control" id="ctntxt" name="ctntxt"></form:textarea>
+			    <form:textarea path="lsbt.noiDung3" class="form-control" id="ctntxt" name="ctntxt"></form:textarea>
 			  </div>
 			  <div class="row">
 			    <div class="panel panel-default">

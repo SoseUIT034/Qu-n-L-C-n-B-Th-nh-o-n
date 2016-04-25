@@ -1,5 +1,5 @@
 package com.springmvc.qlcb.model;
-// Generated Apr 21, 2016 1:56:09 PM by Hibernate Tools 4.3.1.Final
+// Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -26,6 +26,11 @@ public class Lichsucongtac implements java.io.Serializable {
 	private String chucVu;
 
 	public Lichsucongtac() {
+	}
+
+	public Lichsucongtac(int maLsct, Canbo canbo) {
+		this.maLsct = maLsct;
+		this.canbo = canbo;
 	}
 
 	public Lichsucongtac(int maLsct, Canbo canbo, Date tuNgay, Date toiNgay, String chucVu) {
@@ -58,7 +63,7 @@ public class Lichsucongtac implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "TuNgay", nullable = false, length = 10)
+	@Column(name = "TuNgay", length = 10)
 	public Date getTuNgay() {
 		return this.tuNgay;
 	}
@@ -68,7 +73,7 @@ public class Lichsucongtac implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "ToiNgay", nullable = false, length = 10)
+	@Column(name = "ToiNgay", length = 10)
 	public Date getToiNgay() {
 		return this.toiNgay;
 	}
@@ -77,7 +82,7 @@ public class Lichsucongtac implements java.io.Serializable {
 		this.toiNgay = toiNgay;
 	}
 
-	@Column(name = "ChucVu", nullable = false, length = 65535)
+	@Column(name = "ChucVu", length = 65535)
 	public String getChucVu() {
 		return this.chucVu;
 	}
