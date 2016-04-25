@@ -85,6 +85,7 @@ public class Lylich implements java.io.Serializable {
 	private String khenThuongCaoNhat;
 	private String kyLuatCaoNhat;
 	private Set<Dienbienluong> dienbienluongs = new HashSet<Dienbienluong>(0);
+ 
 	//------------------------------------------ t? d?nh nghia, kh�ng mapping
 	 @Transient  
 	 private ArrayList<Lichsucongtac> lsct;  
@@ -245,6 +246,7 @@ public class Lylich implements java.io.Serializable {
 	public String getQuequan_xa() {
 		return quequan_xa;
 	}
+ 
 
 	public void setQuequan_xa(String quequan_xa) {
 		this.quequan_xa = quequan_xa;

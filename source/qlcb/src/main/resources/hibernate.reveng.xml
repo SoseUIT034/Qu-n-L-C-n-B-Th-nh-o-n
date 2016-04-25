@@ -6,7 +6,8 @@
   <table-filter match-catalog="qlcb" match-name="canbo"/>
   <table-filter match-catalog="qlcb" match-name="canbo_ban"/>
   <table-filter match-catalog="qlcb" match-name="canbo_donvi"/>
-  <table-filter match-catalog="qlcb" match-name="canbo_thanhviengiadinh"/>
+  <table-filter match-catalog="qlcb" match-name="canbo_giadinh_banthan"/>
+  <table-filter match-catalog="qlcb" match-name="canbo_giadinh_doitac"/>
   <table-filter match-catalog="qlcb" match-name="chucvuban"/>
   <table-filter match-catalog="qlcb" match-name="chucvudonvi"/>
   <table-filter match-catalog="qlcb" match-name="chuyencongtac"/>
@@ -15,19 +16,17 @@
   <table-filter match-catalog="qlcb" match-name="danhgiacanbo"/>
   <table-filter match-catalog="qlcb" match-name="dantoc"/>
   <table-filter match-catalog="qlcb" match-name="daotaochuyenmon"/>
+  <table-filter match-catalog="qlcb" match-name="dienbienluong"/>
   <table-filter match-catalog="qlcb" match-name="donvi"/>
   <table-filter match-catalog="qlcb" match-name="khenthuong"/>
   <table-filter match-catalog="qlcb" match-name="khoi"/>
   <table-filter match-catalog="qlcb" match-name="kyluat"/>
   <table-filter match-catalog="qlcb" match-name="lichsucongtac"/>
-  <table-filter match-catalog="qlcb" match-name="loaiquanhe"/>
   <table-filter match-catalog="qlcb" match-name="lylich"/>
   <table-filter match-catalog="qlcb" match-name="mucdohoanthanh"/>
   <table-filter match-catalog="qlcb" match-name="ngoaingu"/>
-  <table-filter match-catalog="qlcb" match-name="quanhe"/>
   <table-filter match-catalog="qlcb" match-name="quy"/>
   <table-filter match-catalog="qlcb" match-name="taikhoan"/>
-  <table-filter match-catalog="qlcb" match-name="thanhviengiadinh"/>
   <table-filter match-catalog="qlcb" match-name="tongiao"/>
   <table-filter match-catalog="qlcb" match-name="trinhdochinhtri"/>
   <table-filter match-catalog="qlcb" match-name="trinhdochuyenmon"/>
