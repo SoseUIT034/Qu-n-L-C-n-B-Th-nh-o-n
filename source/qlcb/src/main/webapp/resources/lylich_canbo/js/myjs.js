@@ -213,7 +213,7 @@ $(function() {
 		$('.datepicker').datepicker(); 
 	});
 	$('#themQTCT').click(function() {
-		$('#tbodyQTCT').append('<tr><td><input   class="form-control datepicker hasDatepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input   class="form-control datepicker hasDatepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input   class="form-control datepicker hasDatepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowQTCT(this, "tableQTCT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
+		$('#tbodyQTCT').append('<tr><td><input class="form-control datepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control datepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control " type="text" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowQTCT(this, "tableQTCT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 		var i = 0;
 		$('#tbodyQTCT tr').each(function() {
 			var $tr = $(this);
@@ -230,7 +230,7 @@ $(function() {
 	});
 	
 	$('#themVBT').click(function(){
-		$('#tbodyVBT').append('<tr><td><input type="text" class="form-control" id="mqhbttxt1" name="mqhbttxt1"/></td><td><input type="text" class="form-control" id="httbtxt1" name="htbttxt1"/></td><td><input class="form-control datepicker" type="date" id="nsbttxt1" name="nstxt1"/></td><td><input class="form-control" type="text" id="qqnncdbttxt1" name="qqnncdbttxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBT(this, "tableVBT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
+		$('#tbodyVBT').append('<tr><td><input type="text" class="form-control" id="mqhbttxt1" name="mqhbttxt1"/></td><td><input type="text" class="form-control" id="httbtxt1" name="htbttxt1"/></td><td><input class="form-control datepicker" type="date-time" id="nsbttxt1" name="nstxt1"/></td><td><input class="form-control" type="text" id="qqnncdbttxt1" name="qqnncdbttxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBT(this, "tableVBT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 		var i = 0;
 		$('#tbodyVBT tr').each(function() {
 			var $tr = $(this);
@@ -248,7 +248,7 @@ $(function() {
 		$('.datepicker').datepicker();	
 	});
 	$('#themVBV').click(function(){
-		$('#tbodyVBV').append('<tr><td><input type="text" class="form-control" id="mqhbvtxt1" name="mqhbvtxt1" /></td><td><input type="text" class="form-control" id="htbvtxt1" name="htbvtxt1"/></td><td><input class="form-control datepicker" type="date" id="nsbvtxt" name="nsbvtxt1"/></td><td><input class="form-control" type="text" id="qqnncdbvtxt1" name="qqnncdbvtxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBV(this, "tableVBV")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
+		$('#tbodyVBV').append('<tr><td><input type="text" class="form-control" id="mqhbvtxt1" name="mqhbvtxt1" /></td><td><input type="text" class="form-control" id="htbvtxt1" name="htbvtxt1"/></td><td><input class="form-control datepicker" type="date-time" id="nsbvtxt" name="nsbvtxt1"/></td><td><input class="form-control" type="text" id="qqnncdbvtxt1" name="qqnncdbvtxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBV(this, "tableVBV")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 		var i = 0;
 		$('#tbodyVBV tr').each(function() {
 			var $tr = $(this);

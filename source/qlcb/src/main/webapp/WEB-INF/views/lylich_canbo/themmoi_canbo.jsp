@@ -48,6 +48,7 @@
 		<form:form class="container" commandName="Lylich" action="create" style="border: rebeccapurple; border-style: dotted;" method="POST" >
 			  <div class="col-xs-12" style="display: none">
 			      <form:input path="macanbo" id="maCanBo"  class="form-control" type="text"/>
+			       <form:errors path="macanbo" cssclass="error"></form:errors>
 			  </div>
 			  <div class="row">
 			    <div class="col-xs-12 col-md-4">
@@ -55,6 +56,7 @@
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <form:input path="noiquanly" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/>
+			      <form:errors path="noiquanly" cssclass="error"></form:errors>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label> Số hiệu cán bộ, công chức </label>

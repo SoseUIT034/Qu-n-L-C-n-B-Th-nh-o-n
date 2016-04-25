@@ -6,15 +6,19 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.catalina.connector.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.springmvc.qlcb.model.Canbo;
 import com.springmvc.qlcb.model.Congtacnuocngoai;
 import com.springmvc.qlcb.model.Dantoc;
@@ -62,13 +66,14 @@ public class CreateStaffController {
 	
 
 	@RequestMapping(value = { "/create"}, method = RequestMethod.POST)
-	public String create(@ModelAttribute(value = "Lylich") Lylich  data, HttpServletRequest request) 
+	public String create( @ModelAttribute(value = "Lylich")  Lylich  data  ) 
 	{
-		
-		request.getParameter("fileupload");
+ 
+		 
+			return "redirect:/home";
 		 
 		
-		return "redirect:/home";
+		
 	}
 
 }
