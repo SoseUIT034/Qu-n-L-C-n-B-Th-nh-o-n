@@ -2,8 +2,11 @@ package com.springmvc.qlcb.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.springmvc.qlcb.model.Lichsucongtac;
 
+@Repository
 public class LichSuCongTacDAOImpl extends HibernateUtils implements LichSuCongTacDAO {
 
 	@Override

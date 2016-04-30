@@ -20,7 +20,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---js--->
  
 <!---fonts-->
-<script src="<c:url value="/resources/layout/js/responsiveslides.min.js"/>"></script>
+<script src="js/responsiveslides.min.js"></script>
 	 <script>
 		$(function () {
 		  $("#slider").responsiveSlides({
@@ -32,8 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  });
 		});
 	</script>
-<link href="<c:url value="/resources/layout/css/owl.carousel.css"/>" rel="stylesheet">
-<script src="<c:url value="/resources/layout/js/owl.carousel.js"/>"></script>
+<link href="css/owl.carousel.css" rel="stylesheet">
+<script src="js/owl.carousel.js"></script>
 	<script>
 		$(document).ready(function() {
 		$("#owl-demo").owlCarousel({
@@ -60,24 +60,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="email">
 						<ul>
-							 
-							<li>
-								<%-- <%if(request.getAttribute("KEY_LOGINED").toString().equals("1"))
-									{%>
-										Xin Chào: <%=request.getAttribute("NAME_LOGINED") %>
-										<i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="logout" >Logout</a>
-									<%
-									}
-									 else
-									
-									{%>
-										 
-										<i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login" >Login</a>
-									<%
-									}%>
-									 
-								  --%>
-							</li>
+							
+							<li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
 							
 						</ul>
 						</div>
@@ -119,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li class="dropdown ">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Property<span class="caret"></span></a>
 											<ul class="dropdown-menu">
-												<li><a href="defaultvariation.html">Default â Variation</a></li>
+												<li><a href="defaultvariation.html">Default – Variation</a></li>
 												<li><a href="agentinsidebarvariation.html">Agent in Sidebar - Variation</a></li>
 												<li><a href="galleryvariation.html">Gallery - Variation</a></li>
 											</ul>
@@ -174,69 +158,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>-->
 <!---banner--->
-
+	 				
+					<!---footer--->
+					 
+					<!---footer--->
+					<!--copy-->
+					 
+				<!--copy-->
 <!-- login -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content modal-info">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
-						</div>
-						<div class="modal-body real-spa">
-							<div class="login-grids">
-								<div class="login">
-									
-									<div class="login-right">
-										<form>
-											<h3>Login</h3>
-											<input type="text" value="Enter your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your Email';}" required="">	
-											<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">	
-											<h4><a href="#">Forgot password</a> / <a href="#">Create new password</a></h4>
-											<div class="single-bottom">
-												<input type="checkbox"  id="brand" value="">
-												<label for="brand"><span></span>Remember Me.</label>
-											</div>
-											<input type="submit" value="Login Now" >
-										</form>
-									</div>
-																
-								</div>
-								<p>By logging in you agree to our <a href="#">Terms</a> and <a href="#">Conditions</a> and <a href="#">Privacy Policy</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			 
 			<!-- //login -->
 			<!-- Register -->
-			<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content modal-info">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
-						</div>
-						<div class="modal-body real-spa">
-							<div class="login-grids">
-								<div class="login">
-									<div class="login-right">
-										<form>
-											<h3>Register </h3>
-											<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-											<input type="text" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">
-											<input type="text" value="Email id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id';}" required="">	
-											<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">	
-											
-											<input type="submit" value="Register Now" >
-										</form>
-									</div>
-									<div class="clearfix"></div>								
-								</div>
-								<p>By logging in you agree to our <a href="#">Terms</a> and <a href="#">Conditions</a> and <a href="#">Privacy Policy</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			 
 			<!-- //Register -->
-</body>
-</html>
+
+</body></html>

@@ -3940,3 +3940,9 @@ a.button5 {
 .login-right input[type="submit"] {
     font-size: 1.2em;
 }
+
+@media(min-width: 768px) {
+    #bs-example-navbar-collapse-1{
+    display: block;
+    }
+}

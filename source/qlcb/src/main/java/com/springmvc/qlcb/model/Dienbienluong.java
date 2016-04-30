@@ -28,25 +28,26 @@ public class Dienbienluong implements java.io.Serializable {
 	private Float heSoLuong;
 
 	//-----tu them vao - no mapping----------
-	@Transient  
+	   
 	 private String lngaythang;
 	@Transient  
 	 private String lmangach_bac;  
 
 	
 	
+	 
 	public String getLngaythang() {
 		return lngaythang;
 	}
-
+	 
 	public void setLngaythang(String lngaythang) {
 		this.lngaythang = lngaythang;
 	}
-
+	 
 	public String getLmangach_bac() {
 		return lmangach_bac;
 	}
-
+	 
 	public void setLmangach_bac(String lmangach_bac) {
 		this.lmangach_bac = lmangach_bac;
 	}

@@ -114,7 +114,6 @@ public class Lylich implements java.io.Serializable {
 	 @Transient  
 	 private Dacdienlichsubanthan lsbt;
 	 @Transient  
-	 @NotEmpty(message = "nhaapj vafo")
 	 private String noiquanly;
 	 @Transient  
 	 private String noisudung;
@@ -141,203 +140,204 @@ public class Lylich implements java.io.Serializable {
 	 @Transient  
 	 private String lkyLuatCaoNhat ;
 	 
-	 
+	 @Transient
 	public ArrayList<CanboGiadinhBanthan> getLqhbt() {
 		return lqhbt;
 	}
-
+	 @Transient
 	public void setLqhbt(ArrayList<CanboGiadinhBanthan> lqhbt) {
 		this.lqhbt = lqhbt;
 	}
-
+	 @Transient
 	public ArrayList<CanboGiadinhDoitac> getLqhdt() {
 		return lqhdt;
 	}
-
+	 @Transient
 	public void setLqhdt(ArrayList<CanboGiadinhDoitac> lqhdt) {
 		this.lqhdt = lqhdt;
 	}
-
+	 @Transient
 	public ArrayList<Dienbienluong> getLdbl() {
 		return ldbl;
 	}
-
+	 @Transient
 	public void setLdbl(ArrayList<Dienbienluong> ldbl) {
 		this.ldbl = ldbl;
 	}
-
+	 @Transient
 	public ArrayList<Daotaochuyenmon> getLdtcm() {
 		return ldtcm;
 	}
-
+	 @Transient
 	public void setLdtcm(ArrayList<Daotaochuyenmon> ldtcm) {
 		this.ldtcm = ldtcm;
 	}
-	
+	 @Transient
 	public String getNoiquanly() {
 		return noiquanly;
 	}
-
+	 @Transient
 	public void setNoiquanly(String noiquanly) {
 		this.noiquanly = noiquanly;
 	}
-	
+	 @Transient
 	public String getNoisudung() {
 		return noisudung;
 	}
-
+	 @Transient
 	public void setNoisudung(String noisudung) {
 		this.noisudung = noisudung;
 	}
-
+	 @Transient
 	public Dacdienlichsubanthan getLsbt() {
 		return lsbt;
 	}
-
+	 @Transient
 	public void setLsbt(Dacdienlichsubanthan lsbt) {
 		this.lsbt = lsbt;
 	}
-
+	 @Transient
 	public ArrayList<Lichsucongtac> getLsct() {
 		return lsct;
 	}
-
+	 @Transient
 	public void setLsct(ArrayList<Lichsucongtac> lsct) {
 		this.lsct = lsct;
 	}
-	
+	 @Transient
 	public String getNoisinh_tinh() {
 		return noisinh_tinh;
 	}
-
+	 @Transient
 	public void setNoisinh_tinh(String noisinh_tinh) {
 		this.noisinh_tinh = noisinh_tinh;
 	}
-
+	 @Transient
 	public String getNoisinh_huyen() {
 		return noisinh_huyen;
 	}
-
+	 @Transient
 	public void setNoisinh_huyen(String noisinh_huyen) {
 		this.noisinh_huyen = noisinh_huyen;
 	}
-
+	 @Transient
 	public String getNoisinh_xa() {
 		return noisinh_xa;
 	}
-
+	 @Transient
 	public void setNoisinh_xa(String noisinh_xa) {
 		this.noisinh_xa = noisinh_xa;
 	}
-
+	 @Transient
 	public String getQuequan_tinh() {
 		return quequan_tinh;
 	}
-
+	 @Transient
 	public void setQuequan_tinh(String quequan_tinh) {
 		this.quequan_tinh = quequan_tinh;
 	}
-
+	 @Transient
 	public String getQuequan_huyen() {
 		return quequan_huyen;
 	}
-
+	 @Transient
 	public void setQuequan_huyen(String quequan_huyen) {
 		this.quequan_huyen = quequan_huyen;
 	}
-
+	 @Transient
 	public String getQuequan_xa() {
 		return quequan_xa;
 	}
  
-
+	 @Transient
 	public void setQuequan_xa(String quequan_xa) {
 		this.quequan_xa = quequan_xa;
 	}
+	 @Transient
 	public String getLngaySinh() {
 		return lngaySinh;
 	}
-
+	 @Transient
 	public void setLngaySinh(String lngaySinh) {
 		this.lngaySinh = lngaySinh;
 	}
-
+	 @Transient
 	public String getLngayTuyenDung() {
 		return lngayTuyenDung;
 	}
-
+	 @Transient
 	public void setLngayTuyenDung(String lngayTuyenDung) {
 		this.lngayTuyenDung = lngayTuyenDung;
 	}
-
+	 @Transient
 	public String getLngayHuong() {
 		return lngayHuong;
 	}
-
+	 @Transient
 	public void setLngayHuong(String lngayHuong) {
 		this.lngayHuong = lngayHuong;
 	}
-
+	 @Transient
 	public String getLngayVaoDang() {
 		return lngayVaoDang;
 	}
-
+	 @Transient
 	public void setLngayVaoDang(String lngayVaoDang) {
 		this.lngayVaoDang = lngayVaoDang;
 	}
-
+	 @Transient
 	public String getLngayChinhThuc() {
 		return lngayChinhThuc;
 	}
-
+	 @Transient
 	public void setLngayChinhThuc(String lngayChinhThuc) {
 		this.lngayChinhThuc = lngayChinhThuc;
 	}
-
+	 @Transient
 	public String getLngayNhapNgu() {
 		return lngayNhapNgu;
 	}
-
+	 @Transient
 	public void setLngayNhapNgu(String lngayNhapNgu) {
 		this.lngayNhapNgu = lngayNhapNgu;
 	}
-
+	 @Transient
 	public String getLngayXuatNgu() {
 		return lngayXuatNgu;
 	}
-
+	 @Transient
 	public void setLngayXuatNgu(String lngayXuatNgu) {
 		this.lngayXuatNgu = lngayXuatNgu;
 	}
-
+	 @Transient
 	public String getLngayCap() {
 		return lngayCap;
 	}
-
+	 @Transient
 	public void setLngayCap(String lngayCap) {
 		this.lngayCap = lngayCap;
 	}
-
+	 @Transient
 	public String getLsoTruongCongTac() {
 		return lsoTruongCongTac;
 	}
-	
+	 @Transient
 	public String getLkhenThuongCaoNhat() {
 		return lkhenThuongCaoNhat;
 	}
-
+	 @Transient
 	public void setLkhenThuongCaoNhat(String lkhenThuongCaoNhat) {
 		this.lkhenThuongCaoNhat = lkhenThuongCaoNhat;
 	}
-
+	 @Transient
 	public String getLkyLuatCaoNhat() {
 		return lkyLuatCaoNhat;
 	}
-
+	 @Transient
 	public void setLkyLuatCaoNhat(String lkyLuatCaoNhat) {
 		this.lkyLuatCaoNhat = lkyLuatCaoNhat;
 	}
-
+	 @Transient
 	public void setLsoTruongCongTac(String lsoTruongCongTac) {
 		this.lsoTruongCongTac = lsoTruongCongTac;
 	}

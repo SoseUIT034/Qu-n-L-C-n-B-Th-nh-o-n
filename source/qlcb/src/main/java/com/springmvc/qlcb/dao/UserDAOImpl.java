@@ -17,7 +17,7 @@ public class UserDAOImpl extends HibernateUtils implements UserDAO {
 
 	@Override
 	public void saveUser(Taikhoan tk) {
-		
+		 getSession().save(tk);
 	}
 
 	@SuppressWarnings("unchecked")

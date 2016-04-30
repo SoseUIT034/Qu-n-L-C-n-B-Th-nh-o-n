@@ -36,11 +36,10 @@
 
 
 </head>
-<body tyle="background-color: #fff;">
+<body ">
 
 	<!---header--->
-	 
-	<%@include file="../layout/header.jsp" %>
+	<%@include file ="../layout/header.jsp" %>
 	<!---header--->
 	
 	<div class="content" style="padding-top: 30px; ">
@@ -174,11 +173,11 @@
 			          </div>
 			          <div class="col-xs-12 col-md-3">
 			            <form:select path="dantoc.maDanToc" class="form-control" id="dantocsel">
-				            <c:if test="${not empty listdantoc}">
+				             
 				           	  <c:forEach items="${listdantoc}" var="item">
 				           	  	<option value="${item.maDanToc}">${item.tenDanToc}</option>
 				           	  </c:forEach> 
-				           	</c:if>
+				           	 
 			            </form:select>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
@@ -186,11 +185,11 @@
 			          </div>
 			          <div class="col-xs-12 col-md-3">
 			            <form:select path="tongiao.maTonGiao" class="form-control" id="tongiaosel" >
-				             <c:if test="${not empty listtongiao}">
-					              <c:forEach items="${listtongiao}" var="item">
-					           	  	<option value=${item.maTonGiao}>${item.tenTonGiao}</option>
+				              
+					              <c:forEach items="${listtocgiao}" var="item">
+					           	  	<option value="${item.maTonGiao}">${item.tenTonGiao}</option>
 					           	  </c:forEach>
-				           	  </c:if>
+				           	   
 			            </form:select>
 			          </div>
 			        </div>
@@ -370,11 +369,11 @@
 			    </div>
 			    <div class="col-xs-12 col-md-6">
 			       <form:select path="trinhdochuyenmon.maTrinhDoChuyenMon" class="form-control" id="tongiaosel" >
-				             <c:if test="${not empty listchuyenmon}">
+				              
 					              <c:forEach items="${listchuyenmon}" var="item">
 					           	  	<option value=${item.maTrinhDoChuyenMon}>${item.tenTrinhDoChuyenMon}</option>
 					           	  </c:forEach>
-				           	  </c:if>
+				           	   
 		     	  </form:select>
 <!-- 		     	  	---- -->
 <!-- 			      <select class="form-control" id="tdcmsel" name="tdcmsel"> -->
@@ -397,11 +396,11 @@
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			    	<form:select path="trinhdochinhtri.maTrinhDoChinhTri" class="form-control" id="tongiaosel" >
-				             <c:if test="${not empty listchinhtri}">
+				              
 					              <c:forEach items="${listchinhtri}" var="item">
-					           	  	<option value=${item.maTrinhDoChinhTri}>${item.tenTrinhDoChinhTri}</option>
+					           	  	<option value="${item.maTrinhDoChinhTri}">${item.tenTrinhDoChinhTri}</option>
 					           	  </c:forEach>
-				           	  </c:if>
+				           	   
 		     	  </form:select>
 <!-- 		     	  --- -->
 <!-- 			      <select class="form-control" id="llctsel" name="llctsel"> -->
@@ -431,11 +430,11 @@
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			    	<form:select path="ngoaingu.maNgoaiNgu" class="form-control" id="tongiaosel" >
-				             <c:if test="${not empty listngoaingu}">
+				              
 					              <c:forEach items="${listngoaingu}" var="item">
 					           	  	<option value=${item.maNgoaiNgu}>${item.tenNgoaiNgu}</option>
 					           	  </c:forEach>
-				           	  </c:if>
+				           	   
 			       </form:select>
 			      
 			    </div>
@@ -873,8 +872,8 @@
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>
 	<!---footer--->
-<script src="<c:url value="/resources/lylich_canbo/js/jquery-2.2.2.js"/>"></script>
-<script src="<c:url value="/resources/lylich_canbo/js/bootstrap.min.js"/>"></script>
+<%-- <script src="<c:url value="/resources/lylich_canbo/js/jquery-2.2.2.js"/>"></script>
+<script src="<c:url value="/resources/lylich_canbo/js/bootstrap.min.js"/>"></script> --%>
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-ui.js"/>"></script>
 <script src="<c:url value="/resources/lylich_canbo/js/myjs.js"/>"></script>
 <script src="<c:url value="/resources/lylich_canbo/js/create.js"/>"></script>

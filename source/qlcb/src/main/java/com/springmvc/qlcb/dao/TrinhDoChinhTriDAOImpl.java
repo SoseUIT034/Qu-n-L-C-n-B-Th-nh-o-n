@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.springmvc.qlcb.model.Tongiao;
 import com.springmvc.qlcb.model.Trinhdochinhtri;
 
 @Repository
@@ -35,8 +36,7 @@ public class TrinhDoChinhTriDAOImpl extends HibernateUtils implements TrinhDoChi
 
 	@Override
 	public List<Trinhdochinhtri> listTrinhDoChinhTri() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createCriteria(Trinhdochinhtri.class).list();
 	}
 
 }
