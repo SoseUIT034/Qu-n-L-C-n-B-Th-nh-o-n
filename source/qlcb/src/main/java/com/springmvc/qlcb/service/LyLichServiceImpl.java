@@ -40,6 +40,7 @@ import com.springmvc.qlcb.dao.UserDAO;
 import com.springmvc.qlcb.model.Canbo;
 import com.springmvc.qlcb.model.CanboGiadinhBanthan;
 import com.springmvc.qlcb.model.CanboGiadinhDoitac;
+import com.springmvc.qlcb.model.Dacdienlichsubanthan;
 import com.springmvc.qlcb.model.Daotaochuyenmon;
 import com.springmvc.qlcb.model.Dienbienluong;
 import com.springmvc.qlcb.model.Lichsucongtac;
@@ -55,7 +56,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private LyLichDAO lyLichDAO;
 	
 	@Autowired
-	private DaoTaoChuyenMonDAO daoTaoChuyenMonDAO;
+	private DaoTaoChuyenMonDAO daoTaoChuyenMonDAO; 
 	
 	@Autowired
 	private DienBienLuongDAO dienBienLuongDAO;
@@ -106,7 +107,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private ChucvuBanDAO chucvuBanDAO;
 	
 	//------------
-	private int genereteIDCanBoGiaDinhDoiTac()
+	private int genereteIDCanBoGiaDinhDoiTac(ArrayList<Integer> lint)
 	{
 		int thisid=0; 
 		// generate id
@@ -118,7 +119,17 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		{
 			thisid++;
 		}
- 
+		if(lint!= null)
+		{
+			while(lint.contains(new Integer(thisid)))
+			{
+				thisid++;
+				while( canBoGiaDinhDoiTacDAO.getCanboGiadinhDoitacId(thisid)!=null  )
+				{
+					thisid++;
+				}
+			}
+		}
 		return thisid;
 	}
 	
@@ -129,7 +140,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		int index=0;
 		while(index <count)
 		{
-			res.add( genereteIDCanBoGiaDinhDoiTac());
+			res.add( genereteIDCanBoGiaDinhDoiTac(res));
 			index++;
 		} 
 		return res;
@@ -138,12 +149,13 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private int _saveCanBoGiaDinhDoiTac(Lylich lylich)
 	{
 		ArrayList<CanboGiadinhDoitac> arr = lylich.getLqhdt();
+		ArrayList<Integer> a = _getListIDForCanBoGiaDinhDoiTac(lylich);
 		if(arr!=null)
 		{
 			for(int i=0; i< arr.size(); i++)
 			{ 
 				arr.get(i).setCanbo(lylich.getCanboByMaCanBo()); 
-				arr.get(i).setId(_getListIDForCanBoGiaDinhDoiTac(lylich).get(i));
+				arr.get(i).setId(a.get(i));
 				canBoGiaDinhDoiTacDAO.save(arr.get(i));
 			}
 		}
@@ -152,7 +164,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	//------------
 	
 	//------------
-	private int genereteIDCanBoGiaDinhBanThan()
+	private int genereteIDCanBoGiaDinhBanThan(ArrayList<Integer> lint)
 	{
 		int thisid=0; 
 		// generate id
@@ -164,7 +176,17 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		{
 			thisid++;
 		}
- 
+		if(lint!= null)
+		{
+			while(lint.contains(new Integer(thisid)))
+			{
+				thisid++;
+				while( canBoGiaDinhBanThanDAO.getCanboGiadinhBanthanById(thisid)!=null  )
+				{
+					thisid++;
+				}
+			}
+		}
 		return thisid;
 	}
 	
@@ -175,7 +197,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		int index=0;
 		while(index <count)
 		{
-			res.add( genereteIDCanBoGiaDinhBanThan());
+			res.add( genereteIDCanBoGiaDinhBanThan(res));
 			index++;
 		} 
 		return res;
@@ -184,12 +206,13 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private int _saveCanBoGiaDinhBanThan(Lylich lylich)
 	{
 		ArrayList<CanboGiadinhBanthan> arr = lylich.getLqhbt();
+		ArrayList<Integer> a = _getListIDForCanBoGiaDinhBanThan(lylich);
 		if(arr!=null)
 		{
 			for(int i=0; i< arr.size(); i++)
 			{ 
 				arr.get(i).setCanbo(lylich.getCanboByMaCanBo()); 
-				arr.get(i).setId(_getListIDForCanBoGiaDinhBanThan(lylich).get(i));
+				arr.get(i).setId(a.get(i));
 				canBoGiaDinhBanThanDAO.save(arr.get(i));
 			}
 		}
@@ -198,7 +221,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	//------------
 	
 	//------------
-	private int genereteIDDienbienluong()
+	private int genereteIDDienbienluong(ArrayList<Integer> lint)
 	{
 		int thisid=0; 
 		// generate id
@@ -210,7 +233,17 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		{
 			thisid++;
 		}
- 
+		if(lint!= null)
+		{
+			while(lint.contains(new Integer(thisid)))
+			{
+				thisid++;
+				while( dienBienLuongDAO.getDienbienluongById(thisid)!=null  )
+				{
+					thisid++;
+				}
+			}
+		}
 		return thisid;
 	}
 	
@@ -221,7 +254,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		int index=0;
 		while(index <count)
 		{
-			res.add( genereteIDDienbienluong());
+			res.add( genereteIDDienbienluong(res));
 			index++;
 		} 
 		return res;
@@ -230,12 +263,13 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private int _saveDienbienluong(Lylich lylich)
 	{
 		ArrayList<Dienbienluong> arr = lylich.getLdbl();
+		ArrayList<Integer> a = _getListIDForDienbienluong(lylich);
 		if(arr!=null)
 		{
 			for(int i=0; i< arr.size(); i++)
 			{ 
 				arr.get(i).setLylich(lylich); 
-				arr.get(i).setId(_getListIDForDienbienluong(lylich).get(i));
+				arr.get(i).setId(a.get(i));
 				dienBienLuongDAO.save(arr.get(i));
 			}
 		}
@@ -244,7 +278,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	//------------
 	
 	//------------
-	private int genereteIDDaoTaoChuyenMon()
+	private int genereteIDDaoTaoChuyenMon(ArrayList<Integer> lint)
 	{
 		int thisid=0; 
 		// generate id
@@ -256,7 +290,17 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		{
 			thisid++;
 		}
- 
+		if(lint!= null)
+		{
+			while(lint.contains(new Integer(thisid)))
+			{
+				thisid++;
+				while( daoTaoChuyenMonDAO.getDaoTaoChuyenMonById(thisid)!=null  )
+				{
+					thisid++;
+				}
+			}
+		}
 		return thisid;
 	}
 	
@@ -267,7 +311,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		int index=0;
 		while(index <count)
 		{
-			res.add( genereteIDDaoTaoChuyenMon());
+			res.add( genereteIDDaoTaoChuyenMon(res));
 			index++;
 		} 
 		return res;
@@ -276,12 +320,13 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private int _saveDaoTaoChuyenMon(Lylich lylich)
 	{
 		ArrayList<Daotaochuyenmon> arr = lylich.getLdtcm();
+		ArrayList<Integer> a = _getListIDForDaoTaoChuyenMon(lylich);
 		if(arr!=null)
 		{
 			for(int i=0; i< arr.size(); i++)
 			{ 
 				arr.get(i).setCanbo(lylich.getCanboByMaCanBo());
-				arr.get(i).setMaDaoTao(_getListIDForDaoTaoChuyenMon(lylich).get(i));
+				arr.get(i).setMaDaoTao(a.get(i));
 				daoTaoChuyenMonDAO.save(arr.get(i));
 			}
 		}
@@ -290,7 +335,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	//------------
 	
 	//-------------
-	private int genereteIDLichSuCongTac()
+	private int genereteIDLichSuCongTac(ArrayList<Integer> lint)
 	{
 		int thisid=0; 
 		// generate id
@@ -301,6 +346,18 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		while( lichSuCongTacDAO.getLichSuCongTacById(thisid)!=null  )
 		{
 			thisid++;
+		}
+		if(lint!= null)
+		{
+			while(lint.contains(new Integer(thisid)))
+			{
+				
+				thisid++;
+				while( lichSuCongTacDAO.getLichSuCongTacById(thisid)!=null  )
+				{
+					thisid++;
+				}
+			}
 		}
  
 		return thisid;
@@ -313,7 +370,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		int index=0;
 		while(index <count)
 		{
-			res.add( genereteIDLichSuCongTac());
+			res.add( genereteIDLichSuCongTac(res));
 			index++;
 		} 
 		return res;
@@ -322,18 +379,55 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	private int _saveLichSuCongTac(Lylich lylich)
 	{
 		ArrayList<Lichsucongtac> arr = lylich.getLsct();
+		ArrayList<Integer> a = _getListIDForLichSuCongTac(lylich);
 		if(arr!=null)
 		{
 			for(int i=0; i< arr.size(); i++)
 			{ 
 				arr.get(i).setCanbo(lylich.getCanboByMaCanBo());
-				arr.get(i).setMaLsct(_getListIDForLichSuCongTac(lylich).get(i));
+				arr.get(i).setMaLsct(a.get(i));
 				lichSuCongTacDAO.save(arr.get(i));
 			}
 		}
 		return 0;
 	}
 	//--------------
+	
+	//-------------
+	private int genereteIDLichSuBanThan()
+		{
+			int thisid=0; 
+			// generate id
+			if(dacDiemLichSuBanThanDAO.listDacDiemLichSuBanThan()!=null)
+			{
+				thisid = dacDiemLichSuBanThanDAO.listDacDiemLichSuBanThan().size();
+			} 
+			while( dacDiemLichSuBanThanDAO.getDacDiemLichSuBanThanById(thisid)!=null  )
+			{
+				thisid++;
+			}
+	 
+			return thisid;
+		}
+ 
+	
+	private int _saveLichSuBanThan(Lylich lylich)
+	{
+		int id = genereteIDLichSuBanThan();
+		 
+		Dacdienlichsubanthan d = new Dacdienlichsubanthan();
+		d.setCanbo(lylich.getCanboByMaCanBo() );
+		d.setMaDdls(id);
+		d.setNoidung1(lylich.getLsbt().getNoidung1());
+		d.setNoidung2(lylich.getLsbt().getNoidung2());
+		d.setNoiDung3(lylich.getLsbt().getNoiDung3());
+		dacDiemLichSuBanThanDAO.save(d);
+			 
+		return 0;
+	}
+	//--------------
+	
+	
 	
 	private int _saveDate(Lylich lylich)
 	{
@@ -426,6 +520,8 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		t.setCanbo(cb);
 		taikhoanDAO.saveUser(t);
 		
+		// save lsbt
+		_saveLichSuBanThan(  lylich);
 		
 		 // save lsct
 		_saveLichSuCongTac(lylich);
