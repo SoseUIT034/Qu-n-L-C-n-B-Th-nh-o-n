@@ -16,8 +16,8 @@ import com.springmvc.qlcb.model.Taikhoan;
 import com.springmvc.qlcb.service.UserService;
 
 @Controller
-public class UserController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+public class DangNhapsController {
+	private static final Logger logger = LoggerFactory.getLogger(TrangChusController.class);
 	
 	@Autowired
 	private UserService userService;

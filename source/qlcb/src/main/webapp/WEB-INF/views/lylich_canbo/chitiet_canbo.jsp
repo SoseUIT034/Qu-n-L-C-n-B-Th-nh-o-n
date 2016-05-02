@@ -44,9 +44,9 @@
 	
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
-		<form:form class="container" commandName="Lylich" action="create" style="border: rebeccapurple; border-style: dotted;" method="POST" >
+		<form:form class="container" commandName="Lylich" action="create" style="border: rebeccapurple; border-style: dotted; padding:50px" method="POST" >
 			  <div class="col-xs-12" style="display: none">
-			      <form:input path="macanbo" id="maCanBo"  class="form-control" type="text"/>
+			      <form:input  disabled="true" path="macanbo" id="maCanBo"  class="form-control" type="text"/>
 			       <form:errors path="macanbo" cssclass="error"></form:errors>
 			  </div>
 			  <div class="row">
@@ -54,14 +54,14 @@
 			      <label>Cơ quan, đơn vị có thẩm quyền quản lý cán bộ công chức</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="noiquanly" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/>
+			      <form:input  disabled="true" path="noiquanly" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/>
 			      <form:errors path="noiquanly" cssclass="error"></form:errors>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label> Số hiệu cán bộ, công chức </label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="Sohieucongchuc" id="shcbtxt"   name="shcbtxt" class="form-control" type="text"/>
+			      <form:input  disabled="true" path="Sohieucongchuc" id="shcbtxt"   name="shcbtxt" class="form-control" type="text"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -69,7 +69,7 @@
 			      <label>Cơ quan, đơn vị sử dụng cán bộ công chức </label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="noisudung" id="cqdvsdtxt" name="cqdvsdtxt" type="text" class="form-control"/>
+			      <form:input  disabled="true" path="noisudung" id="cqdvsdtxt" name="cqdvsdtxt" type="text" class="form-control"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -89,8 +89,8 @@
 			          <div class="col-xs-12 col-md-3">
 			            <label> 1) Họ và tên khai sinh </label>
 			          </div>
-			          <div class="col-xs-12 col-md-9"  > 
-			          	<form:input path="tenCanBo" class="form-control text-uppercase" type="text" id="hotentxt" name="hotentxt"/> 
+			          <div class="col-xs-12 col-md-9" disabled  > 
+			          	<form:input  disabled="true"  path="tenCanBo" class="form-control text-uppercase" type="text"  id="hotentxt" name="hotentxt"  /> 
 			          </div>
 			        </div>
 			        <div class="row">
@@ -98,7 +98,7 @@
 			            <label>2) Tên gọi khác</label>
 			          </div>
 			          <div class="col-xs-12 col-md-9">
-			            <form:input path="tenGoiKhac" type="text" class="form-control" id="tengoikhactxt" name="tengoikhactxt"/>
+			            <form:input  disabled="true" path="tenGoiKhac" type="text" class="form-control" id="tengoikhactxt" name="tengoikhactxt"/>
 			          </div>
 			        </div>
 			        <div class="row">
@@ -106,17 +106,17 @@
 			            <label>3) Sinh ngày </label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:input path="ngaySinh"  class="datepicker form-control" type="date-time" id="sinhngaytxt" name="sinhngaytxt"/>
+			            <form:input  disabled="true" path="ngaySinh"  class="datepicker form-control" type="date-time" id="sinhngaytxt" name="sinhngaytxt"/>
 			          </div>
 			          <div class="col-xs-12 col-md-3" style="text-align:right">
 			            <label>Giới tính: </label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:select path="gioiTinh" class="form-control" id="gioitinhsel" name="gioitinhsel">
+			            <form:select disabled="${'true'}" path="gioiTinh" class="form-control" id="gioitinhsel" name="gioitinhsel">
 			              <form:option value="1">Nam</form:option>
 			              <form:option value="0">Nữ</form:option>
 			            </form:select>
-			          </div>
+			         select disabled="${'true'}">
 			        </div>
 			        <div class="row">
 			          <p></p>
@@ -124,7 +124,7 @@
 			            <label>4) Nơi sinh: Tỉnh</label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:select path="noisinh_tinh" class="form-control tinhDiaChi" id="noisinhtinh" name="noisinhtinh">
+			            <form:select disabled="${'true'}" path="noisinh_tinh" class="form-control tinhDiaChi" id="noisinhtinh" name="noisinhtinh">
 			              <form:option value="">Chọn tỉnh</form:option>
 			            </form:select>
 			          </div>
@@ -132,14 +132,14 @@
 			            <label>Huyện</label>
 			          </div>
 			          <div class="col-xs-12 col-md-2">
-			            <form:select path="noisinh_huyen" class="form-control" id="noisinhhuyen" name="noisinhhuyen">
+			            <form:select disabled="${'true'}" path="noisinh_huyen" class="form-control" id="noisinhhuyen" name="noisinhhuyen">
 			            </form:select>
 			          </div>
 			          <div class="col-xs-12 col-md-1">
 			            <label>Xã</label>
 			          </div>
 			          <div class="col-xs-12 col-md-2">
-			            <form:select path="noisinh_xa" class="form-control" id="noisinhxa" name="noisinhhuyen">
+			            <form:select disabled="${'true'}" path="noisinh_xa" class="form-control" id="noisinhxa" name="noisinhhuyen">
 			            </form:select>
 			          </div>
 			        </div>
@@ -148,7 +148,7 @@
 			            <label>5) Quê quán: Tỉnh</label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:select path="quequan_tinh" class="form-control tinhDiaChi" id="quequantinh" name="quequantinh">
+			            <form:select disabled="${'true'}" path="quequan_tinh" class="form-control tinhDiaChi" id="quequantinh" name="quequantinh">
 			              <form:option value="">Chọn tỉnh</form:option>
 			            </form:select>
 			          </div>
@@ -156,14 +156,14 @@
 			            <label>Huyện</label>
 			          </div>
 			          <div class="col-xs-12 col-md-2">
-			            <form:select path="quequan_huyen"  class="form-control" id="quequanhuyen" name="quequanhuyen">
+			            <form:select disabled="${'true'}" path="quequan_huyen"  class="form-control" id="quequanhuyen" name="quequanhuyen">
 			            </form:select>
 			          </div>
 			          <div class="col-xs-12 col-md-1">
 			            <label>Xã</label>
 			          </div>
 			          <div class="col-xs-12 col-md-2">
-			            <form:select path="quequan_xa"  class="form-control" id="quequanxa" name="quequanxa">
+			            <form:select disabled="${'true'}" path="quequan_xa"  class="form-control" id="quequanxa" name="quequanxa">
 			            </form:select>
 			          </div>
 			        </div>
@@ -172,7 +172,7 @@
 			            <label>6, Dân tôc: </label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:select path="dantoc.maDanToc" class="form-control" id="dantocsel">
+			            <form:select disabled="${'true'}" path="dantoc.maDanToc" class="form-control" id="dantocsel">
 				             
 				           	  <c:forEach items="${listdantoc}" var="item">
 				           	  	<option value="${item.maDanToc}">${item.tenDanToc}</option>
@@ -184,7 +184,7 @@
 			            <label>7) Tôn giáo</label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:select path="tongiao.maTonGiao" class="form-control" id="tongiaosel" >
+			            <form:select disabled="${'true'}" path="tongiao.maTonGiao" class="form-control" id="tongiaosel" >
 				              
 					              <c:forEach items="${listtocgiao}" var="item">
 					           	  	<option value="${item.maTonGiao}">${item.tenTonGiao}</option>
@@ -201,7 +201,7 @@
 			      <label>8) Nơi đăng ký hộ khẩu thường trú </label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="hoKhauThuongTru" class="form-control" placeholder="Số nhà, đường phố, thành phố, xóm, thôn, xã, huyện, tỉnh" id="ndkhktttxt" name="ndkhktttxt"/>
+			      <form:input  disabled="true" path="hoKhauThuongTru" class="form-control" placeholder="Số nhà, đường phố, thành phố, xóm, thôn, xã, huyện, tỉnh" id="ndkhktttxt" name="ndkhktttxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -209,7 +209,7 @@
 			      <label>9) Nơi ở hiện nay </label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="noiOhienNay" class="form-control" placeholder="Số nhà, đường phố, thành phố, xóm, thôn, xã, huyện, tỉnh" id="nohntxt" name="nohntxt"/>
+			      <form:input  disabled="true" path="noiOhienNay" class="form-control" placeholder="Số nhà, đường phố, thành phố, xóm, thôn, xã, huyện, tỉnh" id="nohntxt" name="nohntxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -217,7 +217,7 @@
 			      <label>10) Nghề nghiệp khi được tuyển dụng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="ngheNgiepKhiDuocTuyenDung" type="text" class="form-control" id="nnkdtdtxt" name="nnkdtdtxt"/>
+			      <form:input  disabled="true" path="ngheNgiepKhiDuocTuyenDung" type="text" class="form-control" id="nnkdtdtxt" name="nnkdtdtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -225,13 +225,13 @@
 			      <label>11) Ngày tuyển dụng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="ngayTuyenDung" type="date-time" class="form-control datepicker" id="ntdtxt" name="ntdtxt"/>
+			      <form:input  disabled="true" path="ngayTuyenDung" type="date-time" class="form-control datepicker" id="ntdtxt" name="ntdtxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>Cơ quan tuyển dụng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-4">
-			      <input type="text" class="form-control" id="cqtdtxt" name="cqtdtxt"/>
+			      <input disabled="true" type="text" class="form-control" id="cqtdtxt" name="cqtdtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -239,7 +239,7 @@
 			      <label>12) Chức vụ (chức danh) hiện tại</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:select path="chucVuBenNgoaiHienTai" class="form-control" id="cvhtsel" name="cvhtsel">
+			      <form:select disabled="${'true'}" path="chucVuBenNgoaiHienTai" class="form-control" id="cvhtsel" name="cvhtsel">
 			        <form:option value="Chức Vụ Khác">Chức Vụ Khác</form:option>
 			        <form:option value="Bí Thư">Bí Thư</form:option>
 			        <form:option value="Giám Đốc">Giám Đốc</form:option>
@@ -265,7 +265,7 @@
 			      <label>13) Công việc chính được giao</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="congViecChinhDuocGiao" type="text" class="form-control" id="cvcdgtxt" name="cvcdgtxt"/>
+			      <form:input  disabled="true" path="congViecChinhDuocGiao" type="text" class="form-control" id="cvcdgtxt" name="cvcdgtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -273,7 +273,7 @@
 			      <label>14) Ngạch công chức (viên chức) </label>
 			    </div>
 			    <div class="col-xs-12 col-md-4">
-			      <form:select path="ngachCongChuc" class="form-control" id="MaNgachList"  name="ncctxt" >
+			      <form:select disabled="${'true'}" path="ngachCongChuc" class="form-control" id="MaNgachList"  name="ncctxt" >
 			        <form:option value="Không hưởng lương">Không hưởng lương</form:option>
 			        <form:option value="Chuyên viên cao cấp">Chuyên viên cao cấp</form:option>
 			        <form:option value="Chuyên viên chính">Chuyên viên chính</form:option>
@@ -315,7 +315,7 @@
 			      <label>Mã ngạch</label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="maNgach" type="text"  class="form-control" id="mntxt" name="mntxt"/>
+			      <form:input  disabled="true" path="maNgach" type="text"  class="form-control" id="mntxt" name="mntxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -323,19 +323,19 @@
 			      <label>Bậc lương</label>
 			    </div>
 			    <div class="col-xs-6 col-md-2">
-			      <form:input path="bacLuong" class="number form-control" id="bltxt" name="bltxt"/>
+			      <form:input  disabled="true" path="bacLuong" class="number form-control" id="bltxt" name="bltxt"/>
 			    </div>
 			    <div class="col-xs-6 col-md-2">
 			      <label >Hệ số</label>
 			    </div>
 			    <div class="col-xs-6 col-md-2">
-			      <form:input path="heSo" class="number form-control" id="hstxt" name="hstxt"/>
+			      <form:input  disabled="true" path="heSo" class="number form-control" id="hstxt" name="hstxt"/>
 			    </div>
 			    <div class="col-xs-6 col-md-2">
 			      <label>Ngày hưởng</label>
 			    </div>
 			    <div class="col-xs-6 col-md-2">
-			      <form:input path="ngayHuong"  class="datepicker form-control" type ="date-time" id="nhtxt" name="nhtxt"/>
+			      <form:input  disabled="true" path="ngayHuong"  class="datepicker form-control" type ="date-time" id="nhtxt" name="nhtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -343,13 +343,13 @@
 			      <label>Phụ cấp chức vụ </label>
 			    </div>
 			    <div class="col-xs-6 col-md-4">
-			      <form:input path="phuCapChucVu" class="number form-control" id="pccvtxt" name="pccvtxt"/>
+			      <form:input  disabled="true" path="phuCapChucVu" class="number form-control" id="pccvtxt" name="pccvtxt"/>
 			    </div>
 			    <div class="col-xs-6 col-md-3">
 			      <label> Phụ cấp khác </label>
 			    </div>
 			    <div class="col-xs-6 col-md-3">
-			      <form:input path="phuCapKhac" class="number form-control" id="pcktxt" name="pcktxt"/>
+			      <form:input  disabled="true" path="phuCapKhac" class="number form-control" id="pcktxt" name="pcktxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -357,7 +357,7 @@
 			      <label>15.1) Trình độ giáo dục phổ thông(Đã tốt nghiệp lớp mấy/thuộc thệ nào) </label>
 			    </div>
 			    <div class="col-xs-12 col-md-6">
-			      <form:input path="trinhDoPhoThong" class="form-control" placeholder="Đã tốt nghiệp lớp mấy/thuộc hệ nào" id="tdgdpttxt" name="tdgdpttxt"/>
+			      <form:input  disabled="true" path="trinhDoPhoThong" class="form-control" placeholder="Đã tốt nghiệp lớp mấy/thuộc hệ nào" id="tdgdpttxt" name="tdgdpttxt"/>
 			    </div>
 			  </div>
 			  
@@ -368,7 +368,7 @@
 			      <label>15.2) Trình độ chuyên môn cao nhất</label>
 			    </div>
 			    <div class="col-xs-12 col-md-6">
-			       <form:select path="trinhdochuyenmon.maTrinhDoChuyenMon" class="form-control" id="tongiaosel" >
+			       <form:select disabled="${'true'}" path="trinhdochuyenmon.maTrinhDoChuyenMon" class="form-control" id="tongiaosel" >
 				              
 					              <c:forEach items="${listchuyenmon}" var="item">
 					           	  	<option value=${item.maTrinhDoChuyenMon}>${item.tenTrinhDoChuyenMon}</option>
@@ -395,7 +395,7 @@
 			      <label>15.3) Lý luận chính trị </label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			    	<form:select path="trinhdochinhtri.maTrinhDoChinhTri" class="form-control" id="tongiaosel" >
+			    	<form:select disabled="${'true'}" path="trinhdochinhtri.maTrinhDoChinhTri" class="form-control" id="tongiaosel" >
 				              
 					              <c:forEach items="${listchinhtri}" var="item">
 					           	  	<option value="${item.maTrinhDoChinhTri}">${item.tenTrinhDoChinhTri}</option>
@@ -415,7 +415,7 @@
 			      <label>15.4) Quản lý nhà nước </label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:select path="quanLyNhaNuoc" class="form-control" id="qlnnsel" name="qlnnsel">
+			      <form:select disabled="${'true'}" path="quanLyNhaNuoc" class="form-control" id="qlnnsel" name="qlnnsel">
 			        <form:option value="Chuyên viên cao cấp">Chuyên viên cao cấp</form:option>
 			        <form:option value="Chuyên viên chính">Chuyên viên chính</form:option>
 			        <form:option value="Chuyên viên">Chuyên viên</form:option>
@@ -429,7 +429,7 @@
 			      <label>15.5) Ngoại ngữ</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			    	<form:select path="ngoaingu.maNgoaiNgu" class="form-control" id="tongiaosel" >
+			    	<form:select disabled="${'true'}" path="ngoaingu.maNgoaiNgu" class="form-control" id="tongiaosel" >
 				              
 					              <c:forEach items="${listngoaingu}" var="item">
 					           	  	<option value=${item.maNgoaiNgu}>${item.tenNgoaiNgu}</option>
@@ -442,7 +442,7 @@
 			      <label>15.6) Tin học</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:select path="tinHoc" class="form-control" id="thsel" name="thsel">
+			      <form:select disabled="${'true'}" path="tinHoc" class="form-control" id="thsel" name="thsel">
 			        <form:option value="A">A</form:option>
 			        <form:option value="B">B</form:option>
 			        <form:option value="C">C</form:option>
@@ -455,13 +455,13 @@
 			      <label>16) Ngày vào Đảng Cộng Sản Việt Nam</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="ngayVaoDang" class="form-control datepicker" type="date-time" id="nvdcstxt" name="nvdcstxt"/>
+			      <form:input  disabled="true" path="ngayVaoDang" class="form-control datepicker" type="date-time" id="nvdcstxt" name="nvdcstxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label>Ngày chính thức</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="ngayChinhThuc" class="form-control datepicker" type="date-time" id="ncttxt" name="ncttxt"/>
+			      <form:input  disabled="true" path="ngayChinhThuc" class="form-control datepicker" type="date-time" id="ncttxt" name="ncttxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -469,7 +469,7 @@
 			      <label>17) Ngày tham gia tô chức chính trị - xã hội</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="ngayThamGiaToChucChinhTri"  class="datepicker form-control" type="date-time" id="ntgtcctxhtxt" name="ntgtcctxhtxt"/>
+			      <form:input  disabled="true" path="ngayThamGiaToChucChinhTri"  class="datepicker form-control" type="date-time" id="ntgtcctxhtxt" name="ntgtcctxhtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -477,19 +477,19 @@
 			      <label>18) Ngày nhập ngũ </label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="ngayNhapNgu"  class="form-control datepicker" type="date-time" id="nnntxt" name="nnntxt"/>
+			      <form:input  disabled="true" path="ngayNhapNgu"  class="form-control datepicker" type="date-time" id="nnntxt" name="nnntxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>Ngày xuất ngũ</label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="ngayXuatNgu" class="form-control datepicker" type="date-time" id="nxntxt" name="nxntxt"/>
+			      <form:input  disabled="true" path="ngayXuatNgu" class="form-control datepicker" type="date-time" id="nxntxt" name="nxntxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>Quân hàm cao nhất</label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input path="quanHamCaoNhat"  class="form-control" type="text" id="qhcntxt" name="qhcntxt"/>
+			      <form:input  disabled="true" path="quanHamCaoNhat"  class="form-control" type="text" id="qhcntxt" name="qhcntxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -497,7 +497,7 @@
 			      <label>19) Danh hiệu được phong tặng cao nhất</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:select path="danhHieuPhongTangCaoNhat" class="form-control" id="dhdptcnsel" name="dhdptcnsel">
+			      <form:select disabled="${'true'}" path="danhHieuPhongTangCaoNhat" class="form-control" id="dhdptcnsel" name="dhdptcnsel">
 			        <form:option value="Anh hùng lao động">Anh hùng lao động</form:option>
 			        <form:option value="Anh hùng lực lượng vũ trang">Anh hùng lực lượng vũ trang</form:option>
 			        <form:option value="Nhà giáo">Nhà giáo</form:option>
@@ -511,7 +511,7 @@
 			      <label>20) Sở trường công tác</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="lsoTruongCongTac" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
+			      <form:input  disabled="true" path="lsoTruongCongTac" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -519,13 +519,13 @@
 			      <label>21) Khen thưởng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="lkhenThuongCaoNhat" class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" />
+			      <form:input  disabled="true" path="lkhenThuongCaoNhat" class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" />
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>22) Kỷ luật</label>
 			    </div>
 			    <div class="col-xs-12 col-md-5">
-			      <form:input path="lkyLuatCaoNhat" class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
+			      <form:input  disabled="true" path="lkyLuatCaoNhat" class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -533,25 +533,25 @@
 			      <label>23) Tình trạng sức khỏe</label>
 			    </div>
 			    <div class="col-xs-6 col-md-3">
-			      <form:input path="tinhTrangSucKhoe" type="text" class="form-control" id="ttsktxt" name="ttsktxt"/>
+			      <form:input  disabled="true" path="tinhTrangSucKhoe" type="text" class="form-control" id="ttsktxt" name="ttsktxt"/>
 			    </div>
 			    <div class="col-xs-6 col-md-1">
 			      <label>Chiều cao</label>
 			    </div>
 			    <div class="col-xs-6 col-md-1">
-			      <form:input path="chieuCao" class="number form-control" placeholder="cm" id="cctxt" name="cctxt"/>
+			      <form:input  disabled="true" path="chieuCao" class="number form-control" placeholder="cm" id="cctxt" name="cctxt"/>
 			    </div>
 			    <div class="col-xs-6 col-md-1">
 			      <label>Cân nặng</label>
 			    </div>
 			    <div class="col-xs-6 col-md-1">
-			      <form:input path="canNang" class="number form-control" placeholder="kg" id="cntxt" name="cntxt"/>
+			      <form:input  disabled="true" path="canNang" class="number form-control" placeholder="kg" id="cntxt" name="cntxt"/>
 			    </div>
 			    <div class="col-xs-6 col-md-1">
 			      <label>Nhóm máu</label>
 			    </div>
 			    <div class="col-xs-6 col-md-1">
-			      <form:select path="nhomMau" class="form-control" id="nmsel" name="nmsel">
+			      <form:select disabled="${'true'}" path="nhomMau" class="form-control" id="nmsel" name="nmsel">
 			        <form:option value="A">A</form:option>
 			        <form:option value="B">B</form:option>
 			        <form:option value="AB">AB</form:option>
@@ -565,13 +565,13 @@
 			      <label>24) Là thương bình hạng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="laThuongBinhHang" class="form-control" type="text" id="ltbhtxt" name="ltbhtxt"/>
+			      <form:input  disabled="true" path="laThuongBinhHang" class="form-control" type="text" id="ltbhtxt" name="ltbhtxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label>Là con gia đình chính sách</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:select path="laConGiaDinhChinhSach" class="form-control" id="lcgdcssel" name="lcgdcssel">
+			      <form:select disabled="${'true'}" path="laConGiaDinhChinhSach" class="form-control" id="lcgdcssel" name="lcgdcssel">
 			        <form:option value="Không">Không</form:option>
 			        <form:option value="Con thương bình">Con thương bình</form:option>
 			        <form:option value="Con liệt sĩ">Con liệt sĩ</form:option>
@@ -584,13 +584,13 @@
 			      <label>Số chứng minh nhân dân </label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="soCmnd" class="form-control numberonly" id="scmndtxt" name="scmndtxt"/>
+			      <form:input  disabled="true" path="soCmnd" class="form-control numberonly" id="scmndtxt" name="scmndtxt"/>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label>Ngày cấp</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input path="ngayCap" class="form-control datepicker" type="date-time" id="nctxt" name="nctxt"/>
+			      <form:input  disabled="true" path="ngayCap" class="form-control datepicker" type="date-time" id="nctxt" name="nctxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -598,7 +598,7 @@
 			      <label>Số sổ bảo hiểm xã hội</label>
 			    </div>
 			    <div class="col-xs-12 col-md-9">
-			      <form:input path="soBhxh" type="text" class="form-control" id="ssbhxhtxt" name="ssbhxhtxt"/>
+			      <form:input  disabled="true" path="soBhxh" type="text" class="form-control" id="ssbhxhtxt" name="ssbhxhtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -627,19 +627,19 @@
  
 			             			  <tr>
 				             			  <td>
-				             			  	<input type="text" class="form-control" id="ldtcm[0].truong" name="ldtcm[0].truong" value = "${item.truong}">
+				             			  	<input disabled="true" type="text" class="form-control" id="ldtcm[0].truong" name="ldtcm[0].truong" value = "${item.truong}">
 				             			  </td>
 			             			  <td>
-			             			 	 <input type="text" class="form-control" id="ldtcm[0].chuyenNganhDaoTao" name="ldtcm[0].chuyenNganhDaoTao" value = " ${item.chuyenNganhDaoTao}">
+			             			 	 <input disabled="true" type="text" class="form-control" id="ldtcm[0].chuyenNganhDaoTao" name="ldtcm[0].chuyenNganhDaoTao" value = " ${item.chuyenNganhDaoTao}">
 			             			  </td>
 			             			  <td>
-			             			  	<input class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[0].tuNgay" name="ldtcm[0].tuNgay" value = "${item.tuNgay}">
+			             			  	<input disabled="true" class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[0].tuNgay" name="ldtcm[0].tuNgay" value = "${item.tuNgay}">
 			             			  </td>
 			             			  <td>
-			             			  	<input class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[0].toiNgay" name="ldtcm[0].toiNgay" value = "${item.toiNgay}">
+			             			  	<input disabled="true" class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[0].toiNgay" name="ldtcm[0].toiNgay" value = "${item.toiNgay}">
 			             			  </td>
 			             			  <td>
-			             			  	<select class="form-control" id="ldtcm[0].hinhThucDaoTao" name="ldtcm[0].hinhThucDaoTao">
+			             			  	<select disabled="${'true'}" class="form-control" id="ldtcm[0].hinhThucDaoTao" name="ldtcm[0].hinhThucDaoTao">
 				             			  <option value="Chính quy">Chính quy</option>
 				             			  <option value="Tại chức">Tại chức</option>
 				             			  <option value="Chuyên tu">Chuyên tu</option>
@@ -647,7 +647,7 @@
 			             			  	</select>
 			             			  </td>
 			             			  <td>
-				             			  <select class="form-control" id="ldtcm[0].chungChiDatDuoc" name="ldtcm[0].chungChiDatDuoc">
+				             			  <select disabled="${'true'}" class="form-control" id="ldtcm[0].chungChiDatDuoc" name="ldtcm[0].chungChiDatDuoc">
 					             			  <option value="Tiến sĩ khoa học">Tiến sĩ khoa học</option>
 					             			  <option value="Tiến sĩ">Tiến sĩ</option>
 					             			  <option value="Thạc sĩ">Thạc sĩ</option>
@@ -656,9 +656,7 @@
 				             			  </select>
 			             			  </td>
 			             			  <td>
-			             			  <button class="btn btn-default" type="button" onclick="deleteRowDTBD(this, &quot;tableDTBD&quot;)">
-			             			  <span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
-			             			  </button>
+			             			   
 			             			  </td>
 			             			  </tr>
 			               
@@ -666,8 +664,7 @@
 			              	</c:forEach>
 			            </tbody>
 			          </table>
-			          <button type="button" class="btn btn-default" id="themDTBD"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Thêm</span> </button>
-			        </div>
+			           </div>
 			      </div>
 			    </div>
 			  </div>
@@ -691,18 +688,16 @@
 			              	<c:forEach items="${Lylich.lsct}" var="item"> 
 			              			 <tr>
 				              			 <td>
-				              			 	<input class="form-control datepicker hasDatepicker" type="date-time" id="lsct[0].tuNgay" name="lsct[0].tuNgay" value ="${item.tuNgay}">
+				              			 	<input disabled="true" class="form-control datepicker hasDatepicker" type="date-time" id="lsct[0].tuNgay" name="lsct[0].tuNgay" value ="${item.tuNgay}">
 				              			 </td>
 				              			 <td>
-				              			 	<input class="form-control datepicker hasDatepicker" type="date-time" id="lsct[0].toiNgay" name="lsct[0].toiNgay" value ="${item.toiNgay}">
+				              			 	<input disabled="true" class="form-control datepicker hasDatepicker" type="date-time" id="lsct[0].toiNgay" name="lsct[0].toiNgay" value ="${item.toiNgay}">
 				              			 </td>
 				              			 <td>
-				              			 	<input class="form-control " type="text" id="lsct[0].chucVu" name="lsct[0].chucVu"  value ="${item.chucVu}">
+				              			 	<input disabled="true" class="form-control " type="text" id="lsct[0].chucVu" name="lsct[0].chucVu"  value ="${item.chucVu}">
 				              			 </td>
 				              			 <td>
-				              			 	<button class="btn btn-default" type="button" onclick="deleteRowQTCT(this, &quot;tableQTCT&quot;)">
-				              			 		<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
-				              			 	</button>
+				              			 	 
 				              			 </td>
 			              			 </tr>
 
@@ -711,8 +706,7 @@
 			              
 			            </tbody>
 			          </table>
-			          <button type="button" class="btn btn-default" id="themQTCT"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Thêm</span> </button>
-			        </div>
+			          </div>
 			      </div>
 			      <div class="panel-footer"> </div>
 			    </div>
@@ -724,13 +718,13 @@
 			    <label>Khai rõ: Bị bắt, bị tù (từ ngày thángn ăm nào đến ngày tháng năm nào, ở đâu), đã khai báo cho ai, những vấn đề gì? Bản thân có làm việc tỏng chế độ cũ(cơ quan, đơn vị nào, địa điểm, chức danh, chức vụ, thời gian làm việc...)</label>
 			  </div>
 			  <div class="row">
-			    <form:textarea path="lsbt.noidung1"  class="form-control" id="bbbttxt" name="bbbttxt" value ="${lsbt.noidung1}"></form:textarea>
+			    <form:textarea disabled="true" path="lsbt.noidung1"  class="form-control" id="bbbttxt" name="bbbttxt" value ="${lsbt.noidung1}"></form:textarea>
 			  </div>
 			  <div class="row">
 			    <label>Tham gia hoặc có quan hệ với các tổ chức chính trị, kinh tế, xã hội nào ở nước ngoài(làm gì, tổ chức nào, đặt trụ sở ở đâu....?)</label>
 			  </div>
 			  <div class="row">
-			    <form:textarea path="lsbt.noidung2" class="form-control" id="tghqhtxt" name="tghqhtxt" value ="${lsbt.noidung1}"></form:textarea>
+			    <form:textarea disabled="true" path="lsbt.noidung2" class="form-control" id="tghqhtxt" name="tghqhtxt" value ="${lsbt.noidung1}"></form:textarea>
 			  </div>
 			  <div class="row">
 			  <label>
@@ -738,7 +732,7 @@
 			  </label>
 			  </div>
 			  <div class="row">
-			    <form:textarea path="lsbt.noiDung3" class="form-control" id="ctntxt" name="ctntxt" value ="${lsbt.noidung1}"></form:textarea>
+			    <form:textarea disabled="true" path="lsbt.noiDung3" class="form-control" id="ctntxt" name="ctntxt" value ="${lsbt.noidung1}"></form:textarea>
 			  </div>
 			  <div class="row">
 			    <div class="panel panel-default">
@@ -766,28 +760,25 @@
 			                	<c:forEach items="${Lylich.lqhbt}" var="item"> 
  										<tr>
 	 										<td>
-	 											<input type="text" class="form-control" id="lqhbt[0].quanHe" name="lqhbt[0].quanHe" value ="${item.quanHe}">
+	 											<input disabled="true" type="text" class="form-control" id="lqhbt[0].quanHe" name="lqhbt[0].quanHe" value ="${item.quanHe}">
 	 										</td>
 	 										<td>
-	 											<input type="text" class="form-control" id="lqhbt[0].hoTen" name="lqhbt[0].hoTen" value ="${item.hoTen}">
+	 											<input disabled="true" type="text" class="form-control" id="lqhbt[0].hoTen" name="lqhbt[0].hoTen" value ="${item.hoTen}">
 	 										</td>
 	 										<td>
-	 											<input class="form-control datepicker hasDatepicker" type="date-time" id="lqhbt[0].ngaySinh" name="lqhbt[0].ngaySinh" value ="${item.ngaySinh}">
+	 											<input disabled="true" class="form-control datepicker hasDatepicker" type="date-time" id="lqhbt[0].ngaySinh" name="lqhbt[0].ngaySinh" value ="${item.ngaySinh}">
 	 										</td>
 	 										<td>
-	 											<input class="form-control" type="text" id="lqhbt[0].ghiChu" name="lqhbt[0].ghiChu" value ="${item.ghiChu}">
+	 											<input disabled="true" class="form-control" type="text" id="lqhbt[0].ghiChu" name="lqhbt[0].ghiChu" value ="${item.ghiChu}">
 	 										</td>
 	 										<td>
-	 											<button class="btn btn-default" type="button" onclick="deleteRowVBT(this, &quot;tableVBT&quot;)">
-	 												<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
-	 											</button>
+	 											 
 	 										</td>
  										</tr>
 								</c:forEach>
 			                </tbody>
 			              </table>
-			              <button type="button" class="btn btn-default" id="themVBT"><span class="glyphicon glyphicon-plus"> Thêm</span></button>
-			            </div>
+			                </div>
 			          </div>
 			        </div>
 			        <div class="panel panel-default">
@@ -810,28 +801,25 @@
  								 <c:forEach items="${Lylich.lqhdt}" var="item"> 
  										<tr>
 	 										<td>
-	 											<input type="text" class="form-control" id="lqhdt[0].quanHe" name="lqhdt[0].quanHe" value ="${item.quanHe}">
+	 											<input disabled="true" type="text" class="form-control" id="lqhdt[0].quanHe" name="lqhdt[0].quanHe" value ="${item.quanHe}">
 	 										</td>
 	 										<td>
-	 											<input type="text" class="form-control" id="lqhđt[0].hoTen" name="lqhđt[0].hoTen" value ="${item.hoTen}">
+	 											<input disabled="true" type="text" class="form-control" id="lqhđt[0].hoTen" name="lqhđt[0].hoTen" value ="${item.hoTen}">
 	 										</td>
 	 										<td>
-	 											<input class="form-control datepicker hasDatepicker" type="date-time" id="lqhdt[0].ngaySinh" name="lqhdt[0].ngaySinh" value ="${item.ngaySinh}">
+	 											<input disabled="true" class="form-control datepicker hasDatepicker" type="date-time" id="lqhdt[0].ngaySinh" name="lqhdt[0].ngaySinh" value ="${item.ngaySinh}">
 	 										</td>
 	 										<td>
-	 											<input class="form-control" type="text" id="lqhdt[0].ghiChu" name="lqhdt[0].ghiChu" value ="${item.ghiChu}">
+	 											<input disabled="true" class="form-control" type="text" id="lqhdt[0].ghiChu" name="lqhdt[0].ghiChu" value ="${item.ghiChu}">
 	 										</td>
 	 										<td>
-	 											<button class="btn btn-default" type="button" onclick="deleteRowVBT(this, &quot;tableVBT&quot;)">
-	 												<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
-	 											</button>
+	 											 
 	 										</td>
  										</tr>
 								</c:forEach>
 			                </tbody>
 			              </table>
-			              <button type="button" class="btn btn-default" id="themVBV"><span class="glyphicon glyphicon-plus"> Thêm</span></button>
-			            </div>
+			                </div>
 			          </div>
 			        </div>
 			      </div>
@@ -858,25 +846,22 @@
 			           		 <c:forEach items="${Lylich.ldbl}" var="item"> 
  								<tr>
 	 								<td>
-	 									<input class="form-control datepicker-month hasDatepicker" id="ldbl[0].ngaythang" name="ldbl[0].ngaythang" value ="${item.ngaythang}">
+	 									<input disabled="true" class="form-control datepicker-month hasDatepicker" id="ldbl[0].ngaythang" name="ldbl[0].lngaythang" value ="${item.lngaythang}">
 	 								</td>
 	 								<td>
-	 									<input class="form-control number" id="ldbl[0].lmangach_bac" name="ldbl[0].lmangach_bac" value ="${item.lmangach_bac}">
+	 									<input disabled="true" class="form-control number" id="ldbl[0].lmangach_bac" name="ldbl[0].lmangach_bac" value ="${item.lmangach_bac}">
 	 								</td>
 	 								<td>
-	 									<input class="form-control number" id="ldbl[0].heSoLuong" name="ldbl[0].heSoLuong" value ="${item.heSoLuong}">
+	 									<input disabled="true" class="form-control number" id="ldbl[0].heSoLuong" name="ldbl[0].heSoLuong" value ="${item.heSoLuong}">
 	 								</td>
 	 								<td>
-	 									<button class="btn btn-default" type="button" onclick="deleteRowDBL(this, &quot;tableDBL&quot;)">
-	 										<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
-	 									</button>
+	 									 
 	 								</td>
  								</tr>
 							</c:forEach>
 			            </tbody>
 			          </table>
-			          <button type="button" class="btn btn-default" id="themDBL"><span class="glyphicon glyphicon-plus"> Thêm</span></button>
-			        </div>
+			             </div>
 			      </div>
 			    </div>
 			  </div>
@@ -884,7 +869,7 @@
 			    <label>32) Nhận xét, đánh giá của cơ quan, đơn vị quản lý và sử dụng cán bộ, công chức</label>
 			  </div>
 			  <div class="row">
-			    <form:textarea path="nhanXetCapTren" class="form-control" id="nxdgtxt1" name="nxdgtxt1"></form:textarea>
+			    <form:textarea disabled="true" path="nhanXetCapTren" class="form-control" id="nxdgtxt1" name="nxdgtxt1"></form:textarea>
 			  </div>
 			  <div class="row">
 			    <div class="modal fade" tabindex="-1" role="dialog">
@@ -909,8 +894,8 @@
 			    <!-- /.modal --> 
 			  </div>
 			  <div class="row">
-			    <button type="submit" class="btn btn-default btn-primary btn-lg" value="luu" id="luuButton" name="luuButton" > <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> Lưu</span> </button>
-			    <button type="button" class="btn btn-default btn-warning btn-lg" id="huyButton" name="huy" data-toggle='modal' data-target='#myModal'> <span class="glyphicon glyphicon-remove" aria-hidden="true"> Hủy</span> </button>
+			     
+			     
 			    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
 			      <div class="modal-dialog">
 			        <div class="modal-content">

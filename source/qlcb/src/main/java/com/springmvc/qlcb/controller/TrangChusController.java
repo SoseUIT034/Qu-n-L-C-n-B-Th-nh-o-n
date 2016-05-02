@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.springmvc.qlcb.model.Taikhoan;
 
 @Controller
-public class HomeController {
+public class TrangChusController {
  
 
  

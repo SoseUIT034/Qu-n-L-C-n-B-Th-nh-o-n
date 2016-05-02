@@ -427,7 +427,23 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	}
 	//--------------
 	
-	
+	//-------------
+		private int genereteIDlylich()
+			{
+				int thisid=0; 
+				// generate id
+				if(lyLichDAO.listLyLich()!=null)
+				{
+					thisid = lyLichDAO.listLyLich().size();
+				} 
+				while( lyLichDAO.getLyLichById(thisid)!=null  )
+				{
+					thisid++;
+				}
+		 
+				return thisid;
+			}
+	//-----------------
 	
 	private int _saveDate(Lylich lylich)
 	{
@@ -502,7 +518,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		lylich.setCanboByMaCanBo(cb);
 		
 		// part and  save date
-		_saveDate(  lylich);
+		//_saveDate(  lylich);
 		
 		// save can bo 
 		canBoDAO.save(cb);
@@ -524,38 +540,49 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		_saveLichSuBanThan(  lylich);
 		
 		 // save lsct
-		_saveLichSuCongTac(lylich);
+		if(lylich.getLsct()!=null)
+			if(lylich.getLsct().size()>0)
+					_saveLichSuCongTac(lylich);
 		
 		// save dao tao chuyen mon
-		_saveDaoTaoChuyenMon(lylich);
+		if(lylich.getLdtcm()!=null)
+			if(lylich.getLdtcm().size()>0)
+					_saveDaoTaoChuyenMon(lylich);
 		
 		// save dien bien luong(xu ly them )
-		_saveDienbienluong(lylich);
+		if(lylich.getLdbl()!=null)
+			if(lylich.getLdbl().size()>0)
+					_saveDienbienluong(lylich);
 		
 		// save quan he gia dinh ban than 
-		_saveCanBoGiaDinhBanThan(lylich);
+		if(lylich.getLqhbt()!=null)
+			if(lylich.getLqhbt().size()>0)
+					_saveCanBoGiaDinhBanThan(lylich);
 		
 		// save quan he gia dinh doi tac
-		_saveCanBoGiaDinhDoiTac(lylich);
+		if(lylich.getLqhdt()!=null)
+			if(lylich.getLqhdt().size()>0)
+					_saveCanBoGiaDinhDoiTac(lylich);
 		
 		
 		return 0;
 	}
 	
+	
+	
 	@Transactional
 	@Override 
 	public boolean save(Lylich lylich) {
 		boolean result = false;
-		lylich.setMacanbo(1);
-		Canbo c = new Canbo();
-		c.setMaCanBo(1);
-		lylich.setCanboByMaCanBo(c);
-		ArrayList<Lichsucongtac>  t= lylich.getLsct();
-		lylich.setLsct(t);
+		
+		 
 		
 		Transaction tx = null;
 		try{
 			tx = getSession().beginTransaction();
+			
+			
+			 
 			_saveLyLich( lylich);
 			
 			result = true;
@@ -571,7 +598,26 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	@Override
 	@Transactional
 	public Lylich getLyLichById(int id) {
-		return lyLichDAO.getLyLichById(id);
+		
+		Lylich  lylich = new Lylich(); 
+		lylich =lyLichDAO.getLyLichById(id);
+		ArrayList<Daotaochuyenmon> listDaoTaoChuyenMons =  new ArrayList<Daotaochuyenmon>( lylich.getCanboByMaCanBo().getDaotaochuyenmons());
+		ArrayList<Lichsucongtac> listLichsucongtacs =  new ArrayList<Lichsucongtac>( lylich.getCanboByMaCanBo().getLichsucongtacs());
+		ArrayList<CanboGiadinhBanthan> listcanboGiadinhBanthans =  new ArrayList<CanboGiadinhBanthan>( lylich.getCanboByMaCanBo().getCanboGiadinhBanthans());
+		ArrayList<CanboGiadinhDoitac> listcanboGiadinhDoitacs =  new ArrayList<CanboGiadinhDoitac>( lylich.getCanboByMaCanBo().getCanboGiadinhDoitacs());
+		ArrayList<Dienbienluong> listdienbienluongs =  new ArrayList<Dienbienluong>( lylich.getDienbienluongs());
+		Dacdienlichsubanthan dacdienlichsubanthans;
+		if(new ArrayList<Dacdienlichsubanthan>(lylich.getCanboByMaCanBo().getDacdienlichsubanthans())!=null){
+		  dacdienlichsubanthans =    new ArrayList<Dacdienlichsubanthan>(lylich.getCanboByMaCanBo().getDacdienlichsubanthans()).get(0);}
+		dacdienlichsubanthans = new Dacdienlichsubanthan();
+		lylich.setLdtcm(listDaoTaoChuyenMons); 
+		lylich.setLsct(listLichsucongtacs); 
+		lylich.setLqhbt(listcanboGiadinhBanthans); 
+		lylich.setLqhdt(listcanboGiadinhDoitacs); 
+		lylich.setLdbl(listdienbienluongs); 
+		lylich.setLsbt(dacdienlichsubanthans); 
+		
+		return lylich;
 	}
 
 	@Override
