@@ -511,7 +511,7 @@
 			      <label>20) Sở trường công tác</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input    path="lsoTruongCongTac" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
+			      <form:input    path="soTruongCongTac" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -519,13 +519,13 @@
 			      <label>21) Khen thưởng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input    path="lkhenThuongCaoNhat" class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" />
+			      <form:input    path="khenThuongCaoNhat" class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" />
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>22) Kỷ luật</label>
 			    </div>
 			    <div class="col-xs-12 col-md-5">
-			      <form:input    path="lkyLuatCaoNhat" class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
+			      <form:input    path="kyLuatCaoNhat" class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -623,24 +623,26 @@
 			              </tr>
 			            </thead>
 			            <tbody id="tbodyDTBD">
-			            
-			            	<c:forEach items="${Lylich.ldtcm}" var="item"> 
- 
+			               
+			            	<c:forEach items="${Lylich.ldtcm}" var="item" varStatus="loop"> 
 			             			  <tr>
 				             			  <td>
-				             			  	<input   type="text" class="form-control" id="ldtcm[0].truong" name="ldtcm[0].truong" value = "${item.truong}">
+				             			  	<input   type="text" class="form-control" id="ldtcm[${loop.index}].truong" name="ldtcm[${loop.index}].truong" value = "${item.truong}">
 				             			  </td>
 			             			  <td>
-			             			 	 <input   type="text" class="form-control" id="ldtcm[0].chuyenNganhDaoTao" name="ldtcm[0].chuyenNganhDaoTao" value = " ${item.chuyenNganhDaoTao}">
+			             			 	 <input   type="text" class="form-control" id="ldtcm[${loop.index}].chuyenNganhDaoTao" name="ldtcm[${loop.index}].chuyenNganhDaoTao" value = "${item.chuyenNganhDaoTao}">
 			             			  </td>
 			             			  <td>
-			             			  	<input   class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[0].tuNgay" name="ldtcm[0].tuNgay" value = "${item.tuNgay}">
+			             			  	<input   class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[${loop.index}].tuNgay" name="ldtcm[${loop.index}].tuNgay" value = "${item.tuNgay}">
 			             			  </td>
 			             			  <td>
-			             			  	<input   class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[0].toiNgay" name="ldtcm[0].toiNgay" value = "${item.toiNgay}">
+			             			  	<input   class="form-control datepicker hasDatepicker" type="date-time" id="ldtcm[${loop.index}].toiNgay" name="ldtcm[${loop.index}].toiNgay" value = "${item.toiNgay}">
+			             			  </td>
+			             			  <td style="display: none;">
+			             			  	<input style="display: none"  class="form-control " type="text" id="ldtcm[${loop.index}].maDaoTao" name="ldtcm[${loop.index}].maDaoTao" value = "${item.maDaoTao}">
 			             			  </td>
 			             			  <td>
-			             			  	<select   class="form-control" id="ldtcm[0].hinhThucDaoTao" name="ldtcm[0].hinhThucDaoTao">
+			             			  	<select   class="form-control" id="ldtcm[${loop.index}].hinhThucDaoTao" name="ldtcm[${loop.index}].hinhThucDaoTao">
 				             			  <option value="Chính quy">Chính quy</option>
 				             			  <option value="Tại chức">Tại chức</option>
 				             			  <option value="Chuyên tu">Chuyên tu</option>
@@ -648,7 +650,7 @@
 			             			  	</select>
 			             			  </td>
 			             			  <td>
-				             			  <select   class="form-control" id="ldtcm[0].chungChiDatDuoc" name="ldtcm[0].chungChiDatDuoc">
+				             			  <select   class="form-control" id="ldtcm[${loop.index}].chungChiDatDuoc" name="ldtcm[${loop.index}].chungChiDatDuoc">
 					             			  <option value="Tiến sĩ khoa học">Tiến sĩ khoa học</option>
 					             			  <option value="Tiến sĩ">Tiến sĩ</option>
 					             			  <option value="Thạc sĩ">Thạc sĩ</option>
@@ -656,23 +658,20 @@
 					             			  <option value="Kỹ sư">Kỹ sư</option>
 				             			  </select>
 			             			  </td>
+			             			  
 			             			  <td>
-				             			  <a href="${pageContext.request.contextPath}/chuyenmon/edit/${item.maDaoTao}" data-modal>
-				             			  		<button class="btn btn-default" type="button" >Sua</button>
-				             			  </a> 
-			             			  </td>
-			             			  <td>
-				             			   <a href="${pageContext.request.contextPath}/chuyenmon/delete/${item.maDaoTao}" data-modal>
-				             			   		<button class="btn btn-default" type="button" >Xoa</button>
-				             			   </a>
+				             			  <button class="btn btn-default" type="button" onclick="deleteRowDTBD(this, &quot;tableDTBD&quot;)">
+				             			 	 <span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
+				             			  </button>
 			             			  </td>
 			             			  </tr>
 			               
 
 			              	</c:forEach>
-			              	<a href="${pageContext.request.contextPath}/chuyenmon/create" data-modal>Thêm mới</a>
+			              	<%-- <a href="${pageContext.request.contextPath}/chuyenmon/create" data-modal>Thêm mới</a> --%>
 			            </tbody>
 			          </table>
+			          <button type="button" class="btn btn-default" id="themDTBD"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Thêm</span> </button>
 			           </div>
 			      </div>
 			    </div>
@@ -695,34 +694,33 @@
 			              </tr>
 			            </thead>
 			            <tbody id="tbodyQTCT" >
-			              	<c:forEach items="${Lylich.lsct}" var="item"> 
+			              	<c:forEach items="${Lylich.lsct}" var="item" varStatus="loop"> 
 			              			 <tr>
 				              			 <td>
-				              			 	<input   class="form-control datepicker hasDatepicker" type="date-time" id="lsct[0].tuNgay" name="lsct[0].tuNgay" value ="${item.tuNgay}">
+				              			 	<input   class="form-control datepicker hasDatepicker" type="date-time" id="lsct[${loop.index}].tuNgay" name="lsct[${loop.index}].tuNgay" value ="${item.tuNgay}">
 				              			 </td>
 				              			 <td>
-				              			 	<input   class="form-control datepicker hasDatepicker" type="date-time" id="lsct[0].toiNgay" name="lsct[0].toiNgay" value ="${item.toiNgay}">
+				              			 	<input   class="form-control datepicker hasDatepicker" type="date-time" id="lsct[${loop.index}].toiNgay" name="lsct[${loop.index}].toiNgay" value ="${item.toiNgay}">
 				              			 </td>
 				              			 <td>
-				              			 	<input   class="form-control " type="text" id="lsct[0].chucVu" name="lsct[0].chucVu"  value ="${item.chucVu}">
+				              			 	<input   class="form-control " type="text" id="lsct[${loop.index}].chucVu" name="lsct[${loop.index}].chucVu"  value ="${item.chucVu}">
+				              			 </td>
+				              			 <td style="display: none;">
+				              			 	<input   class="form-control "   type="text" id="lsct[${loop.index}].maLsct" name="lsct[${loop.index}].maLsct"  value ="${item.maLsct}">
 				              			 </td>
 				              			  <td>
-					             			  <a href="${pageContext.request.contextPath}/lichsucongtac/edit/${item.maLsct}" data-modal>
-					             			  		<button class="btn btn-default" type="button" >Sua</button>
-					             			  </a> 
-				             			  </td>
-				             			  <td>
-					             			   <a href="${pageContext.request.contextPath}/lichsucongtac/delete/${item.maLsct}" data-modal>
-					             			   		<button class="btn btn-default" type="button" >Xoa</button>
-					             			   </a>
-				             			  </td>
+				              			 	<button class="btn btn-default" type="button" onclick="deleteRowQTCT(this, &quot;tableQTCT&quot;)">
+				              			 		<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
+				              			 	</button>
+				              			 </td>
 			              			 </tr>
 
 			              
 			             	 </c:forEach>
-			              <a href="${pageContext.request.contextPath}/lichsucongtac/create" data-modal>Thêm mới</a>
+			              <%-- <a href="${pageContext.request.contextPath}/lichsucongtac/create" data-modal>Thêm mới</a> --%>
 			            </tbody>
 			          </table>
+			          <button type="button" class="btn btn-default" id="themQTCT"> <span class="glyphicon glyphicon-plus" aria-hidden="true"> Thêm</span> </button>
 			          </div>
 			      </div>
 			      <div class="panel-footer"> </div>
@@ -775,36 +773,35 @@
 			                  </tr>
 			                </thead>
 			                <tbody id="tbodyVBT">
-			                	<c:forEach items="${Lylich.lqhbt}" var="item"> 
+			                	<c:forEach items="${Lylich.lqhbt}" var="item" varStatus="loop"> 
  										<tr>
 	 										<td>
-	 											<input   type="text" class="form-control" id="lqhbt[0].quanHe" name="lqhbt[0].quanHe" value ="${item.quanHe}">
+	 											<input   type="text" class="form-control" id="lqhbt[${loop.index}].quanHe" name="lqhbt[${loop.index}].quanHe" value ="${item.quanHe}">
 	 										</td>
 	 										<td>
-	 											<input   type="text" class="form-control" id="lqhbt[0].hoTen" name="lqhbt[0].hoTen" value ="${item.hoTen}">
+	 											<input   type="text" class="form-control" id="lqhbt[${loop.index}].hoTen" name="lqhbt[${loop.index}].hoTen" value ="${item.hoTen}">
 	 										</td>
 	 										<td>
-	 											<input   class="form-control datepicker hasDatepicker" type="date-time" id="lqhbt[0].ngaySinh" name="lqhbt[0].ngaySinh" value ="${item.ngaySinh}">
+	 											<input   class="form-control datepicker hasDatepicker" type="date-time" id="lqhbt[${loop.index}].ngaySinh" name="lqhbt[${loop.index}].ngaySinh" value ="${item.ngaySinh}">
 	 										</td>
 	 										<td>
-	 											<input   class="form-control" type="text" id="lqhbt[0].ghiChu" name="lqhbt[0].ghiChu" value ="${item.ghiChu}">
+	 											<input   class="form-control" type="text" id="lqhbt[${loop.index}].ghiChu" name="lqhbt[${loop.index}].ghiChu" value ="${item.ghiChu}">
+	 										</td>
+	 										<td style="display: none;">
+	 											<input   class="form-control" type="text" id="lqhbt[${loop.index}].id" name="lqhbt[${loop.index}].id" value ="${item.id}">
 	 										</td>
 	 										<td>
-					             			  <a href="${pageContext.request.contextPath}/QuanheGiaDinhBanThan/edit/${item.id}" data-modal>
-					             			  		<button class="btn btn-default" type="button" >Sua</button>
-					             			  </a> 
-					             			  </td>
-					             			  <td>
-						             			   <a href="${pageContext.request.contextPath}/QuanheGiaDinhBanThan/delete/${item.id}" data-modal>
-						             			   		<button class="btn btn-default" type="button" >Xoa</button>
-						             			   </a>
-					             			  </td>
+	 											<button class="btn btn-default" type="button" onclick="deleteRowVBT(this, &quot;tableVBT&quot;)">
+	 												<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
+	 											</button>
+	 										</td>
 
 
  										</tr>
 								</c:forEach>
-								<a href="${pageContext.request.contextPath}/QuanheGiaDinhBanThan/create" data-modal>Thêm mới</a>
+								<%-- <a href="${pageContext.request.contextPath}/QuanheGiaDinhBanThan/create" data-modal>Thêm mới</a> --%>
 			                </tbody>
+			                <button type="button" class="btn btn-default" id="themVBT"><span class="glyphicon glyphicon-plus"> Thêm</span></button>
 			              </table>
 			                </div>
 			          </div>
@@ -827,19 +824,22 @@
 			                  </tr>
 			                </thead>
 			                <tbody id="tbodyVBV">
- 								 <c:forEach items="${Lylich.lqhdt}" var="item"> 
+ 								 <c:forEach items="${Lylich.lqhdt}" var="item" varStatus="loop"> 
  										<tr>
 	 										<td>
-	 											<input   type="text" class="form-control" id="lqhdt[0].quanHe" name="lqhdt[0].quanHe" value ="${item.quanHe}">
+	 											<input   type="text" class="form-control" id="lqhdt[${loop.index}].quanHe" name="lqhdt[${loop.index}].quanHe" value ="${item.quanHe}">
 	 										</td>
 	 										<td>
-	 											<input   type="text" class="form-control" id="lqhđt[0].hoTen" name="lqhđt[0].hoTen" value ="${item.hoTen}">
+	 											<input   type="text" class="form-control" id="lqhđt[${loop.index}].hoTen" name="lqhđt[${loop.index}].hoTen" value ="${item.hoTen}">
 	 										</td>
 	 										<td>
-	 											<input   class="form-control datepicker hasDatepicker" type="date-time" id="lqhdt[0].ngaySinh" name="lqhdt[0].ngaySinh" value ="${item.ngaySinh}">
+	 											<input   class="form-control datepicker hasDatepicker" type="date-time" id="lqhdt[${loop.index}].ngaySinh" name="lqhdt[${loop.index}].ngaySinh" value ="${item.ngaySinh}">
 	 										</td>
 	 										<td>
-	 											<input   class="form-control" type="text" id="lqhdt[0].ghiChu" name="lqhdt[0].ghiChu" value ="${item.ghiChu}">
+	 											<input   class="form-control" type="text" id="lqhdt[${loop.index}].ghiChu" name="lqhdt[${loop.index}].ghiChu" value ="${item.ghiChu}">
+	 										</td>
+	 										<td style="display: none;">
+	 											<input    class="form-control" type="text" id="lqhbt[${loop.index}].id" name="lqhbt[${loop.index}].id" value ="${item.id}">
 	 										</td>
 	 										 <td>
 					             			  <a href="${pageContext.request.contextPath}/QuanheGiaDinhDoiTac/edit/${item.id}" data-modal>
@@ -847,15 +847,16 @@
 					             			  </a> 
 					             			  </td>
 					             			  <td>
-						             			   <a href="${pageContext.request.contextPath}/QuanheGiaDinhDoiTac/delete/${item.id}" data-modal>
-						             			   		<button class="btn btn-default" type="button" >Xoa</button>
-						             			   </a>
-					             			  </td>
+	 											<button class="btn btn-default" type="button" onclick="deleteRowVBT(this, &quot;tableVBT&quot;)">
+	 												<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
+	 											</button>
+	 										</td>
  										</tr>
 								</c:forEach>
-								<a href="${pageContext.request.contextPath}/QuanheGiaDinhDoiTac/create" data-modal>Thêm mới</a>
+								<%-- <a href="${pageContext.request.contextPath}/QuanheGiaDinhDoiTac/create" data-modal>Thêm mới</a> --%>
 			                </tbody>
 			              </table>
+			               <button type="button" class="btn btn-default" id="themVBV"><span class="glyphicon glyphicon-plus"> Thêm</span></button>
 			                </div>
 			          </div>
 			        </div>
@@ -881,34 +882,33 @@
 			              </tr>
 			            </thead>
 			            <tbody id="tbodyDBL">
-			           		 <c:forEach items="${Lylich.ldbl}" var="item"> 
+			           		 <c:forEach items="${Lylich.ldbl}" var="item" varStatus="loop"> 
  								<tr>
 	 								<td>
-	 									<input   class="form-control datepicker-month hasDatepicker" id="ldbl[0].ngaythang" name="ldbl[0].lngaythang" value ="${item.lngaythang}">
+	 									<input   class="form-control datepicker-month hasDatepicker" id="ldbl[${loop.index}].ngaythang" name="ldbl[${loop.index}].lngaythang" value ="${item.lngaythang}">
 	 								</td>
 	 								<td>
-	 									<input   class="form-control number" id="ldbl[0].lmangach_bac" name="ldbl[0].lmangach_bac" value ="${item.lmangach_bac}">
+	 									<input   class="form-control number" id="ldbl[${loop.index}].lmangach_bac" name="ldbl[${loop.index}].lmangach_bac" value ="${item.lmangach_bac}">
 	 								</td>
 	 								<td>
-	 									<input   class="form-control number" id="ldbl[0].heSoLuong" name="ldbl[0].heSoLuong" value ="${item.heSoLuong}">
+	 									<input   class="form-control number" id="ldbl[${loop.index}].heSoLuong" name="ldbl[${loop.index}].heSoLuong" value ="${item.heSoLuong}">
 	 								</td>
+	 								<td style="display: none;">
+	 											<input   class="form-control" type="text" id="lqhbt[${loop.index}].id" name="lqhbt[${loop.index}].id" value ="${item.id}">
+	 										</td>
 	 								 <td>
-			             			  <a href="${pageContext.request.contextPath}/Dienbienluong/edit/${item.id}" data-modal>
-			             			  		<button class="btn btn-default" type="button" >Sua</button>
-			             			  </a> 
-			             			  </td>
-			             			  <td>
-				             			   <a href="${pageContext.request.contextPath}/Dienbienluong/delete/${item.id}" data-modal>
-				             			   		<button class="btn btn-default" type="button" >Xoa</button>
-				             			   </a>
-			             			  </td>
+	 									<button class="btn btn-default" type="button" onclick="deleteRowDBL(this, &quot;tableDBL&quot;)">
+	 										<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
+	 									</button>
+	 								</td>
 	 								 
 	 								 
  								</tr>
 							</c:forEach>
-							<a href="${pageContext.request.contextPath}/Dienbienluong/create" data-modal>Thêm mới</a>
+							<%-- <a href="${pageContext.request.contextPath}/Dienbienluong/create" data-modal>Thêm mới</a> --%>
 			            </tbody>
 			          </table>
+			          <button type="button" class="btn btn-default" id="themDBL"><span class="glyphicon glyphicon-plus"> Thêm</span></button>
 			             </div>
 			      </div>
 			    </div>

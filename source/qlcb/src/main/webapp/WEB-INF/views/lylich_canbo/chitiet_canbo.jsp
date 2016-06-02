@@ -511,7 +511,7 @@
 			      <label>20) Sở trường công tác</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input  disabled="true" path="lsoTruongCongTac" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
+			      <form:input  disabled="true" path="soTruongCongTac" class="form-control" type="text" id="stcttxt" name="stcttxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -519,13 +519,13 @@
 			      <label>21) Khen thưởng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input  disabled="true" path="lkhenThuongCaoNhat" class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" />
+			      <form:input  disabled="true" path="khenThuongCaoNhat" class="form-control" type="text" placeholder="Hình thức cao nhất, năm nào" id="kttxt" />
 			    </div>
 			    <div class="col-xs-12 col-md-2">
 			      <label>22) Kỷ luật</label>
 			    </div>
 			    <div class="col-xs-12 col-md-5">
-			      <form:input  disabled="true" path="lkyLuatCaoNhat" class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
+			      <form:input  disabled="true" path="kyLuatCaoNhat" class="form-control" type="text" placeholder="Về đảng, chính quyền, đoàn thể hình thức cao nhất, năm nào" id="kltxt" name="kltxt"/>
 			    </div>
 			  </div>
 			  <div class="row">

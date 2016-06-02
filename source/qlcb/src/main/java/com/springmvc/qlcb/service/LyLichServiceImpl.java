@@ -106,6 +106,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	@Autowired
 	private ChucvuBanDAO chucvuBanDAO;
 	
+						// save
 	//------------
 	private int genereteIDCanBoGiaDinhDoiTac(ArrayList<Integer> lint)
 	{
@@ -568,8 +569,298 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		return 0;
 	}
 	
+				// save//
 	
 	
+				// update//
+		//------------
+		 
+		private int _updateCanBoGiaDinhDoiTac(Lylich lylich)
+		{
+			ArrayList<CanboGiadinhDoitac> arr = lylich.getLqhdt();
+			ArrayList<Integer> arrid= new ArrayList<Integer>();
+			if(arr!=null)
+			{
+				for(int i=0; i< arr.size(); i++)
+				{ 
+					if(canBoGiaDinhDoiTacDAO.getCanboGiadinhDoitacId(arr.get(i).getId())!=null)
+					{
+						CanboGiadinhDoitac temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo()); 
+						canBoGiaDinhDoiTacDAO.update(temp);
+					}
+					else
+					{
+						int id = genereteIDCanBoGiaDinhDoiTac(arrid);
+						arrid.add(id);
+						arr.get(i).setCanbo(lylich.getCanboByMaCanBo()); 
+						arr.get(i).setId(id);
+						CanboGiadinhDoitac temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo()); 
+						canBoGiaDinhDoiTacDAO.save(temp);
+					}
+				}
+			}
+			return 0;
+		}
+		//------------
+		
+		//------------
+		 
+		private int _updateCanBoGiaDinhBanThan(Lylich lylich)
+		{
+			ArrayList<CanboGiadinhBanthan> arr = lylich.getLqhbt();
+			ArrayList<Integer> arrid= new ArrayList<Integer>();
+			if(arr!=null)
+			{
+				for(int i=0; i< arr.size(); i++)
+				{ 
+					if(canBoGiaDinhBanThanDAO.getCanboGiadinhBanthanById(arr.get(i).getId())!= null)
+					{
+						CanboGiadinhBanthan temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo()); 
+						canBoGiaDinhBanThanDAO.update(temp);
+					}
+					else
+					{
+						int id = genereteIDCanBoGiaDinhBanThan(arrid);
+						arrid.add(id);
+						arr.get(i).setCanbo(lylich.getCanboByMaCanBo()); 
+						arr.get(i).setId(id);
+						CanboGiadinhBanthan temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo()); 
+						canBoGiaDinhBanThanDAO.save(temp);
+					}
+					
+				}
+			}
+			return 0;
+		}
+		//------------
+		
+		//------------
+		 
+		private int _updateDienbienluong(Lylich lylich)
+		{
+			ArrayList<Dienbienluong> arr = lylich.getLdbl();
+			ArrayList<Integer> arrid= new ArrayList<Integer>();
+			if(arr!=null)
+			{
+				
+				for(int i=0; i< arr.size(); i++)
+				{ 
+					if(dienBienLuongDAO.getDienbienluongById(arr.get(i).getId())!=null)
+					{
+						Dienbienluong temp = arr.get(i);
+						temp.setLylich(lylich);
+						dienBienLuongDAO.update(temp);
+					}
+					else
+					{
+						int id = genereteIDDienbienluong(arrid);
+						arrid.add(id);
+						arr.get(i).setLylich(lylich); 
+						arr.get(i).setId(id); 
+						Dienbienluong temp = arr.get(i);
+						temp.setLylich(lylich);
+						dienBienLuongDAO.save(temp);
+					}
+					
+				}
+			}
+			return 0;
+		}
+		//------------
+		
+		//------------ 
+		private int _updateDaoTaoChuyenMon(Lylich lylich)
+		{
+			ArrayList<Daotaochuyenmon> arr = lylich.getLdtcm();
+			ArrayList<Integer> arrid=  new ArrayList<Integer>();
+			if(arr!=null)
+			{
+				for(int i=0; i< arr.size(); i++)
+				{ 
+					if(daoTaoChuyenMonDAO.getDaoTaoChuyenMonById(arr.get(i).getMaDaoTao())!=null)
+					{
+						Daotaochuyenmon temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo());
+						daoTaoChuyenMonDAO.update(temp);
+					}
+					else
+					{ 
+						int id = genereteIDDaoTaoChuyenMon(arrid);
+						arrid.add(id);
+						arr.get(i).setCanbo(lylich.getCanboByMaCanBo());
+						arr.get(i).setMaDaoTao(id);
+						Daotaochuyenmon temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo());
+						daoTaoChuyenMonDAO.save(temp);
+					}
+				}
+			}
+			return 0;
+		}
+		//------------
+		
+		//------------- 
+		private int _updateLichSuCongTac(Lylich lylich)
+		{
+			ArrayList<Lichsucongtac> arr = lylich.getLsct();
+			ArrayList<Integer> arrid= new ArrayList<Integer>();
+			if(arr!=null)
+			{
+				for(int i=0; i< arr.size(); i++)
+				{ 
+					if(lichSuCongTacDAO.getLichSuCongTacById(arr.get(i).getMaLsct())!= null)
+					{
+						Lichsucongtac temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo());
+						lichSuCongTacDAO.update(temp);
+					}
+					else
+					{ 
+						int id = genereteIDLichSuCongTac(arrid);
+						arr.get(i).setCanbo(lylich.getCanboByMaCanBo());
+						arr.get(i).setMaLsct(id);
+						arrid.add(id);
+						Lichsucongtac temp = arr.get(i);
+						temp.setCanbo(lylich.getCanboByMaCanBo());
+						lichSuCongTacDAO.save(temp);
+						
+					}
+				}
+			}
+			return 0;
+		}
+		//--------------
+		
+		//-------------  
+		private int _updateLichSuBanThan(Lylich lylich)
+		{
+			 
+			
+			if(dacDiemLichSuBanThanDAO.getDacDiemLichSuBanThanById(lylich.getMacanbo())!= null)
+			{
+				Dacdienlichsubanthan dd = lylich.getLsbt();
+				dd.setCanbo(lylich.getCanboByMaCanBo());
+				dd.setMaDdls(dacDiemLichSuBanThanDAO.getDacDiemLichSuBanThanById(lylich.getMacanbo()).getMaDdls()); 
+				dacDiemLichSuBanThanDAO.update(dd);
+			}
+			else
+			{
+				 
+			}
+			
+				 
+			return 0;
+		}
+		//--------------
+		
+ 
+		
+		private int _updateDate(Lylich lylich)
+		{
+			try {
+				lylich.setNgaySinh( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngaySinh()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				lylich.setNgayTuyenDung( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayTuyenDung()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				lylich.setNgayHuong( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayHuong()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				lylich.setNgayVaoDang( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayVaoDang()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				lylich.setNgayChinhThuc( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayChinhThuc()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				lylich.setNgayNhapNgu ( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayNhapNgu()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				lylich.setNgayXuatNgu( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayXuatNgu()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				lylich.setNgayCap( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayCap()) );
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+			return 0;
+		}
+		
+		
+		private String _updateLyLich(Lylich lylich)
+		{
+			String res = "";
+			if(lyLichDAO.getLyLichById(lylich.getMacanbo())== null)
+			{
+				res= "Mã cán bộ không tồn tại ! Thao tác không thành công...";
+			}
+			else
+			{
+				
+				Canbo cb = canBoDAO.getCanBoById(lylich.getMacanbo());
+				if(cb == null)
+				{
+					res= "Mã cán bộ không tồn tại ! Thao tác không thành công...";
+				}
+				{
+					lylich.setCanboByMaCanBo(cb);
+					lyLichDAO.update(lylich); 
+					
+					//
+					// update lsbt
+					_updateLichSuBanThan(  lylich);
+					
+					 // update lsct
+					 _updateLichSuCongTac(lylich);
+					
+					// update dao tao chuyen mon
+					_updateDaoTaoChuyenMon(lylich);
+					
+					// update dien bien luong(xu ly them ) 
+					_updateDienbienluong(lylich);
+					
+					// update quan he gia dinh ban than  
+					_updateCanBoGiaDinhBanThan(lylich);
+					
+					// update quan he gia dinh doi tac 
+					_updateCanBoGiaDinhDoiTac(lylich);
+				}
+				
+			}  
+			return res;
+		}
+		
+					// update//
+	
+	
+	// 
 	@Transactional
 	@Override 
 	public boolean save(Lylich lylich) {
@@ -594,7 +885,8 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		}
 		return result;
 	}
-
+	
+	//
 	@Override
 	@Transactional
 	public Lylich getLyLichById(int id) {
@@ -620,18 +912,40 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		return lylich;
 	}
 
+	//
 	@Override
 	@Transactional
-	public void update(Lylich lylich) {
+	public boolean  update(Lylich lylich) {
+		boolean result = false;
 		
+		 
+		
+		Transaction tx = null;
+		try{
+			tx = getSession().beginTransaction();
+			
+			
+			 
+			_updateLyLich( lylich);
+			
+			result = true;
+		}catch(Exception ex){
+			if(tx != null){
+				tx.rollback();
+			}
+			logger.error("Error", ex);
+		}
+		return result;
 	}
 
+	//
 	@Override
 	@Transactional
 	public void delete(int id) {
 		
 	}
 
+	//
 	@Override
 	@Transactional
 	public List<Lylich> listLyLich() {

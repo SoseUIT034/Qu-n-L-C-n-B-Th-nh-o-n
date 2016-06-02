@@ -36,7 +36,7 @@ public class CanBoGiaDinhBanThanDAOImp extends HibernateUtils implements CanBoGi
 		getSession().merge( canboGiadinhBanthan);
 		
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<CanboGiadinhBanthan> listCanboGiadinhBanthan() {
 		return getSession().createCriteria(CanboGiadinhBanthan.class).list();

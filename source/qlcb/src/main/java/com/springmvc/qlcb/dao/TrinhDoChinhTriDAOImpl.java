@@ -33,7 +33,7 @@ public class TrinhDoChinhTriDAOImpl extends HibernateUtils implements TrinhDoChi
 		// TODO Auto-generated method stub
 		
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Trinhdochinhtri> listTrinhDoChinhTri() {
 		return getSession().createCriteria(Trinhdochinhtri.class).list();
