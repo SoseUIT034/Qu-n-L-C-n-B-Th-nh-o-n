@@ -419,9 +419,9 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		Dacdienlichsubanthan d = new Dacdienlichsubanthan();
 		d.setCanbo(lylich.getCanboByMaCanBo() );
 		d.setMaDdls(id);
-		d.setNoidung1(lylich.getLsbt().getNoidung1());
-		d.setNoidung2(lylich.getLsbt().getNoidung2());
-		d.setNoiDung3(lylich.getLsbt().getNoiDung3());
+		d.setNoidung1(lylich.getDacdienlichsubanthan().getNoidung1());
+		d.setNoidung2(lylich.getDacdienlichsubanthan().getNoidung2());
+		d.setNoiDung3(lylich.getDacdienlichsubanthan().getNoiDung3());
 		dacDiemLichSuBanThanDAO.save(d);
 			 
 		return 0;
@@ -445,61 +445,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 				return thisid;
 			}
 	//-----------------
-	
-	private int _saveDate(Lylich lylich)
-	{
-		try {
-			lylich.setNgaySinh( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngaySinh()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			lylich.setNgayTuyenDung( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayTuyenDung()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			lylich.setNgayHuong( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayHuong()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			lylich.setNgayVaoDang( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayVaoDang()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			lylich.setNgayChinhThuc( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayChinhThuc()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			lylich.setNgayNhapNgu ( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayNhapNgu()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			lylich.setNgayXuatNgu( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayXuatNgu()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			lylich.setNgayCap( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayCap()) );
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		return 0;
-	}
-	
+	 
 	private int _saveLyLich(Lylich lylich)
 	{
 		int thisid=0; 
@@ -578,6 +524,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		private int _updateCanBoGiaDinhDoiTac(Lylich lylich)
 		{
 			ArrayList<CanboGiadinhDoitac> arr = lylich.getLqhdt();
+			ArrayList<CanboGiadinhDoitac> arrcurent = (ArrayList<CanboGiadinhDoitac>) canBoGiaDinhDoiTacDAO.listcanboGiadinhDoitac(); 
 			ArrayList<Integer> arrid= new ArrayList<Integer>();
 			if(arr!=null)
 			{
@@ -588,6 +535,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						CanboGiadinhDoitac temp = arr.get(i);
 						temp.setCanbo(lylich.getCanboByMaCanBo()); 
 						canBoGiaDinhDoiTacDAO.update(temp);
+						arrcurent.remove(canBoGiaDinhDoiTacDAO.getCanboGiadinhDoitacId(arr.get(i).getId()));
 					}
 					else
 					{
@@ -600,6 +548,12 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						canBoGiaDinhDoiTacDAO.save(temp);
 					}
 				}
+				
+			}
+			for(int i=0; i< arrcurent.size();i++)
+			{
+				if(arrcurent.get(i).getCanbo().getMaCanBo() == lylich.getMacanbo())
+					canBoGiaDinhDoiTacDAO.delete(arrcurent.get(i).getId());
 			}
 			return 0;
 		}
@@ -610,6 +564,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		private int _updateCanBoGiaDinhBanThan(Lylich lylich)
 		{
 			ArrayList<CanboGiadinhBanthan> arr = lylich.getLqhbt();
+			ArrayList<CanboGiadinhBanthan> arrcurent = (ArrayList<CanboGiadinhBanthan>) canBoGiaDinhBanThanDAO.listCanboGiadinhBanthan();
 			ArrayList<Integer> arrid= new ArrayList<Integer>();
 			if(arr!=null)
 			{
@@ -620,6 +575,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						CanboGiadinhBanthan temp = arr.get(i);
 						temp.setCanbo(lylich.getCanboByMaCanBo()); 
 						canBoGiaDinhBanThanDAO.update(temp);
+						arrcurent.remove(canBoGiaDinhBanThanDAO.getCanboGiadinhBanthanById(arr.get(i).getId()));
 					}
 					else
 					{
@@ -633,7 +589,13 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 					}
 					
 				}
+				
 			}
+			for(int i=0; i< arrcurent.size();i++)
+			{
+				if(arrcurent.get(i).getCanbo().getMaCanBo() == lylich.getMacanbo())
+					canBoGiaDinhBanThanDAO.delete(arrcurent.get(i).getId());
+			}	
 			return 0;
 		}
 		//------------
@@ -644,6 +606,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		{
 			ArrayList<Dienbienluong> arr = lylich.getLdbl();
 			ArrayList<Integer> arrid= new ArrayList<Integer>();
+			ArrayList<Dienbienluong> arrcurent = (ArrayList<Dienbienluong>) dienBienLuongDAO.listDienBienLuong();
 			if(arr!=null)
 			{
 				
@@ -654,6 +617,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						Dienbienluong temp = arr.get(i);
 						temp.setLylich(lylich);
 						dienBienLuongDAO.update(temp);
+						arrcurent.remove(dienBienLuongDAO.getDienbienluongById(arr.get(i).getId()));
 					}
 					else
 					{
@@ -667,6 +631,12 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 					}
 					
 				}
+				
+			}
+			for(int i=0; i< arrcurent.size();i++)
+			{
+				if(arrcurent.get(i).getLylich().getMacanbo() == lylich.getMacanbo())
+					dienBienLuongDAO.delete(arrcurent.get(i).getId());
 			}
 			return 0;
 		}
@@ -677,6 +647,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		{
 			ArrayList<Daotaochuyenmon> arr = lylich.getLdtcm();
 			ArrayList<Integer> arrid=  new ArrayList<Integer>();
+			ArrayList<Daotaochuyenmon> arrcurent = (ArrayList<Daotaochuyenmon>) daoTaoChuyenMonDAO.listDaoTaoChuyenMon();
 			if(arr!=null)
 			{
 				for(int i=0; i< arr.size(); i++)
@@ -686,6 +657,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						Daotaochuyenmon temp = arr.get(i);
 						temp.setCanbo(lylich.getCanboByMaCanBo());
 						daoTaoChuyenMonDAO.update(temp);
+						arrcurent.remove(daoTaoChuyenMonDAO.getDaoTaoChuyenMonById(arr.get(i).getMaDaoTao()));
 					}
 					else
 					{ 
@@ -698,6 +670,12 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						daoTaoChuyenMonDAO.save(temp);
 					}
 				}
+				
+			}
+			for(int i=0; i< arrcurent.size();i++)
+			{
+				if(arrcurent.get(i).getCanbo().getMaCanBo() == lylich.getMacanbo())
+					daoTaoChuyenMonDAO.delete(arrcurent.get(i).getMaDaoTao());
 			}
 			return 0;
 		}
@@ -707,9 +685,11 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		private int _updateLichSuCongTac(Lylich lylich)
 		{
 			ArrayList<Lichsucongtac> arr = lylich.getLsct();
+			ArrayList<Lichsucongtac> arrcurent = (ArrayList<Lichsucongtac>) lichSuCongTacDAO.listLichSuCongTac();
 			ArrayList<Integer> arrid= new ArrayList<Integer>();
 			if(arr!=null)
 			{
+				
 				for(int i=0; i< arr.size(); i++)
 				{ 
 					if(lichSuCongTacDAO.getLichSuCongTacById(arr.get(i).getMaLsct())!= null)
@@ -717,6 +697,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						Lichsucongtac temp = arr.get(i);
 						temp.setCanbo(lylich.getCanboByMaCanBo());
 						lichSuCongTacDAO.update(temp);
+						arrcurent.remove(lichSuCongTacDAO.getLichSuCongTacById(arr.get(i).getMaLsct()));
 					}
 					else
 					{ 
@@ -730,6 +711,12 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 						
 					}
 				}
+				
+			}
+			for(int i=0; i< arrcurent.size();i++)
+			{
+				if(arrcurent.get(i).getCanbo().getMaCanBo() == lylich.getMacanbo())
+					lichSuCongTacDAO.delete(arrcurent.get(i).getMaLsct());
 			}
 			return 0;
 		}
@@ -742,7 +729,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 			
 			if(dacDiemLichSuBanThanDAO.getDacDiemLichSuBanThanById(lylich.getMacanbo())!= null)
 			{
-				Dacdienlichsubanthan dd = lylich.getLsbt();
+				Dacdienlichsubanthan dd = lylich.getDacdienlichsubanthan();
 				dd.setCanbo(lylich.getCanboByMaCanBo());
 				dd.setMaDdls(dacDiemLichSuBanThanDAO.getDacDiemLichSuBanThanById(lylich.getMacanbo()).getMaDdls()); 
 				dacDiemLichSuBanThanDAO.update(dd);
@@ -758,61 +745,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		//--------------
 		
  
-		
-		private int _updateDate(Lylich lylich)
-		{
-			try {
-				lylich.setNgaySinh( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngaySinh()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				lylich.setNgayTuyenDung( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayTuyenDung()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				lylich.setNgayHuong( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayHuong()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				lylich.setNgayVaoDang( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayVaoDang()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				lylich.setNgayChinhThuc( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayChinhThuc()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				lylich.setNgayNhapNgu ( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayNhapNgu()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				lylich.setNgayXuatNgu( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayXuatNgu()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				lylich.setNgayCap( new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa").parse(lylich.getLngayCap()) );
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			 
-			return 0;
-		}
-		
+		 
 		
 		private String _updateLyLich(Lylich lylich)
 		{
@@ -898,16 +831,15 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		ArrayList<CanboGiadinhBanthan> listcanboGiadinhBanthans =  new ArrayList<CanboGiadinhBanthan>( lylich.getCanboByMaCanBo().getCanboGiadinhBanthans());
 		ArrayList<CanboGiadinhDoitac> listcanboGiadinhDoitacs =  new ArrayList<CanboGiadinhDoitac>( lylich.getCanboByMaCanBo().getCanboGiadinhDoitacs());
 		ArrayList<Dienbienluong> listdienbienluongs =  new ArrayList<Dienbienluong>( lylich.getDienbienluongs());
-		Dacdienlichsubanthan dacdienlichsubanthans;
+		Dacdienlichsubanthan dacdienlichsubanthans  = new Dacdienlichsubanthan();
 		if(new ArrayList<Dacdienlichsubanthan>(lylich.getCanboByMaCanBo().getDacdienlichsubanthans())!=null){
-		  dacdienlichsubanthans =    new ArrayList<Dacdienlichsubanthan>(lylich.getCanboByMaCanBo().getDacdienlichsubanthans()).get(0);}
-		dacdienlichsubanthans = new Dacdienlichsubanthan();
+		  dacdienlichsubanthans =    (new ArrayList<Dacdienlichsubanthan>(lylich.getCanboByMaCanBo().getDacdienlichsubanthans())).get(0);}
 		lylich.setLdtcm(listDaoTaoChuyenMons); 
 		lylich.setLsct(listLichsucongtacs); 
 		lylich.setLqhbt(listcanboGiadinhBanthans); 
 		lylich.setLqhdt(listcanboGiadinhDoitacs); 
 		lylich.setLdbl(listdienbienluongs); 
-		lylich.setLsbt(dacdienlichsubanthans); 
+		lylich.setDacdienlichsubanthan(dacdienlichsubanthans); 
 		
 		return lylich;
 	}

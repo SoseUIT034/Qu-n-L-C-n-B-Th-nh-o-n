@@ -37,7 +37,8 @@ public class DienBienLuongDAOImp extends HibernateUtils implements DienBienLuong
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		Dienbienluong dienbienluong = getDienbienluongById(id);
+		getSession().delete(dienbienluong);
 		
 	}
 	

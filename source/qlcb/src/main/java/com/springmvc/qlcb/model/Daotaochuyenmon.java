@@ -24,9 +24,9 @@ public class Daotaochuyenmon implements java.io.Serializable {
 	private int maDaoTao;
 	private Canbo canbo;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date tuNgay;
+	private String tuNgay;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date toiNgay;
+	private String toiNgay;
 	private String hinhThucDaoTao;
 	private String chuyenNganhDaoTao;
 	private String truong;
@@ -39,7 +39,7 @@ public class Daotaochuyenmon implements java.io.Serializable {
 		this.maDaoTao = maDaoTao;
 	}
 
-	public Daotaochuyenmon(int maDaoTao, Canbo canbo, Date tuNgay, Date toiNgay, String hinhThucDaoTao,
+	public Daotaochuyenmon(int maDaoTao, Canbo canbo, String tuNgay, String toiNgay, String hinhThucDaoTao,
 			String chuyenNganhDaoTao, String truong, String chungChiDatDuoc) {
 		this.maDaoTao = maDaoTao;
 		this.canbo = canbo;
@@ -71,24 +71,23 @@ public class Daotaochuyenmon implements java.io.Serializable {
 	public void setCanbo(Canbo canbo) {
 		this.canbo = canbo;
 	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "TuNgay", length = 10)
-	public Date getTuNgay() {
+ 
+	@Column(name = "TuNgay", length = 100)
+	public String getTuNgay() {
 		return this.tuNgay;
 	}
 
-	public void setTuNgay(Date tuNgay) {
+	public void setTuNgay(String tuNgay) {
 		this.tuNgay = tuNgay;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "ToiNgay", length = 10)
-	public Date getToiNgay() {
+	 
+	@Column(name = "ToiNgay", length = 100)
+	public String getToiNgay() {
 		return this.toiNgay;
 	}
 
-	public void setToiNgay(Date toiNgay) {
+	public void setToiNgay(String toiNgay) {
 		this.toiNgay = toiNgay;
 	}
 
