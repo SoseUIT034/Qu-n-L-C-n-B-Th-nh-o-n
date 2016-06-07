@@ -54,14 +54,14 @@
 			      <label>Cơ quan, đơn vị có thẩm quyền quản lý cán bộ công chức</label>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
-			      <form:input    path="noiquanly" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/>
+			      <form:input    path="noiQuanLy" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/>
 			      <form:errors path="noiquanly" cssclass="error"></form:errors>
 			    </div>
 			    <div class="col-xs-12 col-md-3">
 			      <label> Số hiệu cán bộ, công chức </label>
 			    </div>
 			    <div class="col-xs-12 col-md-2">
-			      <form:input    path="Sohieucongchuc" id="shcbtxt"   name="shcbtxt" class="form-control" type="text"/>
+			      <form:input    path="sohieucongchuc" id="shcbtxt"   name="shcbtxt" class="form-control" type="text"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -69,7 +69,7 @@
 			      <label>Cơ quan, đơn vị sử dụng cán bộ công chức </label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input    path="noisudung" id="cqdvsdtxt" name="cqdvsdtxt" type="text" class="form-control"/>
+			      <form:input    path="noiSuDung" id="cqdvsdtxt" name="cqdvsdtxt" type="text" class="form-control"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -113,69 +113,54 @@
 			          </div>
 			          <div class="col-xs-12 col-md-3">
 			            <form:select   path="gioiTinh" class="form-control" id="gioitinhsel" name="gioitinhsel">
-			              <form:option value="1">Nam</form:option>
-			              <form:option value="0">Nữ</form:option>
+			             	<c:if test="${Lylich.gioiTinh == true}"> 
+				           	   <form:option value="1"  selected="selected">Nam</form:option>
+				           	   <form:option value="0">Nữ</form:option>
+			           	  	</c:if>
+			           	  	<c:if test="${Lylich.gioiTinh == false}"> 
+			           	  	<form:option value="1" >Nam</form:option>
+				           	   <form:option value="0"  selected="selected">Nữ</form:option>
+			           	  	</c:if>
+			           	  	 
+			           	  	
+			               
 			            </form:select>
 			         
 			        </div>
 			        <div class="row">
 			          <p></p>
 			          <div class="col-xs-12 col-md-3">
-			            <label>4) Nơi sinh: Tỉnh</label>
+			            <label>4) Nơi sinh: </label>
 			          </div>
-			          <div class="col-xs-12 col-md-3">
-			            <form:select    path="noisinh_tinh" class="form-control tinhDiaChi" id="noisinhtinh" name="noisinhtinh">
-			              <form:option value="">Chọn tỉnh</form:option>
-			            </form:select>
+			          <div class="col-xs-12 col-md-9">
+			            <form:input    path="noiSinh"  class="datepicker form-control" type="date-time" id="sinhngaytxt" name="sinhngaytxt"/>
 			          </div>
-			          <div class="col-xs-12 col-md-1">
-			            <label>Huyện</label>
-			          </div>
-			          <div class="col-xs-12 col-md-2">
-			            <form:select   path="noisinh_huyen" class="form-control" id="noisinhhuyen" name="noisinhhuyen">
-			            </form:select>
-			          </div>
-			          <div class="col-xs-12 col-md-1">
-			            <label>Xã</label>
-			          </div>
-			          <div class="col-xs-12 col-md-2">
-			            <form:select   path="noisinh_xa" class="form-control" id="noisinhxa" name="noisinhhuyen">
-			            </form:select>
-			          </div>
+			            
 			        </div>
 			        <div class="row">
 			          <div class="col-xs-12 col-md-3">
-			            <label>5) Quê quán: Tỉnh</label>
+			            <label>5) Quê quán: </label>
 			          </div>
-			          <div class="col-xs-12 col-md-3">
-			            <form:select   path="quequan_tinh" class="form-control tinhDiaChi" id="quequantinh" name="quequantinh">
-			              <form:option value="">Chọn tỉnh</form:option>
-			            </form:select>
+			          <div class="col-xs-12 col-md-9">
+			            <form:input    path="queQuan"  class="datepicker form-control" type="date-time" id="sinhngaytxt" name="sinhngaytxt"/>
 			          </div>
-			          <div class="col-xs-12 col-md-1">
-			            <label>Huyện</label>
-			          </div>
-			          <div class="col-xs-12 col-md-2">
-			            <form:select   path="quequan_huyen"  class="form-control" id="quequanhuyen" name="quequanhuyen">
-			            </form:select>
-			          </div>
-			          <div class="col-xs-12 col-md-1">
-			            <label>Xã</label>
-			          </div>
-			          <div class="col-xs-12 col-md-2">
-			            <form:select   path="quequan_xa"  class="form-control" id="quequanxa" name="quequanxa">
-			            </form:select>
-			          </div>
+			           
 			        </div>
 			        <div class="row">
 			          <div class="col-xs-12 col-md-3">
 			            <label>6, Dân tôc: </label>
 			          </div>
 			          <div class="col-xs-12 col-md-3">
-			            <form:select   path="dantoc.maDanToc" class="form-control" id="dantocsel">
+			            <form:select   path="dantoc.maDanToc" class="form-control" id="dantocsel" value="">
 				             
 				           	  <c:forEach items="${listdantoc}" var="item">
-				           	  	<option value="${item.maDanToc}">${item.tenDanToc}</option>
+				           	  	<c:if test="${Lylich.dantoc.maDanToc == item.maDanToc}">
+				           	  	   <option value="${item.maDanToc}" selected="selected">${item.tenDanToc}</option>
+				           	  	</c:if>
+				           	  	<c:if test="${Lylich.dantoc.maDanToc != item.maDanToc}">
+				           	  	   <option value="${item.maDanToc}" >${item.tenDanToc}</option>
+				           	  	</c:if>
+				           	  	
 				           	  </c:forEach> 
 				           	 
 			            </form:select>
@@ -186,8 +171,14 @@
 			          <div class="col-xs-12 col-md-3">
 			            <form:select   path="tongiao.maTonGiao" class="form-control" id="tongiaosel" >
 				              
+				              
 					              <c:forEach items="${listtocgiao}" var="item">
-					           	  	<option value="${item.maTonGiao}">${item.tenTonGiao}</option>
+						              <c:if test="${Lylich.tongiao.maTonGiao == item.maTonGiao}">
+						              <option value="${item.maTonGiao}" selected="selected">${item.tenTonGiao}</option> 
+					           	  	 </c:if>
+					           	  	 <c:if test="${Lylich.tongiao.maTonGiao != item.maTonGiao}">
+					           	  	   <option value="${item.maTonGiao}">${item.tenTonGiao}</option>
+					           	  	 </c:if> 
 					           	  </c:forEach>
 				           	   
 			            </form:select>
@@ -231,7 +222,7 @@
 			      <label>Cơ quan tuyển dụng</label>
 			    </div>
 			    <div class="col-xs-12 col-md-4">
-			      <input   type="text" class="form-control" id="cqtdtxt" name="cqtdtxt"/>
+			      <form:input path="coQuanTuyenDung"  type="text" class="form-control" id="cqtdtxt" name="cqtdtxt"/>
 			    </div>
 			  </div>
 			  <div class="row">
@@ -371,7 +362,7 @@
 			       <form:select   path="trinhdochuyenmon.maTrinhDoChuyenMon" class="form-control" id="tongiaosel" >
 				              
 					              <c:forEach items="${listchuyenmon}" var="item">
-					           	  	<option value=${item.maTrinhDoChuyenMon}>${item.tenTrinhDoChuyenMon}</option>
+					           	  	<form:option value="${item.maTrinhDoChuyenMon}">${item.tenTrinhDoChuyenMon}</form:option>
 					           	  </c:forEach>
 				           	   
 		     	  </form:select>
@@ -398,7 +389,7 @@
 			    	<form:select   path="trinhdochinhtri.maTrinhDoChinhTri" class="form-control" id="tongiaosel" >
 				              
 					              <c:forEach items="${listchinhtri}" var="item">
-					           	  	<option value="${item.maTrinhDoChinhTri}">${item.tenTrinhDoChinhTri}</option>
+					           	  	<form:option value="${item.maTrinhDoChinhTri}">${item.tenTrinhDoChinhTri}</form:option>
 					           	  </c:forEach>
 				           	   
 		     	  </form:select>
@@ -432,7 +423,7 @@
 			    	<form:select   path="ngoaingu.maNgoaiNgu" class="form-control" id="tongiaosel" >
 				              
 					              <c:forEach items="${listngoaingu}" var="item">
-					           	  	<option value=${item.maNgoaiNgu}>${item.tenNgoaiNgu}</option>
+					           	  	<form:option value="${item.maNgoaiNgu}">${item.tenNgoaiNgu}</form:option>
 					           	  </c:forEach>
 				           	   
 			       </form:select>
@@ -446,7 +437,7 @@
 			        <form:option value="A">A</form:option>
 			        <form:option value="B">B</form:option>
 			        <form:option value="C">C</form:option>
-			        <form:option value="C">Khac</form:option>
+			        <form:option value="D">Khac</form:option>
 			      </form:select>
 			    </div>
 			  </div>
@@ -642,21 +633,21 @@
 			             			  	<input style="display: none"  class="form-control " type="text" id="ldtcm[${loop.index}].maDaoTao" name="ldtcm[${loop.index}].maDaoTao" value = "${item.maDaoTao}">
 			             			  </td>
 			             			  <td>
-			             			  	<select   class="form-control" id="ldtcm[${loop.index}].hinhThucDaoTao" name="ldtcm[${loop.index}].hinhThucDaoTao">
-				             			  <option value="Chính quy">Chính quy</option>
-				             			  <option value="Tại chức">Tại chức</option>
-				             			  <option value="Chuyên tu">Chuyên tu</option>
-				             			  <option value="Bồi dưỡng">Bồi dưỡng</option>
-			             			  	</select>
+			             			  	<form:select   class="form-control" id="ldtcm[${loop.index}].hinhThucDaoTao" path="ldtcm[${loop.index}].hinhThucDaoTao">
+				             			  <form:option value="Chính quy">Chính quy</form:option>
+				             			  <form:option value="Tại chức">Tại chức</form:option>
+				             			  <form:option value="Chuyên tu">Chuyên tu</form:option>
+				             			  <form:option value="Bồi dưỡng">Bồi dưỡng</form:option>
+			             			  	</form:select>
 			             			  </td>
 			             			  <td>
-				             			  <select   class="form-control" id="ldtcm[${loop.index}].chungChiDatDuoc" name="ldtcm[${loop.index}].chungChiDatDuoc">
-					             			  <option value="Tiến sĩ khoa học">Tiến sĩ khoa học</option>
-					             			  <option value="Tiến sĩ">Tiến sĩ</option>
-					             			  <option value="Thạc sĩ">Thạc sĩ</option>
-					             			  <option value="Cử nhân">Cử nhân</option>
-					             			  <option value="Kỹ sư">Kỹ sư</option>
-				             			  </select>
+				             			  <form:select   class="form-control" id="ldtcm[${loop.index}].chungChiDatDuoc" path="ldtcm[${loop.index}].chungChiDatDuoc">
+					             			  <form:option value="Tiến sĩ khoa học">Tiến sĩ khoa học</form:option>
+					             			  <form:option value="Tiến sĩ">Tiến sĩ</form:option>
+					             			  <form:option value="Thạc sĩ">Thạc sĩ</form:option>
+					             			  <form:option value="Cử nhân">Cử nhân</form:option>
+					             			  <form:option value="Kỹ sư">Kỹ sư</form:option>
+				             			  </form:select>
 			             			  </td>
 			             			  
 			             			  <td>
@@ -699,7 +690,7 @@
 				              			 <td>
 				              			 	<input   class="form-control datepicker hasDatepicker" type="date-time" id="lsct[${loop.index}].tuNgay" name="lsct[${loop.index}].tuNgay" value ="${item.tuNgay}">
 				              			 </td>
-				              			 <td>
+				              			 <td> 
 				              			 	<input   class="form-control datepicker hasDatepicker" type="date-time" id="lsct[${loop.index}].toiNgay" name="lsct[${loop.index}].toiNgay" value ="${item.toiNgay}">
 				              			 </td>
 				              			 <td>
@@ -733,13 +724,13 @@
 			    <label>Khai rõ: Bị bắt, bị tù (từ ngày thángn ăm nào đến ngày tháng năm nào, ở đâu), đã khai báo cho ai, những vấn đề gì? Bản thân có làm việc tỏng chế độ cũ(cơ quan, đơn vị nào, địa điểm, chức danh, chức vụ, thời gian làm việc...)</label>
 			  </div>
 			  <div class="row">
-			    <form:textarea   path="lsbt.noidung1"  class="form-control" id="bbbttxt" name="bbbttxt" value ="${lsbt.noidung1}"></form:textarea>
+			    <form:textarea   path="dacdienlichsubanthan.noidung1"  class="form-control" id="bbbttxt" name="bbbttxt" value ="${dacdienlichsubanthan.noidung1}"></form:textarea>
 			  </div>
 			  <div class="row">
 			    <label>Tham gia hoặc có quan hệ với các tổ chức chính trị, kinh tế, xã hội nào ở nước ngoài(làm gì, tổ chức nào, đặt trụ sở ở đâu....?)</label>
 			  </div>
 			  <div class="row">
-			    <form:textarea  path="lsbt.noidung2" class="form-control" id="tghqhtxt" name="tghqhtxt" value ="${lsbt.noidung1}"></form:textarea>
+			    <form:textarea  path="dacdienlichsubanthan.noidung2" class="form-control" id="tghqhtxt" name="tghqhtxt" value ="${dacdienlichsubanthan.noidung2}"></form:textarea>
 			  </div>
 			  <div class="row">
 			  <label>
@@ -747,7 +738,7 @@
 			  </label>
 			  </div>
 			  <div class="row">
-			    <form:textarea   path="lsbt.noiDung3" class="form-control" id="ctntxt" name="ctntxt" value ="${lsbt.noidung1}"></form:textarea>
+			    <form:textarea   path="dacdienlichsubanthan.noiDung3" class="form-control" id="ctntxt" name="ctntxt" value ="${dacdienlichsubanthan.noiDung3}"></form:textarea>
 			  </div>
 			  <div class="row">
 			    <div class="panel panel-default">
@@ -830,7 +821,7 @@
 	 											<input   type="text" class="form-control" id="lqhdt[${loop.index}].quanHe" name="lqhdt[${loop.index}].quanHe" value ="${item.quanHe}">
 	 										</td>
 	 										<td>
-	 											<input   type="text" class="form-control" id="lqhđt[${loop.index}].hoTen" name="lqhđt[${loop.index}].hoTen" value ="${item.hoTen}">
+	 											<input   type="text" class="form-control" id="lqhdt[${loop.index}].hoTen" name="lqhdt[${loop.index}].hoTen" value ="${item.hoTen}">
 	 										</td>
 	 										<td>
 	 											<input   class="form-control datepicker hasDatepicker" type="date-time" id="lqhdt[${loop.index}].ngaySinh" name="lqhdt[${loop.index}].ngaySinh" value ="${item.ngaySinh}">
@@ -839,15 +830,11 @@
 	 											<input   class="form-control" type="text" id="lqhdt[${loop.index}].ghiChu" name="lqhdt[${loop.index}].ghiChu" value ="${item.ghiChu}">
 	 										</td>
 	 										<td style="display: none;">
-	 											<input    class="form-control" type="text" id="lqhbt[${loop.index}].id" name="lqhbt[${loop.index}].id" value ="${item.id}">
+	 											<input    class="form-control" type="text" id="lqhdt[${loop.index}].id" name="lqhdt[${loop.index}].id" value ="${item.id}">
 	 										</td>
-	 										 <td>
-					             			  <a href="${pageContext.request.contextPath}/QuanheGiaDinhDoiTac/edit/${item.id}" data-modal>
-					             			  		<button class="btn btn-default" type="button" >Sua</button>
-					             			  </a> 
-					             			  </td>
+	 										  
 					             			  <td>
-	 											<button class="btn btn-default" type="button" onclick="deleteRowVBT(this, &quot;tableVBT&quot;)">
+	 											<button class="btn btn-default" type="button" onclick="deleteRowVBV(this, &quot;tableVBV&quot;)">
 	 												<span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span>
 	 											</button>
 	 										</td>
@@ -894,7 +881,7 @@
 	 									<input   class="form-control number" id="ldbl[${loop.index}].heSoLuong" name="ldbl[${loop.index}].heSoLuong" value ="${item.heSoLuong}">
 	 								</td>
 	 								<td style="display: none;">
-	 											<input   class="form-control" type="text" id="lqhbt[${loop.index}].id" name="lqhbt[${loop.index}].id" value ="${item.id}">
+	 											<input   class="form-control" type="text" id="ldbl[${loop.index}].id" name="ldbl[${loop.index}].id" value ="${item.id}">
 	 										</td>
 	 								 <td>
 	 									<button class="btn btn-default" type="button" onclick="deleteRowDBL(this, &quot;tableDBL&quot;)">
