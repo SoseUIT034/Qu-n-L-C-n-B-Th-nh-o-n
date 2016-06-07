@@ -58,7 +58,7 @@ public class CanBosController {
  
 	
 	@RequestMapping(value = { "/create"}, method = RequestMethod.GET)
-	public String Index(HttpSession session, HttpServletRequest request,Model model) {
+	public String Create(HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
 		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
@@ -79,12 +79,7 @@ public class CanBosController {
 		model.addAttribute("listchinhtri", tdct.listTrinhDoChinhTri());
 		model.addAttribute("listngoaingu", nn.listNgoaiNgu());
 		
-		/*model.addAttribute("listdantoc", null );
-		model.addAttribute("listtocgiao", null);
-		model.addAttribute("listchuyenmon", null );
-		model.addAttribute("listchinhtri", null);
-		model.addAttribute("listngoaingu", null);*/
-		// model
+		 
 		
 		model.addAttribute("Lylich", new Lylich());  
 		return "/lylich_canbo/themmoi_canbo";
@@ -93,7 +88,7 @@ public class CanBosController {
 	
 
 	@RequestMapping(value = { "/create"}, method = RequestMethod.POST)
-	public String create(@Valid @ModelAttribute(value = "Lylich")  Lylich  data ,BindingResult bindingResult,  Map<String, Object> model ) 
+	public String DoCreate(@Valid @ModelAttribute(value = "Lylich")  Lylich  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
  
 		     l.save(data);
@@ -125,11 +120,7 @@ public class CanBosController {
 		model.addAttribute("listngoaingu", nn.listNgoaiNgu());
 		
 		
-		/*model.addAttribute("listdantoc", null );
-		model.addAttribute("listtocgiao", null);
-		model.addAttribute("listchuyenmon", null );
-		model.addAttribute("listchinhtri", null);
-		model.addAttribute("listngoaingu", null);*/
+	 
 		// model
 		Lylich lylich = new Lylich();
 		
@@ -164,11 +155,7 @@ public class CanBosController {
 		model.addAttribute("listngoaingu", nn.listNgoaiNgu());
 		
 		
-		/*model.addAttribute("listdantoc", null );
-		model.addAttribute("listtocgiao", null);
-		model.addAttribute("listchuyenmon", null );
-		model.addAttribute("listchinhtri", null);
-		model.addAttribute("listngoaingu", null);*/
+		 
 		// model
 		Lylich lylich = new Lylich();
 		
@@ -184,7 +171,7 @@ public class CanBosController {
 	public String Edit(@Valid @ModelAttribute(value = "Lylich")  Lylich  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
  
-		     l.save(data);
+		     l.update(data);
 		 
 			return "/layout/masterpage"; 
 	}

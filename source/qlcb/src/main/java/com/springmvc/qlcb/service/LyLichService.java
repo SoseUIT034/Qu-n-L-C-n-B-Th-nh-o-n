@@ -7,7 +7,7 @@ import com.springmvc.qlcb.model.Lylich;
 public interface LyLichService {
 	public boolean save(Lylich lylich);
 	public Lylich getLyLichById(int id);
-	public void update(Lylich lylich);
+	public boolean update(Lylich lylich);
 	public void delete(int id);
 	public List<Lylich> listLyLich();
 }

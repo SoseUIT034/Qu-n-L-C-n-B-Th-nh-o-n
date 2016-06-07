@@ -29,7 +29,7 @@ public class CanboBanDAOImpl extends HibernateUtils implements CanboBanDAO {
 	public CanboBan getCanboBan(int id) {
 		return getSession().get(CanboBan.class, id);
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<CanboBan> listCanboBan() {
 		return getSession().createCriteria(CanboBan.class).list();

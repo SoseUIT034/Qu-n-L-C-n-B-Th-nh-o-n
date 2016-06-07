@@ -190,7 +190,7 @@ $(function() {
 		});
 	$('#themDTBD').click(function() {
 	
-		$('#tbodyDTBD').append('<tr><td><input type="text" class="form-control" id="tttxt1" name="tttxt1"/></td><td><input type="text" class="form-control" id="cndtbdtxt1" name="cndtbdtxt1"/></td><td><input class="form-control datepicker" type="date-time" id="dtbdttntxt1" name="dtbdttntxt"/></td><td><input class="form-control datepicker" type="date-time" id="dtbddtntxt1" name="dtbddtntxt1"/></td><td><select class="form-control" id="htdtsel1" name="htdtsel1"><option value="Chính quy">Chính quy</option><option value="Tại chức">Tại chức</option><option value="Chuyên tu">Chuyên tu</option><option value="Bồi dưỡng">Bồi dưỡng</option></select></td><td><select class="form-control" id="vbcctdsel1" name="vbcctdsel1"><option value="Tiến sĩ khoa học">Tiến sĩ khoa học</option><option value="Tiến sĩ">Tiến sĩ</option><option value="Thạc sĩ">Thạc sĩ</option><option value="Cử nhân">Cử nhân</option><option value="Kỹ sư">Kỹ sư</option></select></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowDTBD(this, "tableDTBD")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');
+		$('#tbodyDTBD').append('<tr><td><input type="text" class="form-control" id="tttxt1" name="tttxt1"/></td><td><input type="text" class="form-control" id="cndtbdtxt1" name="cndtbdtxt1"/></td><td><input class="form-control datepicker" type="date-time" id="dtbdttntxt1" name="dtbdttntxt"/></td><td><input class="form-control datepicker" type="date-time" id="dtbddtntxt1" name="dtbddtntxt1"/></td><td style="display:none"><input style="display:none" value="-111" class="form-control" type="text" id="id" name="id"/></td><td><select class="form-control" id="htdtsel1" name="htdtsel1"><option value="Chính quy">Chính quy</option><option value="Tại chức">Tại chức</option><option value="Chuyên tu">Chuyên tu</option><option value="Bồi dưỡng">Bồi dưỡng</option></select></td><td><select class="form-control" id="vbcctdsel1" name="vbcctdsel1"><option value="Tiến sĩ khoa học">Tiến sĩ khoa học</option><option value="Tiến sĩ">Tiến sĩ</option><option value="Thạc sĩ">Thạc sĩ</option><option value="Cử nhân">Cử nhân</option><option value="Kỹ sư">Kỹ sư</option></select></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowDTBD(this, "tableDTBD")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');
 		var i = 0;
 		$('#tbodyDTBD tr').each(function() {
 			var $tr = $(this);
@@ -203,6 +203,8 @@ $(function() {
 			$tr.find('input').get(2).setAttribute('name', 'ldtcm['+i+'].tuNgay');
 			$tr.find('input').get(3).setAttribute('id', 'ldtcm['+i+'].toiNgay');
 			$tr.find('input').get(3).setAttribute('name', 'ldtcm['+i+'].toiNgay');
+			$tr.find('input').get(4).setAttribute('id', 'ldtcm['+i+'].maDaoTao');		//hide
+			$tr.find('input').get(4).setAttribute('name', 'ldtcm['+i+'].maDaoTao');		//hide
 			// select
 			$tr.find('select').get(0).setAttribute('id', 'ldtcm['+i+'].hinhThucDaoTao');
 			$tr.find('select').get(0).setAttribute('name', 'ldtcm['+i+'].hinhThucDaoTao');
@@ -213,7 +215,7 @@ $(function() {
 		$('.datepicker').datepicker(); 
 	});
 	$('#themQTCT').click(function() {
-		$('#tbodyQTCT').append('<tr><td><input class="form-control datepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control datepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control " type="text" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowQTCT(this, "tableQTCT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
+		$('#tbodyQTCT').append('<tr><td><input class="form-control datepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control datepicker" type="date-time" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td><input class="form-control " type="text" id="ttqtctttntxt1" name="ttqtctttntxt1"/></td><td style="display:none"><input style="display:none" value="-111" class="form-control " type="text" id="id" name="id"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowQTCT(this, "tableQTCT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 		var i = 0;
 		$('#tbodyQTCT tr').each(function() {
 			var $tr = $(this);
@@ -224,13 +226,15 @@ $(function() {
 			$tr.find('input').get(1).setAttribute('name', 'lsct['+i+'].toiNgay');
 			$tr.find('input').get(2).setAttribute('id', 'lsct['+i+'].chucVu');
 			$tr.find('input').get(2).setAttribute('name', 'lsct['+i+'].chucVu');
+			$tr.find('input').get(3).setAttribute('id', 'lsct['+i+'].maLsct');		//hide
+			$tr.find('input').get(3).setAttribute('name', 'lsct['+i+'].].maLsct');	//hide
 			i++;
         });
 		$('.datepicker').datepicker();	
 	});
 	
 	$('#themVBT').click(function(){
-		$('#tbodyVBT').append('<tr><td><input type="text" class="form-control" id="mqhbttxt1" name="mqhbttxt1"/></td><td><input type="text" class="form-control" id="httbtxt1" name="htbttxt1"/></td><td><input class="form-control datepicker" type="date-time" id="nsbttxt1" name="nstxt1"/></td><td><input class="form-control" type="text" id="qqnncdbttxt1" name="qqnncdbttxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBT(this, "tableVBT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
+		$('#tbodyVBT').append('<tr><td><input type="text" class="form-control" id="mqhbttxt1" name="mqhbttxt1"/></td><td><input type="text" class="form-control" id="httbtxt1" name="htbttxt1"/></td><td><input class="form-control datepicker" type="date-time" id="nsbttxt1" name="nstxt1"/></td><td><input class="form-control" type="text" id="qqnncdbttxt1" name="qqnncdbttxt1"/></td><td style="display:none"><input style="display:none"  value="-111" class="form-control" type="text" id="id" name="id"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBT(this, "tableVBT")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 		var i = 0;
 		$('#tbodyVBT tr').each(function() {
 			var $tr = $(this);
@@ -242,13 +246,15 @@ $(function() {
 			$tr.find('input').get(2).setAttribute('id', 'lqhbt['+i+'].ngaySinh');
 			$tr.find('input').get(2).setAttribute('name', 'lqhbt['+i+'].ngaySinh');
 			$tr.find('input').get(3).setAttribute('id', 'lqhbt['+i+'].ghiChu');
-			$tr.find('input').get(3).setAttribute('name', 'lqhbt['+i+'].ghiChu');			
+			$tr.find('input').get(3).setAttribute('name', 'lqhbt['+i+'].ghiChu');		
+			$tr.find('input').get(4).setAttribute('id', 'lqhbt['+i+'].id');			//hide
+			$tr.find('input').get(4).setAttribute('name', 'lqhbt['+i+'].id');		//hide	
 			i++;
         });
 		$('.datepicker').datepicker();	
 	});
 	$('#themVBV').click(function(){
-		$('#tbodyVBV').append('<tr><td><input type="text" class="form-control" id="mqhbvtxt1" name="mqhbvtxt1" /></td><td><input type="text" class="form-control" id="htbvtxt1" name="htbvtxt1"/></td><td><input class="form-control datepicker" type="date-time" id="nsbvtxt" name="nsbvtxt1"/></td><td><input class="form-control" type="text" id="qqnncdbvtxt1" name="qqnncdbvtxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBV(this, "tableVBV")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
+		$('#tbodyVBV').append('<tr><td><input type="text" class="form-control" id="mqhbvtxt1" name="mqhbvtxt1" /></td><td><input type="text" class="form-control" id="htbvtxt1" name="htbvtxt1"/></td><td><input class="form-control datepicker" type="date-time" id="nsbvtxt" name="nsbvtxt1"/></td><td><input class="form-control" type="text" id="qqnncdbvtxt1" name="qqnncdbvtxt1"/></td><td style="display:none"><input style="display:none" value="-111" class="form-control" type="text" id="id" name="id"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowVBV(this, "tableVBV")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');	
 		var i = 0;
 		$('#tbodyVBV tr').each(function() {
 			var $tr = $(this);
@@ -260,13 +266,15 @@ $(function() {
 			$tr.find('input').get(2).setAttribute('id', 'lqhdt['+i+'].ngaySinh');
 			$tr.find('input').get(2).setAttribute('name', 'lqhdt['+i+'].ngaySinh');
 			$tr.find('input').get(3).setAttribute('id', 'lqhdt['+i+'].ghiChu');
-			$tr.find('input').get(3).setAttribute('name', 'lqhdt['+i+'].ghiChu');			
+			$tr.find('input').get(3).setAttribute('name', 'lqhdt['+i+'].ghiChu');	
+			$tr.find('input').get(4).setAttribute('id', 'lqhdt['+i+'].id');			//hide
+			$tr.find('input').get(4).setAttribute('name', 'lqhdt['+i+'].id');		//hide	
 			i++;
         });
 		$('.datepicker').datepicker();
 	});
 	$('#themDBL').click(function() {
-		$('#tbodyDBL').append('<tr><td><input class="form-control datepicker-month" id="tndblcbtxt1" name="tndblcbtxt1"/></td><td><input class="form-control number" id="mnbdbltxt1" name="mbdbltxt1"/></td><td><input class="form-control number" id="hsldbltxt1" name="hsldbltxt1"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowDBL(this, "tableDBL")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');
+		$('#tbodyDBL').append('<tr><td><input class="form-control datepicker-month" id="tndblcbtxt1" name="tndblcbtxt1"/></td><td><input class="form-control number" id="mnbdbltxt1" name="mbdbltxt1"/></td><td><input class="form-control number" id="hsldbltxt1" name="hsldbltxt1"/></td><td style="display:none"><input style="display:none" value="-111" class="form-control" type="text" id="id" name="id"/></td><td><button class="btn btn-default" type="button" onClick=\'deleteRowDBL(this, "tableDBL")\'><span class="glyphicon glyphicon-trash" aria-hidden="true"> Xóa</span></button></td>');
 		var i = 0;
 		$('#tbodyDBL tr').each(function() {
 			var $tr = $(this);
@@ -276,7 +284,9 @@ $(function() {
 			$tr.find('input').get(1).setAttribute('id', 'ldbl['+i+'].lmangach_bac');
 			$tr.find('input').get(1).setAttribute('name', 'ldbl['+i+'].lmangach_bac');
 			$tr.find('input').get(2).setAttribute('id', 'ldbl['+i+'].heSoLuong');
-			$tr.find('input').get(2).setAttribute('name', 'ldbl['+i+'].heSoLuong');		
+			$tr.find('input').get(2).setAttribute('name', 'ldbl['+i+'].heSoLuong');	
+			$tr.find('input').get(3).setAttribute('id', 'ldbl['+i+'].id');
+			$tr.find('input').get(3).setAttribute('name', 'ldbl['+i+'].id');	
 			i++;
         });
 		$('.datepicker-month').datepicker();

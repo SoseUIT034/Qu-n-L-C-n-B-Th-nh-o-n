@@ -27,9 +27,11 @@ public class DienBienLuongDAOImp extends HibernateUtils implements DienBienLuong
 		getSession().merge( dienBienLuong);
 		
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dienbienluong> listDienBienLuong() {
+		
+		 
 		return getSession().createCriteria(Dienbienluong.class).list();
 	}
 
