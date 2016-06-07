@@ -42,42 +42,43 @@ public class Lylich implements java.io.Serializable {
 	private Trinhdochuyenmon trinhdochuyenmon;
 	private String tenGoiKhac;
 	private String tenCanBo;
-	private Date ngaySinh;
+	private String ngaySinh;
 	private Boolean gioiTinh;
 	private String noiSinh;
 	private String queQuan;
 	private String hoKhauThuongTru;
 	private String noiOhienNay;
 	private String ngheNgiepKhiDuocTuyenDung;
-	private Date ngayTuyenDung;
+	private String ngayTuyenDung;
 	private String chucVuBenNgoaiHienTai;
 	private String congViecChinhDuocGiao;
 	private String ngachCongChuc;
 	private Float maNgach;
 	private Float bacLuong;
 	private Float heSo;
-	private Date ngayHuong;
+	private String ngayHuong;
 	private Double phuCapChucVu;
 	private Double phuCapKhac;
 	private String trinhDoPhoThong;
 	private String quanLyNhaNuoc;
 	private String tinHoc;
-	private Date ngayVaoDang;
-	private Date ngayChinhThuc;
+	private String ngayVaoDang;
+	private String ngayChinhThuc;
 	private String ngayThamGiaToChucChinhTri;
-	private Date ngayNhapNgu;
-	private Date ngayXuatNgu;
+	private String ngayNhapNgu;
+	private String ngayXuatNgu;
 	private String quanHamCaoNhat;
 	private String danhHieuPhongTangCaoNhat;
 	private String soTruongCongTac;
 	private String tinhTrangSucKhoe;
+	private String coQuanTuyenDung; 
 	private Float chieuCao;
 	private Float canNang;
 	private String nhomMau;
 	private String laThuongBinhHang;
 	private String laConGiaDinhChinhSach;
 	private String soCmnd;
-	private Date ngayCap;
+	private String ngayCap;
 	private String soBhxh;
 	private String nhanXetCapTren;
 	private Boolean daXacNhan;
@@ -86,6 +87,9 @@ public class Lylich implements java.io.Serializable {
 	private String soTruong;
 	private String khenThuongCaoNhat;
 	private String kyLuatCaoNhat;
+	private String noiSuDung;
+	private String noiQuanLy;
+	private Dacdienlichsubanthan dacdienlichsubanthan;
 	private Set<Dienbienluong> dienbienluongs = new HashSet<Dienbienluong>(0);
  
 	//------------------------------------------ t? d?nh nghia, kh�ng mapping
@@ -110,13 +114,10 @@ public class Lylich implements java.io.Serializable {
 	 @Transient  
 	 private String quequan_huyen;
 	 @Transient  
-	 private String quequan_xa;
-	 @Transient  
-	 private Dacdienlichsubanthan lsbt;
+	 private String quequan_xa; 
 	 @Transient  
 	 private String noiquanly;
-	 @Transient  
-	 private String noisudung;
+	 
 	 @Transient  
 	 private String lngaySinh ;
 	 @Transient  
@@ -180,21 +181,14 @@ public class Lylich implements java.io.Serializable {
 	public void setNoiquanly(String noiquanly) {
 		this.noiquanly = noiquanly;
 	}
+	 
 	 @Transient
-	public String getNoisudung() {
-		return noisudung;
+	public Dacdienlichsubanthan getDacdienlichsubanthan() {
+		return dacdienlichsubanthan;
 	}
 	 @Transient
-	public void setNoisudung(String noisudung) {
-		this.noisudung = noisudung;
-	}
-	 @Transient
-	public Dacdienlichsubanthan getLsbt() {
-		return lsbt;
-	}
-	 @Transient
-	public void setLsbt(Dacdienlichsubanthan lsbt) {
-		this.lsbt = lsbt;
+	public void setDacdienlichsubanthan(Dacdienlichsubanthan lsbt) {
+		this.dacdienlichsubanthan = lsbt;
 	}
 	 @Transient
 	public ArrayList<Lichsucongtac> getLsct() {
@@ -355,14 +349,14 @@ public class Lylich implements java.io.Serializable {
 
 	public Lylich(Canbo canboByNguoixacnhan, Canbo canboByMaCanBo, Dantoc dantoc, Ngoaingu ngoaingu, Tongiao tongiao,
 			Trinhdochinhtri trinhdochinhtri, Trinhdochuyenmon trinhdochuyenmon, String tenGoiKhac, String tenCanBo,
-			Date ngaySinh, Boolean gioiTinh, String noiSinh, String queQuan, String hoKhauThuongTru, String noiOhienNay,
-			String ngheNgiepKhiDuocTuyenDung, Date ngayTuyenDung, String chucVuBenNgoaiHienTai,
+			String ngaySinh, Boolean gioiTinh, String noiSinh, String queQuan, String hoKhauThuongTru, String noiOhienNay,
+			String ngheNgiepKhiDuocTuyenDung, String ngayTuyenDung, String chucVuBenNgoaiHienTai,
 			String congViecChinhDuocGiao, String ngachCongChuc, Float maNgach, Float bacLuong, Float heSo,
-			Date ngayHuong, Double phuCapChucVu, Double phuCapKhac, String trinhDoPhoThong, String quanLyNhaNuoc,
-			String tinHoc, Date ngayVaoDang, Date ngayChinhThuc, String ngayThamGiaToChucChinhTri, Date ngayNhapNgu,
-			Date ngayXuatNgu, String quanHamCaoNhat, String danhHieuPhongTangCaoNhat, String soTruongCongTac,
+			String ngayHuong, Double phuCapChucVu, Double phuCapKhac, String trinhDoPhoThong, String quanLyNhaNuoc,
+			String tinHoc, String ngayVaoDang, String ngayChinhThuc, String ngayThamGiaToChucChinhTri, String ngayNhapNgu,
+			String ngayXuatNgu, String quanHamCaoNhat, String danhHieuPhongTangCaoNhat, String soTruongCongTac,
 			String tinhTrangSucKhoe, Float chieuCao, Float canNang, String nhomMau, String laThuongBinhHang,
-			String laConGiaDinhChinhSach, String soCmnd, Date ngayCap, String soBhxh, String nhanXetCapTren,
+			String laConGiaDinhChinhSach, String soCmnd, String ngayCap, String soBhxh, String nhanXetCapTren,
 			Boolean daXacNhan, String hinhanh, String sohieucongchuc, String soTruong, String khenThuongCaoNhat,
 			String kyLuatCaoNhat, Set<Dienbienluong> dienbienluongs) {
 		this.canboByNguoixacnhan = canboByNguoixacnhan;
@@ -522,13 +516,13 @@ public class Lylich implements java.io.Serializable {
 		this.tenCanBo = tenCanBo;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgaySinh", length = 10)
-	public Date getNgaySinh() {
+ 
+	@Column(name = "NgaySinh", length = 100)
+	public String getNgaySinh() {
 		return this.ngaySinh;
 	}
 
-	public void setNgaySinh(Date ngaySinh) {
+	public void setNgaySinh(String ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
 
@@ -585,14 +579,13 @@ public class Lylich implements java.io.Serializable {
 	public void setNgheNgiepKhiDuocTuyenDung(String ngheNgiepKhiDuocTuyenDung) {
 		this.ngheNgiepKhiDuocTuyenDung = ngheNgiepKhiDuocTuyenDung;
 	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayTuyenDung", length = 10)
-	public Date getNgayTuyenDung() {
+ 
+	@Column(name = "NgayTuyenDung", length = 100)
+	public String getNgayTuyenDung() {
 		return this.ngayTuyenDung;
 	}
 
-	public void setNgayTuyenDung(Date ngayTuyenDung) {
+	public void setNgayTuyenDung(String ngayTuyenDung) {
 		this.ngayTuyenDung = ngayTuyenDung;
 	}
 
@@ -650,13 +643,13 @@ public class Lylich implements java.io.Serializable {
 		this.heSo = heSo;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayHuong", length = 10)
-	public Date getNgayHuong() {
+ 
+	@Column(name = "NgayHuong", length = 100)
+	public String getNgayHuong() {
 		return this.ngayHuong;
 	}
 
-	public void setNgayHuong(Date ngayHuong) {
+	public void setNgayHuong(String ngayHuong) {
 		this.ngayHuong = ngayHuong;
 	}
 
@@ -705,23 +698,23 @@ public class Lylich implements java.io.Serializable {
 		this.tinHoc = tinHoc;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayVaoDang", length = 10)
-	public Date getNgayVaoDang() {
+ 
+	@Column(name = "NgayVaoDang", length = 100)
+	public String getNgayVaoDang() {
 		return this.ngayVaoDang;
 	}
 
-	public void setNgayVaoDang(Date ngayVaoDang) {
+	public void setNgayVaoDang(String ngayVaoDang) {
 		this.ngayVaoDang = ngayVaoDang;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayChinhThuc", length = 10)
-	public Date getNgayChinhThuc() {
+ 
+	@Column(name = "NgayChinhThuc", length = 100)
+	public String getNgayChinhThuc() {
 		return this.ngayChinhThuc;
 	}
 
-	public void setNgayChinhThuc(Date ngayChinhThuc) {
+	public void setNgayChinhThuc(String ngayChinhThuc) {
 		this.ngayChinhThuc = ngayChinhThuc;
 	}
 
@@ -734,23 +727,23 @@ public class Lylich implements java.io.Serializable {
 		this.ngayThamGiaToChucChinhTri = ngayThamGiaToChucChinhTri;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayNhapNgu", length = 10)
-	public Date getNgayNhapNgu() {
+ 
+	@Column(name = "NgayNhapNgu", length = 100)
+	public String getNgayNhapNgu() {
 		return this.ngayNhapNgu;
 	}
 
-	public void setNgayNhapNgu(Date ngayNhapNgu) {
+	public void setNgayNhapNgu(String ngayNhapNgu) {
 		this.ngayNhapNgu = ngayNhapNgu;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayXuatNgu", length = 10)
-	public Date getNgayXuatNgu() {
+	 
+	@Column(name = "NgayXuatNgu", length = 100)
+	public String getNgayXuatNgu() {
 		return this.ngayXuatNgu;
 	}
 
-	public void setNgayXuatNgu(Date ngayXuatNgu) {
+	public void setNgayXuatNgu(String ngayXuatNgu) {
 		this.ngayXuatNgu = ngayXuatNgu;
 	}
 
@@ -807,6 +800,22 @@ public class Lylich implements java.io.Serializable {
 	public void setCanNang(Float canNang) {
 		this.canNang = canNang;
 	}
+	@Column(name = "NoiSuDung", precision = 12, scale = 0)
+	public String getNoiSuDung() {
+		return this.noiSuDung;
+	}
+
+	public void setNoiSuDung(String canNang) {
+		this.noiSuDung = canNang;
+	}
+	@Column(name = "NoiQuanLy", precision = 12, scale = 0)
+	public String getNoiQuanLy() {
+		return this.noiQuanLy;
+	}
+
+	public void setNoiQuanLy(String canNang) {
+		this.noiQuanLy = canNang;
+	}
 
 	@Column(name = "NhomMau", length = 200)
 	public String getNhomMau() {
@@ -844,13 +853,13 @@ public class Lylich implements java.io.Serializable {
 		this.soCmnd = soCmnd;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayCap", length = 10)
-	public Date getNgayCap() {
+ 
+	@Column(name = "NgayCap", length = 100)
+	public String getNgayCap() {
 		return this.ngayCap;
 	}
 
-	public void setNgayCap(Date ngayCap) {
+	public void setNgayCap(String ngayCap) {
 		this.ngayCap = ngayCap;
 	}
 
@@ -911,6 +920,13 @@ public class Lylich implements java.io.Serializable {
 	@Column(name = "KhenThuongCaoNhat", length = 555)
 	public String getKhenThuongCaoNhat() {
 		return this.khenThuongCaoNhat;
+	}
+	@Column(name = "CoQuanTuyenDung", length = 45)
+	public String getCoQuanTuyenDung() {
+		return coQuanTuyenDung;
+	}
+	public void setCoQuanTuyenDung(String coQuanTuyenDung) {
+		this.coQuanTuyenDung = coQuanTuyenDung;
 	}
 
 	public void setKhenThuongCaoNhat(String khenThuongCaoNhat) {

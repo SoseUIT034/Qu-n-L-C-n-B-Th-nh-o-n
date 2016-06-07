@@ -18,7 +18,8 @@ public class CanBoGiaDinhDoiTacDAOImp extends HibernateUtils implements CanBoGia
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		CanboGiadinhDoitac dienbienluong = getCanboGiadinhDoitacId(id);
+		getSession().delete(dienbienluong);
 		
 	} 
 	

@@ -24,9 +24,9 @@ public class Lichsucongtac implements java.io.Serializable {
 	private int maLsct;
 	private Canbo canbo;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date tuNgay;
+	private String tuNgay;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date toiNgay;
+	private String toiNgay;
 	private String chucVu;
 
 	public Lichsucongtac() {
@@ -37,7 +37,7 @@ public class Lichsucongtac implements java.io.Serializable {
 		this.canbo = canbo;
 	}
 
-	public Lichsucongtac(int maLsct, Canbo canbo, Date tuNgay, Date toiNgay, String chucVu) {
+	public Lichsucongtac(int maLsct, Canbo canbo, String tuNgay, String toiNgay, String chucVu) {
 		this.maLsct = maLsct;
 		this.canbo = canbo;
 		this.tuNgay = tuNgay;
@@ -66,23 +66,23 @@ public class Lichsucongtac implements java.io.Serializable {
 		this.canbo = canbo;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "TuNgay", length = 10)
-	public Date getTuNgay() {
+ 
+	@Column(name = "TuNgay", length = 100)
+	public String getTuNgay() {
 		return this.tuNgay;
 	}
 
-	public void setTuNgay(Date tuNgay) {
+	public void setTuNgay(String tuNgay) {
 		this.tuNgay = tuNgay;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "ToiNgay", length = 10)
-	public Date getToiNgay() {
+ 
+	@Column(name = "ToiNgay", length = 100)
+	public String getToiNgay() {
 		return this.toiNgay;
 	}
 
-	public void setToiNgay(Date toiNgay) {
+	public void setToiNgay(String toiNgay) {
 		this.toiNgay = toiNgay;
 	}
 

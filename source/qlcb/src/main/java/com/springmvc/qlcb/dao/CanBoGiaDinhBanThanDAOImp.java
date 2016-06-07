@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.springmvc.qlcb.model.Canbo;
 import com.springmvc.qlcb.model.CanboGiadinhBanthan;
+import com.springmvc.qlcb.model.CanboGiadinhDoitac;
 import com.springmvc.qlcb.model.Daotaochuyenmon;
 import com.springmvc.qlcb.model.Dienbienluong;
 
@@ -17,7 +18,8 @@ public class CanBoGiaDinhBanThanDAOImp extends HibernateUtils implements CanBoGi
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		CanboGiadinhBanthan dienbienluong = getCanboGiadinhBanthanById(id);
+		getSession().delete(dienbienluong);
 		
 	}
  

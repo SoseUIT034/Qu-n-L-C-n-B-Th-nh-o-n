@@ -22,6 +22,7 @@ function()
 };// JavaScript Document
 
 $(document).ready(function() {
+	$('.datepicker').datepicker();
 	$.get('Provinces.xml', function(d) {
 		$(d).find('Item[type="province"]').each(function() {
             var $item = $(this);
@@ -308,6 +309,8 @@ function deleteRowDTBD(r, id) {
 			$tr.find('input').get(2).setAttribute('name', 'ldtcm['+i+'].tuNgay');
 			$tr.find('input').get(3).setAttribute('id', 'ldtcm['+i+'].toiNgay');
 			$tr.find('input').get(3).setAttribute('name', 'ldtcm['+i+'].toiNgay');
+			$tr.find('input').get(4).setAttribute('id', 'ldtcm['+i+'].maDaoTao');		//hide
+			$tr.find('input').get(4).setAttribute('name', 'ldtcm['+i+'].maDaoTao');		//hide
 			// select
 			$tr.find('select').get(0).setAttribute('id', 'ldtcm['+i+'].hinhThucDaoTao');
 			$tr.find('select').get(0).setAttribute('name', 'ldtcm['+i+'].hinhThucDaoTao');
@@ -330,6 +333,8 @@ function deleteRowQTCT(r, id) {
 			$tr.find('input').get(1).setAttribute('name', 'lsct['+i+'].toiNgay');
 			$tr.find('input').get(2).setAttribute('id', 'lsct['+i+'].chucVu');
 			$tr.find('input').get(2).setAttribute('name', 'lsct['+i+'].chucVu');
+			$tr.find('input').get(3).setAttribute('id', 'lsct['+i+'].maLsct');		//hide
+			$tr.find('input').get(3).setAttribute('name', 'lsct['+i+'].].maLsct');	//hide
 			i++;
         });
 		$('.datepicker').datepicker();	
@@ -348,7 +353,9 @@ function deleteRowVBT(r, id) {
 			$tr.find('input').get(2).setAttribute('id', 'lqhbt['+i+'].ngaySinh');
 			$tr.find('input').get(2).setAttribute('name', 'lqhbt['+i+'].ngaySinh');
 			$tr.find('input').get(3).setAttribute('id', 'lqhbt['+i+'].ghiChu');
-			$tr.find('input').get(3).setAttribute('name', 'lqhbt['+i+'].ghiChu');			
+			$tr.find('input').get(3).setAttribute('name', 'lqhbt['+i+'].ghiChu');		
+			$tr.find('input').get(4).setAttribute('id', 'lqhbt['+i+'].id');			//hide
+			$tr.find('input').get(4).setAttribute('name', 'lqhbt['+i+'].id');		//hide	
 			i++;
         });
 		$('.datepicker').datepicker();
@@ -367,7 +374,9 @@ function deleteRowVBV(r, id) {
 			$tr.find('input').get(2).setAttribute('id', 'lqhdt['+i+'].ngaySinh');
 			$tr.find('input').get(2).setAttribute('name', 'lqhdt['+i+'].ngaySinh');
 			$tr.find('input').get(3).setAttribute('id', 'lqhdt['+i+'].ghiChu');
-			$tr.find('input').get(3).setAttribute('name', 'lqhdt['+i+'].ghiChu');			
+			$tr.find('input').get(3).setAttribute('name', 'lqhdt['+i+'].ghiChu');	
+			$tr.find('input').get(4).setAttribute('id', 'lqhdt['+i+'].id');			//hide
+			$tr.find('input').get(4).setAttribute('name', 'lqhdt['+i+'].id');		//hide	
 			i++;
         });
 		$('.datepicker').datepicker();
@@ -384,7 +393,9 @@ function deleteRowDBL(r, id) {
 			$tr.find('input').get(1).setAttribute('id', 'ldbl['+i+'].lmangach_bac');
 			$tr.find('input').get(1).setAttribute('name', 'ldbl['+i+'].lmangach_bac');
 			$tr.find('input').get(2).setAttribute('id', 'ldbl['+i+'].heSoLuong');
-			$tr.find('input').get(2).setAttribute('name', 'ldbl['+i+'].heSoLuong');		
+			$tr.find('input').get(2).setAttribute('name', 'ldbl['+i+'].heSoLuong');	
+			$tr.find('input').get(3).setAttribute('id', 'ldbl['+i+'].id');
+			$tr.find('input').get(3).setAttribute('name', 'ldbl['+i+'].id');
 			i++;
         });
 		$('.datepicker-month').datepicker();
