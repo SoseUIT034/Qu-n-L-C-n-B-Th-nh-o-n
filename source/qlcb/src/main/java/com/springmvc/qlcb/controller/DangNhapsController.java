@@ -1,6 +1,7 @@
 package com.springmvc.qlcb.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,8 +43,14 @@ public class DangNhapsController {
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String verifyLogin(@ModelAttribute(value = "Taikhoan") Taikhoan tk, ModelMap modelMap, HttpSession session) {
+	public String verifyLogin(@Valid @ModelAttribute(value = "Taikhoan") Taikhoan tk, BindingResult result, Model model, ModelMap modelMap, HttpSession session) {
 		
+	
+		if (result.hasErrors()) {
+			model.addAttribute("error", "Đăng nhập không thành công!");
+			return "/login/login";
+		}
+
 		if (userService.getUser(tk) == null) {
 			
 			//modelMap.put("loginError", "Error logging in. Please try again");
