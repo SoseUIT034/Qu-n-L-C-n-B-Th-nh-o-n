@@ -15,9 +15,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/lylich_canbo/css/MyStyle.css"/>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Thêm cán bộ</title>
-</head>
-
-<body>
+</head><body>
 	<!---header--->
 	<%@include file ="../layout/header.jsp" %>
 	<!---header--->
@@ -247,11 +245,14 @@
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>
 	<!---footer--->
+
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-2.2.2.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/bootstrap.min.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-ui.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/myjs.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/create.js"/>"></script>
+
+
 </body>
 
 </html>

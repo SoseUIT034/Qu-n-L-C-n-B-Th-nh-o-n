@@ -10,6 +10,32 @@
 <title>Lỗi</title>
 </head>
 <body>
-	<h1>${ error }</h1>
+
+<!---header--->
+	<%@include file ="../layout/header.jsp" %>
+	<!---header--->
+	
+	<div class="content" style="padding-top: 30px; ">
+	<div class="container">
+	<div class="row">
+	<h1>Lỗi</h1>
+	<div class="row">
+	<hr>
+	</div>
+	</div>
+	<div class="row">
+	<h3>${ error }</h3>
+	</div>
+	</div>
+	</div>
+	
+		<!---footer--->
+	<%@include file="../layout/footer.jsp" %>
+	<!---footer--->
+	
+<script src="<c:url value="/resources/lylich_canbo/js/jquery-2.2.2.js"/>"></script> 
+<script src="<c:url value="/resources/lylich_canbo/js/bootstrap.min.js"/>"></script> 
+<script src="<c:url value="/resources/lylich_canbo/js/jquery-ui.js"/>"></script> 
+<script src="<c:url value="/resources/lylich_canbo/js/myjs.js"/>"></script> 
 </body>
 </html>
