@@ -43,7 +43,15 @@ $(document).ready(function() {
 		});
 	});
 	
-	WindowsSize();
+   $("#fileLTN").change(function() {
+		 if (this.files && this.files[0]) {
+            var reader = new FileReader();            
+            reader.onload = function (e) {
+                $('#imgpreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+		});
 		  
           /* var reader = new FileReader(); 
            reader.readAsDataURL($('#imgpreview').attr('src'));
@@ -55,15 +63,7 @@ $(document).ready(function() {
 					 $('#imgpreview').attr('src', temp);
 				}*/
            
-           $("#fileLTN").change(function() {
-      		 if (this.files && this.files[0]) {
-                  var reader = new FileReader();            
-                  reader.onload = function (e) {
-                      $('#imgpreview').attr('src', e.target.result);
-                  }
-                  reader.readAsDataURL(this.files[0]);
-              }
-      		});
+        
        
 	
 });
