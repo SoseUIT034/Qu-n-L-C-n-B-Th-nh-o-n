@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.springmvc.qlcb.model.Taikhoan;
 import com.springmvc.qlcb.service.UserService;
 
-@Controller
+//@Controller
 public class DangNhapsController {
 	private static final Logger logger = LoggerFactory.getLogger(TrangChusController.class);
 	

@@ -69,16 +69,16 @@ public class CanBosController {
 	public String Create(HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
-		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-		if(tk!=null)
-		{
-			request.setAttribute("KEY_LOGINED", 1);
-			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-		}
-		else
-		{
-			request.setAttribute("KEY_LOGINED", 0);
-		}
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
 		//-dropdownlist----
 		
 		model.addAttribute("listdantoc", dt.listDanToc() );
@@ -138,16 +138,16 @@ public class CanBosController {
 	public String Detail(@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
-		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-		if(tk!=null)
-		{
-			request.setAttribute("KEY_LOGINED", 1);
-			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-		}
-		else
-		{
-			request.setAttribute("KEY_LOGINED", 0);
-		}
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
 		//-dropdownlist----
 		
 		model.addAttribute("listdantoc", dt.listDanToc() );
@@ -181,16 +181,16 @@ public class CanBosController {
 	public String List( HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
-		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-		if(tk!=null)
-		{
-			request.setAttribute("KEY_LOGINED", 1);
-			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-		}
-		else
-		{
-			request.setAttribute("KEY_LOGINED", 0);
-		}
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
 		//-dropdownlist----
 		
 		model.addAttribute("listdantoc", dt.listDanToc() );
@@ -216,16 +216,16 @@ public class CanBosController {
 	public String Edit(@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
-		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-		if(tk!=null)
-		{
-			request.setAttribute("KEY_LOGINED", 1);
-			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-		}
-		else
-		{
-			request.setAttribute("KEY_LOGINED", 0);
-		}
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
 		//-dropdownlist----
 		
 		model.addAttribute("listdantoc", dt.listDanToc() );
