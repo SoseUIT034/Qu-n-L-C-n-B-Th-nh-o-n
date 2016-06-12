@@ -18,31 +18,31 @@ public class ChucvuBanServiceImpl implements ChucvuBanService {
 	@Override
 	@Transactional
 	public int save(Chucvuban chucvuban) {
-		return 0;
+		return chucvuBanDAO.save(chucvuban);
 	}
 
 	@Override
 	@Transactional
 	public Chucvuban getChucvuBanById(int id) {
-		return null;
+		return chucvuBanDAO.getChucvuBanById(id);
 	}
 
 	@Override
 	@Transactional
 	public void update(Chucvuban chucvuban) {
-		
+		chucvuBanDAO.update(chucvuban);
 	}
 
 	@Override
 	@Transactional
 	public void delete(int id) {
-		
+		chucvuBanDAO.delete(id);
 	}
 
 	@Override
 	@Transactional
 	public List<Chucvuban> listChucvuBan() {
-		return null;
+		return chucvuBanDAO.listChucvuBan();
 	}
 	
 }

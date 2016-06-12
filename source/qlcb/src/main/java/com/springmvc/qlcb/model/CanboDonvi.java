@@ -22,7 +22,6 @@ public class CanboDonvi implements java.io.Serializable {
 	private Canbo canbo;
 	private Chucvudonvi chucvudonvi;
 	private Donvi donvi;
-
 	public CanboDonvi() {
 	}
 
