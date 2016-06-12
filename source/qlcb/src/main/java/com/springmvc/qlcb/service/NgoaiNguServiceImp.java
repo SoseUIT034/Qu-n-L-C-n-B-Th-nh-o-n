@@ -58,21 +58,31 @@ public class NgoaiNguServiceImp extends HibernateUtils implements NgoaiNguServic
 	@Override
 	@Transactional
 	public int save(Ngoaingu ngoaingu) {
-		// TODO Auto-generated method stub
-		return 0;
+		int thisid=0; 
+		// generate id
+		if(ngoaiNguDAO.listNgoaiNgu() !=null)
+		{
+			thisid = ngoaiNguDAO.listNgoaiNgu().size();
+		} 
+		while( ngoaiNguDAO.getNgoaiNguById(thisid)!=null  )
+		{
+			thisid++;
+		} 
+		
+		ngoaingu.setMaNgoaiNgu(thisid);   
+		return ngoaiNguDAO.save(ngoaingu);
 	}
 
 	@Override
 	@Transactional
 	public Ngoaingu getNgoaiNguById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return ngoaiNguDAO.getNgoaiNguById(id);
 	}
 
 	@Override
 	@Transactional
 	public void update(Ngoaingu ngoaingu) {
-		// TODO Auto-generated method stub
+		ngoaiNguDAO.update(ngoaingu); 
 		
 	}
 

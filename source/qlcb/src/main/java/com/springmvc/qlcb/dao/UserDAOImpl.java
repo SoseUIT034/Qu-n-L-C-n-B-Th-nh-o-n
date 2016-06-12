@@ -28,12 +28,21 @@ public class UserDAOImpl extends HibernateUtils implements UserDAO {
 
 	@Override
 	public Taikhoan getUser(Taikhoan tk) {
-		String hsql = "from Taikhoan as tk where tk.tenDangNhap=? and tk.matKhau=?";
-		Query query = getSession().createQuery(hsql);
-		query.setParameter(0, tk.getTenDangNhap());
-		query.setParameter(1, tk.getMatKhau());
 		
-		return (Taikhoan) query.uniqueResult();
+		 
+		
+		List<Taikhoan> v = listUser();
+		for (Taikhoan item : v) {
+			if(tk.getTenDangNhap().equals(item.getTenDangNhap()) && tk.getMatKhau().equals( item.getMatKhau()))
+			{
+				return item;
+			}
+		}
+		
+		
+		
+		
+		 return null;
 	}
 
 	@Override

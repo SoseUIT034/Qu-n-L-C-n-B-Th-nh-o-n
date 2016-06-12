@@ -881,7 +881,8 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	@Override
 	@Transactional
 	public List<Lylich> listLyLich() {
-		return null;
+		
+		return lyLichDAO.listLyLich();
 	}
 
 }

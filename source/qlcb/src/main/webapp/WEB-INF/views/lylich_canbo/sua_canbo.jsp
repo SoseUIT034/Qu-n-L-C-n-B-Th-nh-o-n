@@ -44,7 +44,7 @@
 	
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
-		<form:form class="container" commandName="Lylich" action="create" style="border: rebeccapurple; border-style: dotted; padding:50px" method="POST" >
+		<form:form class="container" enctype="multipart/form-data" commandName="Lylich" action="" style="border: rebeccapurple; border-style: dotted; padding:50px" method="POST" >
 			  <div class="col-xs-12" style="display: none">
 			      <form:input    path="macanbo" id="maCanBo"  class="form-control" type="text"/>
 			       <form:errors path="macanbo" cssclass="error"></form:errors>
@@ -77,11 +77,13 @@
 			  </div>
 			  <div class="row">
 			    <div class="col-xs-12 col-md-3">
-			      <div class="form-group"> <img id="imgpreview" name="imgpreview" style="max-width:60%; max-height::60%;" src="U.jpg" alt="Ảnh đại diện"/> </div>
+			       <div class="form-group"> 
+			      	<img id="imgpreview"  style="max-width:60%; max-height::60%;" src="${Lylich.hinhanh}" alt="Ảnh đại diện"/> 
+			      </div>
 			      <div class="form-group" style="vertical-align:bottom">
 			        <label>File upload</label>
-			        <input type="file" id="fileupload" name="fileupload"/>
-			      </div>
+			        <form:input type="file" path="fileLTN"  /> 
+			      </div> 
 			    </div>
 			    <div class="col-xs-12 col-md-9">
 			      <div class="container-fluid">

@@ -50,28 +50,38 @@ import com.springmvc.qlcb.model.Tongiao;
 import com.springmvc.qlcb.model.Trinhdochinhtri;
 
 @Service
-public class TrinhDoChinhTriServiceImp extends HibernateUtils implements TrinhDoChinhTriService {
+public class TrinhDoChinhTriServiceImp implements TrinhDoChinhTriService {
 	@Autowired
 	TrinhDoChinhTriDAO  trinhDoChinhTriDAO;
 
 	@Override
 	@Transactional
 	public int save(Trinhdochinhtri trinhdochinhtri) {
-		// TODO Auto-generated method stub
-		return 0;
+		int thisid=0; 
+		// generate id
+		if(trinhDoChinhTriDAO.listTrinhDoChinhTri()  !=null)
+		{
+			thisid = trinhDoChinhTriDAO.listTrinhDoChinhTri().size();
+		} 
+		while( trinhDoChinhTriDAO.getTrinhDoChinhTriById(thisid)!=null  )
+		{
+			thisid++;
+		} 
+		
+		trinhdochinhtri.setMaTrinhDoChinhTri(thisid);   
+		return trinhDoChinhTriDAO.save(trinhdochinhtri);
 	}
 
 	@Override
 	@Transactional
 	public Trinhdochinhtri getTrinhDoChinhTriById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return trinhDoChinhTriDAO.getTrinhDoChinhTriById(id);
 	}
 
 	@Override
 	@Transactional
 	public void update(Trinhdochinhtri trinhdochinhtri) {
-		// TODO Auto-generated method stub
+		  trinhDoChinhTriDAO.update(trinhdochinhtri) ;
 		
 	}
 

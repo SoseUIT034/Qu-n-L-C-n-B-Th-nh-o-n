@@ -77,11 +77,8 @@
 			  </div>
 			  <div class="row">
 			    <div class="col-xs-12 col-md-3">
-			      <div class="form-group"> <img id="imgpreview" name="imgpreview" style="max-width:60%; max-height::60%;" src="U.jpg" alt="Ảnh đại diện"/> </div>
-			      <div class="form-group" style="vertical-align:bottom">
-			        <label>File upload</label>
-			        <input type="file" id="fileupload" name="fileupload"/>
-			      </div>
+			      <div class="form-group"> <img id="imgpreview"  style="max-width:60%; max-height::60%;" src="${Lylich.hinhanh}" alt="Ảnh đại diện"/> </div>
+			      
 			    </div>
 			    <div class="col-xs-12 col-md-9">
 			      <div class="container-fluid">

@@ -56,21 +56,31 @@ public class TonGiaoServiceImp extends HibernateUtils implements TonGiaoService 
 	@Override
 	@Transactional
 	public int save(Tongiao tongiao) {
-		// TODO Auto-generated method stub
-		return 0;
+		int thisid=0; 
+		// generate id
+		if(tonGiaoDAO.listTonGiao() !=null)
+		{
+			thisid = tonGiaoDAO.listTonGiao().size();
+		} 
+		while( tonGiaoDAO.getTonGiaoById(thisid)!=null  )
+		{
+			thisid++;
+		} 
+		
+		tongiao.setMaTonGiao(thisid);   
+		return tonGiaoDAO.save(tongiao);
 	}
 
 	@Override
 	@Transactional
 	public Tongiao getTonGiaoById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return tonGiaoDAO.getTonGiaoById(id);
 	}
 
 	@Override
 	@Transactional
 	public void update(Tongiao tongiao) {
-		// TODO Auto-generated method stub
+		  tonGiaoDAO.update(tongiao); 
 		
 	}
 

@@ -57,28 +57,37 @@ public class DanTocServiceImp extends HibernateUtils implements DanTocService {
 	@Override
 	@Transactional
 	public int save(Dantoc dantoc) {
-		// TODO Auto-generated method stub
-		return 0;
+		int thisid=0; 
+		// generate id
+		if(danTocDAOc.listDanToc() !=null)
+		{
+			thisid = danTocDAOc.listDanToc().size();
+		} 
+		while( danTocDAOc.getDanTocById(thisid)!=null  )
+		{
+			thisid++;
+		} 
+		
+		dantoc.setMaDanToc(thisid);   
+		return danTocDAOc.save(dantoc);
 	}
 
 	@Override
 	@Transactional
 	public Dantoc getDanTocById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return danTocDAOc.getDanTocById(id);
 	}
 
 	@Override
 	@Transactional
 	public void update(Dantoc dantoc) {
-		// TODO Auto-generated method stub
+		danTocDAOc.update(dantoc); 
 		
 	}
 
 	@Override
 	@Transactional
-	public void delete(int id) {
-		// TODO Auto-generated method stub
+	public void delete(int id) { 
 		
 	}
 

@@ -33,6 +33,30 @@ $(document).ready(function() {
 			}));
 		});
 	});
+	
+	
+		  
+          /* var reader = new FileReader(); 
+           reader.readAsDataURL($('#imgpreview').attr('src'));
+           
+           $('#imgpreview').attr('src', e.target.result);*/
+			/*if($('#imgpreview').attr('src')!=null)
+				{
+				 	 var temp = url.format(url.parse('file://' +$('#imgpreview').attr('src')));
+					 $('#imgpreview').attr('src', temp);
+				}*/
+           
+           $("#fileLTN").change(function() {
+      		 if (this.files && this.files[0]) {
+                  var reader = new FileReader();            
+                  reader.onload = function (e) {
+                      $('#imgpreview').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(this.files[0]);
+              }
+      		});
+       
+		
 });
 
 $(function() { 
@@ -55,16 +79,11 @@ $(function() {
 			  event.preventDefault();
 
 	});
-	$("#fileupload").change(function() {
-		 if (this.files && this.files[0]) {
-            var reader = new FileReader();            
-            reader.onload = function (e) {
-                $('#imgpreview').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(this.files[0]);
-        }
-		});
+	
 		
+	
+	
+	
 	$('#noisinhtinh').click(function(){
 			$.get('Provinces.xml', function(d) {
 				var s = $('#noisinhtinh').val();
