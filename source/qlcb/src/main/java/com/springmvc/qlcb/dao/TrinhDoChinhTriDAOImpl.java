@@ -12,31 +12,28 @@ public class TrinhDoChinhTriDAOImpl extends HibernateUtils implements TrinhDoChi
 
 	@Override
 	public int save(Trinhdochinhtri trinhdochinhtri) {
-		// TODO Auto-generated method stub
-		return 0;
+		return (Integer) getSession().save(trinhdochinhtri);
 	}
 
 	@Override
 	public Trinhdochinhtri getTrinhDoChinhTriById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Trinhdochinhtri.class, id);
 	}
 
 	@Override
 	public void update(Trinhdochinhtri trinhdochinhtri) {
-		// TODO Auto-generated method stub
+		getSession().merge(trinhdochinhtri);
 		
-	}
-
+	} 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		getSession().delete(getTrinhDoChinhTriById(id));
 		
 	}
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Trinhdochinhtri> listTrinhDoChinhTri() {
-		return getSession().createCriteria(Trinhdochinhtri.class).list();
+		return getSession().createCriteria(Trinhdochinhtri.class).list(); 
 	}
 
 }

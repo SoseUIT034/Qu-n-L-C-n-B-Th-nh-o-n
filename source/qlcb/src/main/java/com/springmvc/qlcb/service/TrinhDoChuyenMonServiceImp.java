@@ -57,21 +57,31 @@ public class TrinhDoChuyenMonServiceImp extends HibernateUtils implements TrinhD
 	@Override
 	@Transactional
 	public int save(Trinhdochuyenmon trinhdochuyenmon) {
-		// TODO Auto-generated method stub
-		return 0;
+		int thisid=0; 
+		// generate id
+		if(trinhDoChuyenMonDAO.listTrinhDoChuyenMon()  !=null)
+		{
+			thisid = trinhDoChuyenMonDAO.listTrinhDoChuyenMon().size();
+		} 
+		while( trinhDoChuyenMonDAO.getTrinhDoChuyenMonById(thisid)!=null  )
+		{
+			thisid++;
+		} 
+		
+		trinhdochuyenmon.setMaTrinhDoChuyenMon(thisid);   
+		return trinhDoChuyenMonDAO.save(trinhdochuyenmon);
 	}
 
 	@Override
 	@Transactional
 	public Trinhdochuyenmon getTrinhDoChuyenMonById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return trinhDoChuyenMonDAO.getTrinhDoChuyenMonById(id);
 	}
 
 	@Override
 	@Transactional
 	public void update(Trinhdochuyenmon trinhdochuyenmon) {
-		// TODO Auto-generated method stub
+		trinhDoChuyenMonDAO.update(trinhdochuyenmon) ;
 		
 	}
 
