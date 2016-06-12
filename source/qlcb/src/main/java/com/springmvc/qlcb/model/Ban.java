@@ -25,6 +25,7 @@ public class Ban implements java.io.Serializable {
 	private int maBan;
 	private Donvi donvi;
 	private String tenBan;
+	private int maDonVi;
 	private Date ngayThanhLap;
 	private Integer maTruongBan;
 	private Set<CanboBan> canboBans = new HashSet<CanboBan>(0);
@@ -49,7 +50,6 @@ public class Ban implements java.io.Serializable {
 	}
 
 	@Id
-
 	@Column(name = "MaBan", unique = true, nullable = false)
 	public int getMaBan() {
 		return this.maBan;
@@ -72,6 +72,14 @@ public class Ban implements java.io.Serializable {
 	@Column(name = "TenBan", nullable = false, length = 45)
 	public String getTenBan() {
 		return this.tenBan;
+	}
+	
+	public int getMaDonVi() {
+		return maDonVi;
+	}
+
+	public void setMaDonVi(int maDonVi) {
+		this.maDonVi = maDonVi;
 	}
 
 	public void setTenBan(String tenBan) {

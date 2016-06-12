@@ -45,4 +45,11 @@ public class BanServiceImpl implements BanService {
 		return banDAO.listBan();
 	}
 
+	@Override
+	@Transactional
+	public List<Ban> listBanByDonVi(int id) {
+		// TODO Auto-generated method stub
+		return banDAO.listBanByDonVi(id);
+	}
+
 }

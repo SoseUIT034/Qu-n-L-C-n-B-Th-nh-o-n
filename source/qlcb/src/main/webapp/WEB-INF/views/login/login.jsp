@@ -14,41 +14,46 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--//Custom Theme files -->
 <link href="<c:url value="/resources/login/css/style.css"/>" rel="stylesheet" type="text/css" media="all" /> 
- <link href="resources/login/css/style.css" rel="stylesheet" type="text/css" media="all" /> 
+ <link href="resources/login/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <style type="text/css">
+  .error {
+  color:red;
+  }
+  </style>
 </head>
 <body>
 	<!-- main -->
 	<div class="main">
 		<h1>Đăng nhập</h1>
+		
+		
 		<div class="signin-form">
 		 <c:url var="actionUrl"  value="login" />
-		 
-			<form:form id="loginForm" commandName="Taikhoan"  menthod="POST" action ="${actionUrl }">
+			
+			<form:form id="loginForm" commandName="Taikhoan"  method="POST" action ="${actionUrl }" modelAttribute="Taikhoan">
 				<ul>
+					
 					<li>
   						<form:input path="tenDangNhap" type="text" placeholder="User Name" required=""/>  
-						 
 						<span class="user"> </span>
 					</li>
 					<li>
 						<form:input path="matKhau" type="password" placeholder="Password" required=""/>
 						<span class="key"> </span>
-					</li>
-					
+					</li>					
 					
 					<li>
 						<input type="submit" value="Login">
-						 
 					</li>
 
 
 				</ul>		
+				<ol>
+				<li><h3 class="error">${error}</h3>		 </li>
+				<li><form:errors path="tenDangNhap" cssClass="error"></form:errors></li>
+				<li><form:errors path="matKhau" cssClass="error"></form:errors></li>
+				</ol>
 			</form:form>
-			
-			
-			
-			
- 
 
 			<a href="/fogotpassword" class="text">Quên password !</a>
 		</div>	

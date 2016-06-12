@@ -10,4 +10,5 @@ public interface BanDAO {
 	public void update(Ban ban);
 	public void delete(int id);
 	public List<Ban> listBan();
+	List<Ban> listBanByDonVi(int id);
 }

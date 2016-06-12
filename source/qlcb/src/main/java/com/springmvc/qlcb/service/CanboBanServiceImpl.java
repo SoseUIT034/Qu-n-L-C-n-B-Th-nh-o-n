@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springmvc.qlcb.dao.CanboBanDAO;
 import com.springmvc.qlcb.model.CanboBan;
+import com.springmvc.qlcb.model.CanboBanId;
+import com.springmvc.qlcb.model.CanboDonviId;
 
-@Repository
+@Service
 public class CanboBanServiceImpl implements CanboBanService {
 
 	@Autowired
@@ -17,7 +20,7 @@ public class CanboBanServiceImpl implements CanboBanService {
 	
 	@Override
 	@Transactional
-	public int save(CanboBan canboBan) {
+	public Object save(CanboBan canboBan) {
 		return canboBanDAO.save(canboBan);
 	}
 
@@ -29,13 +32,7 @@ public class CanboBanServiceImpl implements CanboBanService {
 
 	@Override
 	@Transactional
-	public void delete(int id) {
-		canboBanDAO.delete(id);
-	}
-
-	@Override
-	@Transactional
-	public CanboBan getCanboBan(int id) {
+	public CanboBan getCanboBan(CanboBanId id) {
 		return canboBanDAO.getCanboBan(id);
 	}
 
@@ -43,6 +40,27 @@ public class CanboBanServiceImpl implements CanboBanService {
 	@Transactional
 	public List<CanboBan> listCanboBan() {
 		return canboBanDAO.listCanboBan();
+	}
+
+	@Override
+	@Transactional
+	public List<CanboBan> listCanBoBanByCanBo(int id) {
+		// TODO Auto-generated method stub
+		return canboBanDAO.listCanBoBanByCanBo(id);
+	}
+
+	@Override
+	@Transactional
+	public CanboBan getCanboBan(int idcanbo, int idban, int idchucvu) {
+		// TODO Auto-generated method stub
+		return canboBanDAO.getCanBoBan(idcanbo, idban, idchucvu);
+	}
+
+	@Override
+	@Transactional
+	public void delete(CanboBanId id) {
+		canboBanDAO.delete(id);
+		
 	}
 
 }
