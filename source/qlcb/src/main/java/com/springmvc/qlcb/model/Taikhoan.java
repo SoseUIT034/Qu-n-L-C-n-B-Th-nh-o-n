@@ -26,11 +26,11 @@ public class Taikhoan implements java.io.Serializable {
 
 	private int maCanBo;
 	private Canbo canbo;
-	@NotNull(message="Không được để trống trường tên đăng nhập")
-	@Length(min=8,message="Tên đăng nhập phải nhiều hơn 8 ký tự")
+	/*@NotNull(message="Không được để trống trường tên đăng nhập")
+	@Length(min=8,message="Tên đăng nhập phải nhiều hơn 8 ký tự")*/
 	private String tenDangNhap;
-	@NotNull(message="Không được để trống mật khẩu")
-	@Length(min=8, message="Mật khẩu phải có ít nhất 8 ký tự")
+	/*@NotNull(message="Không được để trống mật khẩu")
+	@Length(min=8, message="Mật khẩu phải có ít nhất 8 ký tự")*/
 	private String matKhau;
 
 	public Taikhoan() {

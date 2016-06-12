@@ -105,7 +105,8 @@ public class CanBosController {
 		String relativePath = "resources" + File.separator + "upload" + File.separator + "images";
 		String storedFolderLocation = realPath + relativePath;
 
-		if(data.getFileLTN()!=null)
+		//if(data.getFileLTN()!=null)
+		if(fileName!="")
 		{
 			File dir = new File(storedFolderLocation);
 			if (!dir.exists()) {
