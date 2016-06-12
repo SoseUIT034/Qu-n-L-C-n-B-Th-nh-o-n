@@ -21,6 +21,15 @@ function()
            });
 };// JavaScript Document
 
+function WindowsSize() {
+	var h = $(window).height();
+	var headerHeight = $(".header-section").height();
+	var footerHeight = $(".footer-section").height();
+	var s = h - headerHeight - footerHeight;
+	$(".content").attr("style", "padding-top: 30px;min-height:" + s + "px;");
+}
+
+
 $(document).ready(function() {
 	$('.datepicker').datepicker();
 	$.get('Provinces.xml', function(d) {
@@ -34,7 +43,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	
+	WindowsSize();
 		  
           /* var reader = new FileReader(); 
            reader.readAsDataURL($('#imgpreview').attr('src'));
@@ -56,7 +65,7 @@ $(document).ready(function() {
               }
       		});
        
-		
+	
 });
 
 $(function() { 

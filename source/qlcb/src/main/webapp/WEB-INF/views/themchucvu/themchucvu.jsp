@@ -15,7 +15,14 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/lylich_canbo/css/MyStyle.css"/>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Thêm cán bộ</title>
-</head><body class="container">
+</head><body>
+	<!---header--->
+	<%@include file ="../layout/header.jsp" %>
+	<!---header--->
+	
+	<div class="content" style="padding-top: 30px; ">
+	
+	<div class="container">
 <div class="row">
   <div class="container">
     <div class="row">
@@ -157,7 +164,7 @@
                 </ul>
               </div>
               <div class="row">
-                <div class="tab-content">
+                <div class="tab-content" >
                  <div class="tab-pane active" role="tabpanel" id="banForm">
                   <form method="post" class="form-horizontal" action="/qlcb/canbo/themchucvuban/${idcanbo}">
                     <div class="form-group">
@@ -167,7 +174,7 @@
                         <div class="col-xs-12 col-md-8">
                         	<select class="form-control" id="ban" name="ban">
                         		<c:forEach var="item" items="${banList}" >
-                          			<option value="${item.maBan}">${item.donvi.tenDonVi} - ${item.tenBan}</option>
+                          			<option value="${item.maBan}">${item.donvi.tenDonVi	} - ${item.tenBan}</option>
                         		</c:forEach>
                       		</select>
                     	</div>
@@ -225,10 +232,19 @@
   </div>
 </div>
 </div>
+</div>
+	
+	</div>
+	<!---footer--->
+	<%@include file="../layout/footer.jsp" %>
+	<!---footer--->
+
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-2.2.2.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/bootstrap.min.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-ui.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/myjs.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/create.js"/>"></script>
+
+
 </body>
 </html>
