@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: cuong
-Build-Jdk: 1.8.0_91
-=======
 Built-By: Canh
 Build-Jdk: 1.8.0_71
->>>>>>> b6cb4aec56b285e7596654e6fec13435a12d5fcf
 Created-By: Maven Integration for Eclipse
 
