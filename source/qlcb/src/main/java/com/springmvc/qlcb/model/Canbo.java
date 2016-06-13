@@ -21,7 +21,7 @@ public class Canbo implements java.io.Serializable {
 	private int maCanBo;
 	private Boolean trangThai;
 	private Set<CanboDonvi> canboDonvis = new HashSet<CanboDonvi>(0);
-	private Taikhoan taikhoan;
+	//private Taikhoan taikhoan;
 	private Set<Chuyencongtac> chuyencongtacsForNguoiXacNhan = new HashSet<Chuyencongtac>(0);
 	private Set<Chuyencongtac> chuyencongtacsForMaCanBoDuocChuyen = new HashSet<Chuyencongtac>(0);
 	private Set<CanboGiadinhBanthan> canboGiadinhBanthans = new HashSet<CanboGiadinhBanthan>(0);
@@ -56,7 +56,7 @@ public class Canbo implements java.io.Serializable {
 		this.maCanBo = maCanBo;
 		this.trangThai = trangThai;
 		this.canboDonvis = canboDonvis;
-		this.taikhoan = taikhoan;
+		//this.taikhoan = taikhoan;
 		this.chuyencongtacsForNguoiXacNhan = chuyencongtacsForNguoiXacNhan;
 		this.chuyencongtacsForMaCanBoDuocChuyen = chuyencongtacsForMaCanBoDuocChuyen;
 		this.canboGiadinhBanthans = canboGiadinhBanthans;
@@ -103,14 +103,14 @@ public class Canbo implements java.io.Serializable {
 		this.canboDonvis = canboDonvis;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "canbo")
-	public Taikhoan getTaikhoan() {
-		return this.taikhoan;
-	}
-
-	public void setTaikhoan(Taikhoan taikhoan) {
-		this.taikhoan = taikhoan;
-	}
+//	@OneToOne(fetch = FetchType.LAZY, mappedBy = "canbo")
+//	public Taikhoan getTaikhoan() {
+//		return this.taikhoan;
+//	}
+//
+//	public void setTaikhoan(Taikhoan taikhoan) {
+//		this.taikhoan = taikhoan;
+//	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "canboByNguoiXacNhan")
 	public Set<Chuyencongtac> getChuyencongtacsForNguoiXacNhan() {

@@ -61,6 +61,8 @@
     </div>
   </div>
 </div>
+
+
 <div class="row">
   <div class="col-xs-12 col-md-6">
     <div class="container-fluid">
@@ -146,6 +148,9 @@
       </div>
     </div>
   </div>
+  
+  
+  <sec:authorize access="hasRole('Admin')">
   <div class="col-xs-12 col-md-6">
     <div class="container-fluid">
       <div class="row">
@@ -231,6 +236,8 @@
     </div>
   </div>
 </div>
+	</sec:authorize>
+
 </div>
 </div>
 	
@@ -247,4 +254,5 @@
 
 
 </body>
+
 </html>

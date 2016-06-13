@@ -55,16 +55,16 @@ public class TrinhdochinhtriController {
 	public String Create(HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
-		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-		if(tk!=null)
-		{
-			request.setAttribute("KEY_LOGINED", 1);
-			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-		}
-		else
-		{
-			request.setAttribute("KEY_LOGINED", 0);
-		}
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
 		//
 		
 		model.addAttribute("trinhdochinhtri", new Trinhdochinhtri());  
@@ -88,16 +88,16 @@ public class TrinhdochinhtriController {
 	public String List( HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
-		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-		if(tk!=null)
-		{
-			request.setAttribute("KEY_LOGINED", 1);
-			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-		}
-		else
-		{
-			request.setAttribute("KEY_LOGINED", 0);
-		}
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
 		//-dropdownlist----
 		
 		 
@@ -116,16 +116,16 @@ public class TrinhdochinhtriController {
 	public String Edit(@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
-		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-		if(tk!=null)
-		{
-			request.setAttribute("KEY_LOGINED", 1);
-			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-		}
-		else
-		{
-			request.setAttribute("KEY_LOGINED", 0);
-		}
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
 		//-dropdownlist----
 		
 		 

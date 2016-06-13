@@ -42,6 +42,8 @@
 	<%@include file ="../layout/header.jsp" %>
 	<!---header--->
 	
+	<sec:authorize access="hasRole('Admin')">
+	
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
 		<form:form class="container" commandName="tongiao" action="createTonGiao" style="border: rebeccapurple; border-style: dotted;" method="POST" >
@@ -89,6 +91,8 @@
 			  </div>
 			</form:form>
 	</div>				
+	
+	</sec:authorize>
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>
 	<!---footer--->

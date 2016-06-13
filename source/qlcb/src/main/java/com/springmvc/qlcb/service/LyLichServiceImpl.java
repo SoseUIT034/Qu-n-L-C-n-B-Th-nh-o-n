@@ -473,16 +473,6 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		// save lylich
 		lyLichDAO.save(lylich);
 		
-		
-		
-		// save tai khoan
-		Taikhoan t = new Taikhoan();
-		t.setMaCanBo (thisid); 
-		t.setTenDangNhap( (new Integer(thisid)).toString() );
-		t.setMatKhau("88888888"); 
-		t.setCanbo(cb);
-		taikhoanDAO.saveUser(t);
-		
 		// save lsbt
 		_saveLichSuBanThan(  lylich);
 		

@@ -13,4 +13,8 @@ public interface UserDAO {
 	public Taikhoan getUser(Taikhoan user);
 
 	public void deleteUser(Taikhoan user);
+	
+	public Taikhoan getUserByName(String tenDangNhap);
+	
+	public void editUser(Taikhoan user);
 }

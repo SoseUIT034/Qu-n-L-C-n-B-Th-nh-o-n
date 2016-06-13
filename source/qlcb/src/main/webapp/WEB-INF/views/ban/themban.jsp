@@ -32,47 +32,68 @@
 <!-- <script src="../../resources/lylich_canbo/js/jquery-ui.js"></script> -->
 <!-- <script src="../../resources/lylich_canbo/js/myjs.js"></script> -->
 
-<title>Thông tin cán bộ</title>
+<title>Thêm mới ban</title>
 
 
 </head>
-<body >
+<body ">
 
 	<!---header--->
 	<%@include file ="../layout/header.jsp" %>
 	<!---header--->
 	
-	<sec:authorize access="hasRole('Admin')">
-	
 	<div class="content" style="padding-top: 30px; ">
- 		 
-		<c:url var="actionUrl"  value="create" />
-		<form:form class="container" commandName="tongiao" action="edittongiao" style="border: rebeccapurple; border-style: dotted;" method="POST" >
+ 		<c:url var="actionUrl"  value="create" />
+		<form:form class="container" commandName="ban" action="createban" style="border: rebeccapurple; border-style: dotted;" method="POST" >
 			   
-			  <div class="row">
-			    <div class="col-xs-12 col-md-4">
-			      <label>Mã tôn giáo</label>
-			    </div>
-			    <div class="col-xs-12 col-md-8">
-			      <form:input path="maTonGiao" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"  disabled="true" /> 
-			    </div> 
-			  </div>
-			  <div class="row" style="display: none;">
-			    <div class="col-xs-12 col-md-4">
-			      <label>Mã tôn giáo</label>
-			    </div>
-			    <div class="col-xs-12 col-md-8">
-			      <form:input path="maTonGiao" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"   /> 
-			    </div> 
-			  </div>
+			   
 			 <div class="row">
 			    <div class="col-xs-12 col-md-4">
-			      <label>Tên tôn giáo</label>
+			      <label>Tên ban</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
-			      <form:input path="tenTonGiao" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/> 
+			      <form:input path="tenban" id="cqdvtxt"  name="cqdbtxt" class="form-control" type="text"/> 
 			    </div> 
 			  </div>
+			  <div class="row">
+			    <div class="col-xs-12 col-md-4">
+			      <label>Đơn vị</label>
+			    </div>
+			    <div class="col-xs-12 col-md-8">
+			      <form:select   path="maDonVi" class="form-control" id="dantocsel" value="">
+				           	  <c:forEach items="${listban}" var="item"> 
+				           	  	   <form:option value="${item.maBan}" >${item.tenBan}</form:option>
+				           	  </c:forEach> 
+			            </form:select>
+			    </div> 
+			  </div>
+			  <div class="row">
+			    <div class="col-xs-12 col-md-4">
+			      <label>Ngày thành lập</label>
+			    </div>
+			    <div class="col-xs-12 col-md-8">
+			      <form:input path="moTa" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="date"/> 
+			    </div> 
+			  </div>
+			  <div class="row">
+			    <div class="col-xs-12 col-md-4">
+			      <label>Trưởng ban</label>
+			    </div>
+			    <div class="col-xs-12 col-md-8">
+			      <form:select   path="maTruongBan" class="form-control" id="dantocsel" value="">
+				             
+				           	  <c:forEach items="${listtruongban}" var="item"> 
+				           	  	 
+				           	  	   <form:option value="${item.macanbo}" >${item.tenCanBo}</form:option>
+				           	   
+				           	  	 
+				           	  </c:forEach> 
+				           	 
+			            </form:select>
+			    </div> 
+			  </div>
+			   
+			  
 			  
 			  <div class="row">
 			    <button type="submit" class="btn btn-default btn-primary btn-lg" value="luu" id="luuButton" name="luuButton" > <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> Lưu</span> </button>
@@ -100,8 +121,6 @@
 			  </div>
 			</form:form>
 	</div>				
-	
-	</sec:authorize>
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>
 	<!---footer--->
@@ -110,71 +129,5 @@
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-ui.js"/>"></script>
 <script src="<c:url value="/resources/lylich_canbo/js/myjs.js"/>"></script>
 <script src="<c:url value="/resources/lylich_canbo/js/create.js"/>"></script>
-
-
-
-
-<div id='myModal' class='modal fade in'>
-    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <div id='myModalContent'></div>
-	        </div>
-	    </div>
-	</div>
-	<script>
-	$('document').ready(function(){
-		
-	
-		$(function () {
-	
-	    $.ajaxSetup({ cache: false });
-	
-	    $("a[data-modal]").on("click", function (e) {
-	
-	        // hide dropdown if any
-	        $(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
-	
-	        
-	        $('#myModalContent').load(this.href, function () {
-	            
-	
-	            $('#myModal').modal({
-	                /*backdrop: 'static',*/
-	                keyboard: true
-	            }, 'show');
-	
-	            bindForm(this);
-	        });
-	
-	        return false;
-	    });
-	
-	
-	});
-	
-	function bindForm(dialog) {
-	    
-	    $('form', dialog).submit(function () {
-	        $.ajax({
-	            url: this.action,
-	            type: this.method,
-	            data: $(this).serialize(),
-	            success: function (result) {
-	                if (result=="1") {
-	                    $('#myModal').modal('hide');
-	                    //Refresh
-	                    location.reload();
-	                } else {
-	                    $('#myModalContent').html(result);
-	                    bindForm();
-	                }
-	            }
-	        });
-	        return false;
-	    });
-	}
-	})
-	
-	</script>
 </body>
 </html>
