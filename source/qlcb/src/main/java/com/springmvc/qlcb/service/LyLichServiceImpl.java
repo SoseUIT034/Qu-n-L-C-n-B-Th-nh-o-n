@@ -33,10 +33,12 @@ import com.springmvc.qlcb.dao.HibernateUtils;
 import com.springmvc.qlcb.dao.LichSuCongTacDAO;
 import com.springmvc.qlcb.dao.LyLichDAO;
 import com.springmvc.qlcb.dao.NgoaiNguDAO;
+import com.springmvc.qlcb.dao.RoleDAO;
 import com.springmvc.qlcb.dao.TonGiaoDAO;
 import com.springmvc.qlcb.dao.TrinhDoChinhTriDAO;
 import com.springmvc.qlcb.dao.TrinhDoChuyenMonDAO;
 import com.springmvc.qlcb.dao.UserDAO;
+import com.springmvc.qlcb.dao.UserandroleDAOImpl;
 import com.springmvc.qlcb.model.Canbo;
 import com.springmvc.qlcb.model.CanboGiadinhBanthan;
 import com.springmvc.qlcb.model.CanboGiadinhDoitac;
@@ -46,6 +48,9 @@ import com.springmvc.qlcb.model.Dienbienluong;
 import com.springmvc.qlcb.model.Lichsucongtac;
 import com.springmvc.qlcb.model.Lylich;
 import com.springmvc.qlcb.model.Taikhoan;
+import com.springmvc.qlcb.model.UserStatus;
+import com.springmvc.qlcb.model.usersandroles;
+import com.springmvc.qlcb.model.usersandrolesId;
 
 @Service
 public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
@@ -54,6 +59,12 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	
 	@Autowired
 	private LyLichDAO lyLichDAO;
+	
+	@Autowired
+	private UserandroleDAOImpl userandroleDAOImpl;
+	
+	@Autowired
+	private RoleDAO roleDAO;
 	
 	@Autowired
 	private DaoTaoChuyenMonDAO daoTaoChuyenMonDAO; 
@@ -446,6 +457,51 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 			}
 	//-----------------
 	 
+		private void saveTaikhoan(int macb, int matk)
+		{
+			Taikhoan tk=new Taikhoan();
+			tk.setMaCanBo(macb);
+			tk.setUsername(""+macb);
+			tk.setPassword("asdasd");
+			tk.setStatus(UserStatus.ACTIVE);
+			taikhoanDAO.saveUser(tk);
+			
+			usersandroles r =new usersandroles(new usersandrolesId(macb,matk));
+			r.setTaikhoan(taikhoanDAO.getTKById(macb));
+			r.setRole(roleDAO.getTKById(matk));
+			userandroleDAOImpl.saveUser(r);
+		}
+		private void editTaikhoan(int macb, int matk)
+		{
+			Taikhoan tk=taikhoanDAO.getUserByName(""+macb);/*
+			tk.setMaCanBo(macb);
+			tk.setUsername(""+macb);
+			tk.setPassword("asdasd");
+			tk.setStatus(UserStatus.ACTIVE);
+			taikhoanDAO.saveUser(tk);*/
+			
+			usersandroles r =new usersandroles(new usersandrolesId(macb,matk));
+			r.setTaikhoan(tk);
+			r.setRole(roleDAO.getTKById(matk));
+			userandroleDAOImpl.deleteUser(macb);
+			userandroleDAOImpl.saveUser(r);
+		}
+		
+		private void editTaikhoanprofile(int macb, String matkhau)
+		{
+			Taikhoan tk=taikhoanDAO.getTKById(macb);
+			tk.setPassword(matkhau);
+			/*
+			tk.setMaCanBo(macb);
+			tk.setUsername(""+macb);
+			
+			tk.setStatus(UserStatus.ACTIVE);
+			taikhoanDAO.saveUser(tk);*/
+			taikhoanDAO.editUser(tk);
+			 
+		}
+		
+		
 	private int _saveLyLich(Lylich lylich)
 	{
 		int thisid=0; 
@@ -469,6 +525,8 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		
 		// save can bo 
 		canBoDAO.save(cb);
+		
+		
 		
 		// save lylich
 		lyLichDAO.save(lylich);
@@ -501,7 +559,9 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 			if(lylich.getLqhdt().size()>0)
 					_saveCanBoGiaDinhDoiTac(lylich);
 		
-		
+		//save tk
+			
+				saveTaikhoan(thisid,lylich.getLoaicanbo());
 		return 0;
 	}
 	
@@ -756,7 +816,8 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 					lylich.setCanboByMaCanBo(cb);
 					lyLichDAO.update(lylich); 
 					
-					//
+					//update tk
+					editTaikhoan(lylich.getMacanbo(), lylich.getLoaicanbo());
 					// update lsbt
 					_updateLichSuBanThan(  lylich);
 					
@@ -780,6 +841,53 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 			return res;
 		}
 		
+		
+		private String _updateprofile(Lylich lylich)
+		{
+			String res = "";
+			if(lyLichDAO.getLyLichById(lylich.getMacanbo())== null)
+			{
+				res= "Mã cán bộ không tồn tại ! Thao tác không thành công...";
+			}
+			else
+			{
+				
+				Canbo cb = canBoDAO.getCanBoById(lylich.getMacanbo());
+				if(cb == null)
+				{
+					res= "Mã cán bộ không tồn tại ! Thao tác không thành công...";
+				}
+				{
+					lylich.setCanboByMaCanBo(cb);
+					lyLichDAO.update(lylich); 
+					
+					//update tk
+					editTaikhoan(lylich.getMacanbo(), lylich.getLoaicanbo());
+					// update lsbt
+					_updateLichSuBanThan(  lylich);
+					
+					 // update lsct
+					 _updateLichSuCongTac(lylich);
+					
+					// update dao tao chuyen mon
+					_updateDaoTaoChuyenMon(lylich);
+					
+					// update dien bien luong(xu ly them ) 
+					_updateDienbienluong(lylich);
+					
+					// update quan he gia dinh ban than  
+					_updateCanBoGiaDinhBanThan(lylich);
+					
+					// update quan he gia dinh doi tac 
+					_updateCanBoGiaDinhDoiTac(lylich);
+					
+					//
+					editTaikhoanprofile(lylich.getMacanbo(), lylich.getMatkhauLTN());
+				}
+				
+			}  
+			return res;
+		}
 					// update//
 	
 	
@@ -830,7 +938,8 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		lylich.setLqhdt(listcanboGiadinhDoitacs); 
 		lylich.setLdbl(listdienbienluongs); 
 		lylich.setDacdienlichsubanthan(dacdienlichsubanthans); 
-		
+		lylich.setLoaicanbo(userandroleDAOImpl.getUserByIdCanBo(id).getRole().getId());
+		lylich.setMatkhauLTN(taikhoanDAO.getTKById(id).getPassword());
 		return lylich;
 	}
 
@@ -860,6 +969,33 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		return result;
 	}
 
+	
+	@Override
+	@Transactional
+	public boolean  updatefrfile(Lylich lylich) {
+		boolean result = false;
+		
+		 
+		
+		Transaction tx = null;
+		try{
+			tx = getSession().beginTransaction();
+			
+			
+			 
+			_updateprofile( lylich);
+			
+			result = true;
+		}catch(Exception ex){
+			if(tx != null){
+				tx.rollback();
+			}
+			logger.error("Error", ex);
+		}
+		return result;
+	}
+	
+	
 	//
 	@Override
 	@Transactional

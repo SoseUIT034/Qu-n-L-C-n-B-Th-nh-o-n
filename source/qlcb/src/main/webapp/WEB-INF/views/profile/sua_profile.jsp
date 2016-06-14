@@ -36,7 +36,7 @@
 
 
 </head>
-<body ">
+<body >
 
 	<!---header--->
 	<%@include file ="../layout/header.jsp" %>
@@ -44,7 +44,10 @@
 	
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
-		<form:form class="container" commandName="Lylich" action="create" style="border: rebeccapurple; border-style: dotted; padding:50px" method="POST" >
+ 		
+ 		<sec:authorize access="hasAnyRole('Admin','Employee')">
+ 		
+		<form:form class="container" enctype="multipart/form-data" commandName="Lylich" action="" style="border: rebeccapurple; border-style: dotted; padding:50px" method="POST" >
 			  <div class="col-xs-12" style="display: none">
 			      <form:input  disabled="true" path="macanbo" id="maCanBo"  class="form-control" type="text"/>
 			       <form:errors path="macanbo" cssclass="error"></form:errors>
@@ -87,13 +90,21 @@
 				            <label> Loại cán bộ: </label>
 				          </div>
 				   		 <div class="col-xs-12 col-md-9"  > 
-						      <form:select  disabled="true" path="loaicanbo" class="form-control">
+						      <form:select disabled="true" path="loaicanbo" class="form-control">
 						      	<form:option value="4">Admin</form:option>
 						      	<form:option value="5">Quản lý</form:option>
 						      	<form:option value="6">Cán bộ</form:option>
 						      </form:select>
 					      </div>
 				     </div> 
+				     <div class="row">
+			          <div class="col-xs-12 col-md-3">
+			            <label> Mật khẩu tài khoản </label>
+			          </div>
+			          <div class="col-xs-12 col-md-9"   > 
+			          	<form:input    path="matkhauLTN" class="form-control text-uppercase" type="text"/> 
+			          </div>
+			        </div>
 			        <div class="row">
 			          <div class="col-xs-12 col-md-3">
 			            <label> 1) Họ và tên khai sinh </label>
@@ -850,53 +861,14 @@
 			  <div class="row">
 			    <form:textarea disabled="true" path="nhanXetCapTren" class="form-control" id="nxdgtxt1" name="nxdgtxt1"></form:textarea>
 			  </div>
-			  <div class="row">
-			    <div class="modal fade" tabindex="-1" role="dialog">
-			      <div class="modal-dialog">
-			        <div class="modal-content">
-			          <div class="modal-header">
-			            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			            <h4 class="modal-title">Cảnh báo!</h4>
-			          </div>
-			          <div class="modal-body">
-			            <p>Bạn có chắc chắn muốn hủy??? </p>
-			          </div>
-			          <div class="modal-footer">
-			            <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
-			            <button type="button" class="btn btn-primary">Tôi chắc chắn!</button>
-			          </div>
-			        </div>
-			        <!-- /.modal-content --> 
-			      </div>
-			      <!-- /.modal-dialog --> 
-			    </div>
-			    <!-- /.modal --> 
+			   <div class="row">
+			     <input type="submit" value ="Lưu"/>
 			  </div>
-			  <div class="row">
-			     
-			     
-			    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-			      <div class="modal-dialog">
-			        <div class="modal-content">
-			          <div class="modal-header">
-			            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			            <h4 class="modal-title">Cảnh báo!</h4>
-			          </div>
-			          <div class="modal-body">
-			            <p>Bạn có chắc chắn muốn hủy??? </p>
-			          </div>
-			          <div class="modal-footer">
-			            <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
-			            <button type="submit" class="btn btn-primary" id="xacnhan" name="xacnhanhuy">Tôi chắc chắn!</button>
-			          </div>
-			        </div>
-			        <!-- /.modal-content --> 
-			      </div>
-			      <!-- /.modal-dialog --> 
-			    </div>
-			    <!-- /.modal --> 
 			  </div>
 			</form:form>
+	
+		</sec:authorize>
+	
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>
@@ -906,5 +878,71 @@
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-ui.js"/>"></script>
 <script src="<c:url value="/resources/lylich_canbo/js/myjs.js"/>"></script>
 <script src="<c:url value="/resources/lylich_canbo/js/create.js"/>"></script>
+
+
+
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div id='myModalContent'></div>
+	        </div>
+	    </div>
+	</div>
+	<script>
+	$('document').ready(function(){
+		
+	
+		$(function () {
+	
+	    $.ajaxSetup({ cache: false });
+	
+	    $("a[data-modal]").on("click", function (e) {
+	
+	        // hide dropdown if any
+	        $(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+	
+	        
+	        $('#myModalContent').load(this.href, function () {
+	            
+	
+	            $('#myModal').modal({
+	                /*backdrop: 'static',*/
+	                keyboard: true
+	            }, 'show');
+	
+	            bindForm(this);
+	        });
+	
+	        return false;
+	    });
+	
+	
+	});
+	
+	function bindForm(dialog) {
+	    
+	    $('form', dialog).submit(function () {
+	        $.ajax({
+	            url: this.action,
+	            type: this.method,
+	            data: $(this).serialize(),
+	            success: function (result) {
+	                if (result=="1") {
+	                    $('#myModal').modal('hide');
+	                    //Refresh
+	                    location.reload();
+	                } else {
+	                    $('#myModalContent').html(result);
+	                    bindForm();
+	                }
+	            }
+	        });
+	        return false;
+	    });
+	}
+	})
+	
+	</script>
 </body>
 </html>

@@ -10,4 +10,5 @@ public interface LyLichService {
 	public boolean update(Lylich lylich);
 	public void delete(int id);
 	public List<Lylich> listLyLich();
+	boolean updatefrfile(Lylich lylich);
 }

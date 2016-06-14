@@ -36,7 +36,6 @@ public class Khoi implements java.io.Serializable {
 	}
 
 	@Id
-
 	@Column(name = "MaKhoi", unique = true, nullable = false)
 	public int getMaKhoi() {
 		return this.maKhoi;

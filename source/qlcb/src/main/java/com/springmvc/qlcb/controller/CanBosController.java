@@ -98,8 +98,7 @@ public class CanBosController {
 
 	@RequestMapping(value = { "/create"}, method = RequestMethod.POST)
 	public String DoCreate(@Valid @ModelAttribute(value = "Lylich")  Lylich  data ,HttpServletRequest request,BindingResult bindingResult,  Map<String, Object> model  ) 
-	{
-		
+	{ 
 		String fileName = data.getFileLTN().getOriginalFilename();
 		String realPath = request.getSession().getServletContext().getRealPath("/");
 		String relativePath = "resources" + File.separator + "upload" + File.separator + "images";
@@ -175,7 +174,55 @@ public class CanBosController {
 		
 		return "/lylich_canbo/chitiet_canbo";
 	}
-	
+	@RequestMapping(value = { "/profile"}, method = RequestMethod.GET)
+	public String profile(HttpSession session, HttpServletRequest request,Model model) {
+		
+		// header
+//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
+//		if(tk!=null)
+//		{
+//			request.setAttribute("KEY_LOGINED", 1);
+//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
+//		}
+//		else
+//		{
+//			request.setAttribute("KEY_LOGINED", 0);
+//		}
+		//-dropdownlist----
+		
+		model.addAttribute("listdantoc", dt.listDanToc() );
+		model.addAttribute("listtocgiao", tg.listTonGiao());
+		model.addAttribute("listchuyenmon", tdcm.listTrinhDoChuyenMon() );
+		model.addAttribute("listchinhtri", tdct.listTrinhDoChinhTri());
+		model.addAttribute("listngoaingu", nn.listNgoaiNgu());
+		
+		
+		
+		
+		
+		
+		
+	 
+		// model
+		Lylich lylich = new Lylich();
+		
+		lylich= l.getLyLichById(0);
+		 
+		
+		 	
+		
+		model.addAttribute("Lylich", lylich);  
+		
+		return "/profile/sua_profile";
+	}
+	@RequestMapping(value = { "/profile"}, method = RequestMethod.POST)
+	public String Doprofile(@Valid @ModelAttribute(value = "Lylich")  Lylich  data   ,HttpSession session, HttpServletRequest request,Model model) {
+	   
+		Lylich 	tempdata = l.getLyLichById(0); 
+		tempdata.setMatkhauLTN(data.getMatkhauLTN());
+		l.updatefrfile(tempdata); 
+		return "/profile/sua_profile"; 
+	}
 
 	@RequestMapping(value = { "/list"}, method = RequestMethod.GET)
 	public String List( HttpSession session, HttpServletRequest request,Model model) {
@@ -256,7 +303,7 @@ public class CanBosController {
 		String relativePath = "resources" + File.separator + "upload" + File.separator + "images";
 		String storedFolderLocation = realPath + relativePath;
 
-		if(data.getFileLTN()!=null)
+		if(data.getFileLTN().getSize()!=0)
 		{
 			File dir = new File(storedFolderLocation);
 			if (!dir.exists()) {
@@ -278,9 +325,10 @@ public class CanBosController {
 				e.printStackTrace();
 			}	 
 		}
-		
+		Lylich temp = l.getLyLichById(data.getMacanbo());
+		data.setHinhanh(temp.getHinhanh());
 		l.update(data); 
-		  return "redirect:/list"; 
+		return "redirect:/list"; 
 	}
 
 

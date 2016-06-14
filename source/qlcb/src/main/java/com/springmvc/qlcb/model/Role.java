@@ -3,15 +3,19 @@ package com.springmvc.qlcb.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +29,7 @@ public class Role implements java.io.Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String roleName;
-	
+	//private Set<usersandroles> usersandroles = new HashSet<usersandroles>(0);
 	@ManyToMany(mappedBy = "roles")
 	private List<Taikhoan> taikhoans;
 
@@ -35,7 +39,7 @@ public class Role implements java.io.Serializable {
 	public Role(int id, String roleName, List<Taikhoan> taikhoans) {
 		this.id = id;
 		this.roleName = roleName;
-		this.taikhoans = taikhoans;
+	this.taikhoans = taikhoans;
 	}
 
 	public Role(String roleName) {
@@ -65,5 +69,13 @@ public class Role implements java.io.Serializable {
 	public void setUsers(List<Taikhoan> taikhoans) {
 		this.taikhoans = taikhoans;
 	}
+	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
+	public Set<usersandroles> getCanboBans() {
+		return this.usersandroles;
+	}
+
+	public void setCanboBans(Set<usersandroles> canboBans) {
+		this.usersandroles = canboBans;
+	}*/
 
 }

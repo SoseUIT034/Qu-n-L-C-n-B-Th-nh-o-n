@@ -45,6 +45,7 @@ import com.springmvc.qlcb.model.Dantoc;
 import com.springmvc.qlcb.model.Daotaochuyenmon;
 import com.springmvc.qlcb.model.Dienbienluong;
 import com.springmvc.qlcb.model.Donvi;
+import com.springmvc.qlcb.model.Khoi;
 import com.springmvc.qlcb.model.Lichsucongtac;
 import com.springmvc.qlcb.model.Lylich;
 import com.springmvc.qlcb.model.Taikhoan;
@@ -72,8 +73,12 @@ public class DonViServiceImp extends HibernateUtils implements DonViService {
 			thisid++;
 		} 
 		
-		donvi.setKhoi(khoiDAO.getKhoiById(donvi.getMaKhoi()));
-		donvi.setMaDonVi(thisid);   
+		int t=donvi.getMaKhoi();
+		Khoi k = khoiDAO.getKhoiById(t); 
+		donvi.setKhoi(k);
+		donvi.setMaDonVi(thisid);  
+		Date d = new  Date(2001, 1, 1);
+		donvi.setNgayThanhLap(d);
 		return donviDao.save(donvi);
 	}
 
@@ -86,8 +91,11 @@ public class DonViServiceImp extends HibernateUtils implements DonViService {
 	@Override
 	@Transactional
 	public void update(Donvi donvi) {
-		donviDao.update(donvi); 
 		
+		donvi.setKhoi(khoiDAO.getKhoiById(donvi.getMaKhoi())); 
+		Date d = new  Date(2001, 1, 1);
+		donvi.setNgayThanhLap(d);
+		donviDao.update(donvi); 
 	}
 
 	@Override

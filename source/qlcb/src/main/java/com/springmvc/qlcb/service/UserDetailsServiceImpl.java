@@ -3,6 +3,8 @@ package com.springmvc.qlcb.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -28,8 +30,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		Taikhoan user = userDAO.getUserByName(username);
-
+		
 		if (user != null) {
+			
 			//additional information on the security object
 			String password = user.getPassword();
 			boolean enabled = user.getStatus().equals(UserStatus.ACTIVE);

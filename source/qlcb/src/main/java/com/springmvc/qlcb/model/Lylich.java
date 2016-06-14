@@ -99,6 +99,10 @@ public class Lylich implements java.io.Serializable {
 	//------------------------------------------ t? d?nh nghia, kh�ng mapping
 	 @Transient  
 	 private ArrayList<Lichsucongtac> lsct; 
+	 @Transient 
+	 private int loaicanbo;
+	 @Transient
+	 private String matkhauLTN;
 	 @Transient  
 	 private CommonsMultipartFile fileLTN; 
 	 @Transient  
@@ -180,10 +184,26 @@ public class Lylich implements java.io.Serializable {
 		this.ldbl = ldbl;
 	}
 	 @Transient
+	 public String getMatkhauLTN() {
+		return matkhauLTN;
+	}
+	 @Transient
+	public void setMatkhauLTN(String matkhauLTN) {
+		this.matkhauLTN = matkhauLTN;
+	}
+	@Transient
 	public ArrayList<Daotaochuyenmon> getLdtcm() {
 		return ldtcm;
 	}
 	 @Transient
+	 public int getLoaicanbo() {
+		return loaicanbo;
+	}
+	 @Transient
+	public void setLoaicanbo(int loaicanbo) {
+		this.loaicanbo = loaicanbo;
+	}
+	@Transient
 	public void setLdtcm(ArrayList<Daotaochuyenmon> ldtcm) {
 		this.ldtcm = ldtcm;
 	}

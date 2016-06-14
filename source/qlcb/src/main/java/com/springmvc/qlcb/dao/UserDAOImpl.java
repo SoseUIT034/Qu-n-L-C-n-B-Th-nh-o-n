@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.qlcb.model.Taikhoan;
+import com.springmvc.qlcb.model.Trinhdochinhtri;
 
 @Repository
 public class UserDAOImpl extends HibernateUtils implements UserDAO {
@@ -63,5 +64,11 @@ public class UserDAOImpl extends HibernateUtils implements UserDAO {
 	public void editUser(Taikhoan user) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Taikhoan getTKById(int id) {
+		  return getSession().get(Taikhoan.class, id);
+		 
 	}
 }

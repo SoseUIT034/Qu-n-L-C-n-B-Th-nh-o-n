@@ -1,7 +1,9 @@
 package com.springmvc.qlcb.model;
 // Generated Apr 25, 2016 2:33:53 PM by Hibernate Tools 4.3.1.Final
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -17,7 +19,7 @@ public class Taikhoan implements java.io.Serializable {
 	// private Canbo canbo;
 	private String username;
 	private String password;
-
+	//private Set<usersandroles> usersandroles = new HashSet<usersandroles>(0);
 	@ManyToMany
 	@JoinTable(name = "UsersAndRoles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
@@ -86,5 +88,12 @@ public class Taikhoan implements java.io.Serializable {
 	public void setStatus(UserStatus status) {
 		this.status = status;
 	}
+	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "taikhoan")
+	public Set<usersandroles> getCanboBans() {
+		return this.usersandroles;
+	}
 
+	public void setCanboBans(Set<usersandroles> canboBans) {
+		this.usersandroles = canboBans;
+	}*/
 }

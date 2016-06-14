@@ -25,7 +25,7 @@ public class Donvi implements java.io.Serializable {
 
 	private int maDonVi;
 	private Khoi khoi;
-	 @Transient  
+	@Transient
 	private int maKhoi;
 	private String tenDonVi;
 	private Integer maTruongDonVi;
@@ -72,11 +72,11 @@ public class Donvi implements java.io.Serializable {
 		return this.khoi;
 	}
 
-	 @Transient  	
+	@Transient
 	public int getMaKhoi() {
 		return maKhoi;
 	}
-	 @Transient  
+	@Transient
 	public void setMaKhoi(int maKhoi) {
 		this.maKhoi = maKhoi;
 	}

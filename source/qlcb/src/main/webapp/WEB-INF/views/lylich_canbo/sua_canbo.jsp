@@ -87,9 +87,22 @@
 			        <label>File upload</label>
 			        <form:input type="file" path="fileLTN"  /> 
 			      </div> 
+			      
 			    </div>
 			    <div class="col-xs-12 col-md-9">
 			      <div class="container-fluid">
+			      <div class="row">
+					    <div class="col-xs-12 col-md-3">
+				            <label> Loại cán bộ: </label>
+				          </div>
+				   		 <div class="col-xs-12 col-md-9"  > 
+						      <form:select path="loaicanbo" class="form-control">
+						      	<form:option value="4">Admin</form:option>
+						      	<form:option value="5">Quản lý</form:option>
+						      	<form:option value="6">Cán bộ</form:option>
+						      </form:select>
+					      </div>
+				     </div> 
 			        <div class="row">
 			          <div class="col-xs-12 col-md-3">
 			            <label> 1) Họ và tên khai sinh </label>

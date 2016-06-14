@@ -109,16 +109,19 @@ public class DonViController {
 		 
 	 
 		// model
-	    ArrayList<Donvi>  donvi = new ArrayList<Donvi>();
-		
+	    ArrayList<Donvi>  donvi = new ArrayList<Donvi>(); 
 	    donvi= (ArrayList<Donvi>) tg.listDonVi() ; 
+	    for (Donvi item : donvi) {
+			item.setKhoi(k.getKhoiById(item.getMaKhoi()));
+		}
+	    
 		model.addAttribute("listdonvi", donvi);  
 		
 		return "/Donvi/list_donvi";
 	}
 	
 	
-	@RequestMapping(value = { "/edittdonvi/{id}"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/editdonvi/{id}"}, method = RequestMethod.GET)
 	public String Edit(@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
@@ -144,7 +147,7 @@ public class DonViController {
 	}
 	
 	
-	@RequestMapping(value = { "/edittdonvi/{id}"}, method = RequestMethod.POST) 
+	@RequestMapping(value = { "/editdonvi/{id}"}, method = RequestMethod.POST) 
 	public String Edit(@Valid @ModelAttribute(value = "donvi")  Donvi  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
  

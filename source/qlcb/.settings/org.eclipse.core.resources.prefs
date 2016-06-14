@@ -5,4 +5,5 @@ encoding//src/main/java/com/springmvc/qlcb/model/Lylich.java=UTF-8
 encoding//src/main/java/com/springmvc/qlcb/model/Taikhoan.java=UTF-8
 encoding//src/main/java/com/springmvc/qlcb/service/LyLichServiceImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layout/new.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/lylich_canbo/themmoi_canbo.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/themchucvu/error.jsp=UTF-8

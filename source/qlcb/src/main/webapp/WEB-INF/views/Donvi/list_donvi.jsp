@@ -61,8 +61,9 @@
 					<tr>
 						<td>${loop.index +1}</td>
 			 		 	<td> ${item.maDonVi} </td>
-			 		 	<td> ${item.khoi.tenKhoi} </td> 
 			 		 	<td> ${item.tenDonVi} </td>  
+			 		 	<td> ${item.khoi.tenKhoi} </td> 
+			 		 	
 			 		 	<td><a href="editdonvi/${item.maDonVi}">Sửa</a></td> 
 		 		 	</tr>
 				 </c:forEach>

@@ -1,6 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
@@ -70,18 +70,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header-section">
 		<div class="container">
 			<div class="head-top">
-				<div class="social-icon">
+				<!-- <div class="social-icon">
 					<a href="#"><i class="icon"></i></a> <a href="#"><i
 						class="icon1"></i></a>
 
-				</div>
+				</div> -->
 				<div class="email">
 					<ul>
 
 						<li><spring:message code="user.logged" />: <sec:authentication
 								property="name" /> <sec:authentication property="authorities" />
 							<i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a
-							href="logout"><spring:message code="user.logout" /></a></li>
+							href="${pageContext.request.contextPath}/logout"><spring:message code="user.logout" /></a></li>
 
 					</ul>
 				</div>
@@ -105,44 +105,65 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class=" " id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">Home <span
+						<li class="active"><a href="${pageContext.request.contextPath}/home">Home <span
 								class="sr-only">(current)</span></a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Pages<span class="caret"></span></a>
+							aria-expanded="false">Cán bộ<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="about.html">About</a></li>
-								<li><a href="services.html">Services</a></li>
-								<li><a href="agents.html">Agents</a></li>
-								<li><a href="forrent.html">For Rent</a></li>
-								<li><a href="forsale.html">For Sale</a></li>
-								<li><a href="pricing.html">Pricing</a></li>
-								<li><a href="faqs.html">FAQs</a></li>
-								<li><a href="idxpress.html">IDXpress</a></li>
-								<li><a href="terms.html">Terms of Use</a></li>
-								<li><a href="privacy.html">Privacy Policy</a></li>
+							<li><a href="${pageContext.request.contextPath}/profile">Thông tin cá nhân</a></li>
+								<li><a href="${pageContext.request.contextPath}/create">Thêm cán bộ</a></li>
+								<li><a href="${pageContext.request.contextPath}/list">Danh sách cán bộ</a></li>
+								 
 							</ul></li>
-						<li class="dropdown "><a href="#" class="dropdown-toggle"
+						 <li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Property<span class="caret"></span></a>
+							aria-expanded="false">Dân tộc<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="defaultvariation.html">Default â
-										Variation</a></li>
-								<li><a href="agentinsidebarvariation.html">Agent in
-										Sidebar - Variation</a></li>
-								<li><a href="galleryvariation.html">Gallery - Variation</a></li>
+								<li><a href="${pageContext.request.contextPath}/createdantoc"> Thêm dân tộc</a></li>
+								<li><a href="${pageContext.request.contextPath}/listdantoc">Danh sách dân tộc </a></li>
+								 
 							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Gallery <span class="caret"></span></a>
+							aria-expanded="false">Đơn vị <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="2columnsgallery.html">2 Columns Gallery</a></li>
-								<li><a href="3columnsgallery.html">3 Columns Gallery</a></li>
-								<li><a href="4columnsgallery.html">4 Columns Gallery</a></li>
+								<li><a href="${pageContext.request.contextPath}/createdonvi"> Thêm đơn vị </a></li>
+								<li><a href="${pageContext.request.contextPath}/listdonvi">Danh sách đơn vị </a></li>
+								 
 							</ul></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="codes.html">Codes</a></li>
-						<li><a href="contact.html">Contact</a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Ngoại ngữ <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/createngoaingu"> Thêm ngoại ngữ </a></li>
+								<li><a href="${pageContext.request.contextPath}/listngoaingu">Danh sách ngoại ngữ </a></li>
+								 
+							</ul></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Tôn giáo <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/createTonGiao"> Thêm tôn giáo</a></li>
+								<li><a href="${pageContext.request.contextPath}/listtongiao">Dannh sách tôn giáo </a></li>
+								 
+							</ul></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Chuyên môn <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/createtrinhdochuyenmon"> Thêm chuyên môn </a></li>
+								<li><a href="${pageContext.request.contextPath}/listtrinhdochuyenmon">Danh sách chuyên môn </a></li>
+								 
+							</ul></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"> Chính trị <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/createtrinhdochinhtri"> Thêm chính trị</a></li>
+								<li><a href="${pageContext.request.contextPath}/listtrinhdochinhtri">Danh sách chính trị</a></li>
+								 
+							</ul></li>
 					</ul>
 					<!--<div class="phone">
 							<span><i class="glyphicon glyphicon-phone" aria-hidden="true"></i>1-999-4563-555</span>
