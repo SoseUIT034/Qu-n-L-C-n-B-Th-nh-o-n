@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Transactional
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username ) throws UsernameNotFoundException {
 
 		Taikhoan user = userDAO.getUserByName(username);
 		

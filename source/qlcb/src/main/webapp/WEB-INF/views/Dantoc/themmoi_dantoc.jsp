@@ -8,7 +8,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
-<html lang="en">
+<html >
 <head>
 <!-- <c:url value="/resources/lylich_canbo/css/bootstrap.min.css"/> -->
 <meta charset="utf-8">
@@ -45,7 +45,8 @@
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
 		<form:form class="container" commandName="dantoc" action="createdantoc" style="border: rebeccapurple; border-style: dotted;" method="POST" >
-			   
+			   <%request.setCharacterEncoding("UTF-8"); %>
+			   <%response.setCharacterEncoding("UTF-8"); %>
 			  <div class="row" disabled="true" style="display:none;">
 			    <div class="col-xs-12 col-md-4">
 			      <label>Mã dan toc</label>
