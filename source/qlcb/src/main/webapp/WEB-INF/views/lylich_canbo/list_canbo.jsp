@@ -58,6 +58,7 @@
 		 		 	<th> Ngày sinh</th>
 		 		 	<th></th>
 		 		 	<th></th>
+		 		 	<th></th>
 		 		 </tr>
 	 		 </thead>
 	 		 <tbody>
@@ -73,6 +74,7 @@
 			 		 	<td> ${item.ngaySinh} </td>
 			 		 	<td><a href="detail/${item.canboByMaCanBo.maCanBo}">Chi tiết</a></td>
 			 		 	<td><a href="edit/${item.canboByMaCanBo.maCanBo}">Sửa</a></td> 
+			 		 	<td><a href="canbo/themchucvu/${item.canboByMaCanBo.maCanBo}">Thêm chức vụ</a></td>
 		 		 	</tr>
 				 </c:forEach>
 	 		  </tbody>

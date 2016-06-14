@@ -1,5 +1,8 @@
 package com.springmvc.qlcb.service;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -117,6 +120,25 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 	@Autowired
 	private ChucvuBanDAO chucvuBanDAO;
 	
+	
+	
+	public static String getMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+            // Now we need to zero pad it if you actually want the full 32 chars.
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+ 
 						// save
 	//------------
 	private int genereteIDCanBoGiaDinhDoiTac(ArrayList<Integer> lint)
@@ -462,7 +484,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 			Taikhoan tk=new Taikhoan();
 			tk.setMaCanBo(macb);
 			tk.setUsername(""+macb);
-			tk.setPassword("asdasd");
+			tk.setPassword(getMD5(""+macb));
 			tk.setStatus(UserStatus.ACTIVE);
 			taikhoanDAO.saveUser(tk);
 			
@@ -489,16 +511,18 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 		
 		private void editTaikhoanprofile(int macb, String matkhau)
 		{
-			Taikhoan tk=taikhoanDAO.getTKById(macb);
-			tk.setPassword(matkhau);
-			/*
-			tk.setMaCanBo(macb);
-			tk.setUsername(""+macb);
-			
-			tk.setStatus(UserStatus.ACTIVE);
-			taikhoanDAO.saveUser(tk);*/
-			taikhoanDAO.editUser(tk);
-			 
+			if(matkhau.length()>0)
+			{
+				Taikhoan tk=taikhoanDAO.getTKById(macb);
+				tk.setPassword( getMD5(matkhau));
+				/*
+				tk.setMaCanBo(macb);
+				tk.setUsername(""+macb);
+				
+				tk.setStatus(UserStatus.ACTIVE);
+				taikhoanDAO.saveUser(tk);*/
+				taikhoanDAO.editUser(tk);
+			}
 		}
 		
 		

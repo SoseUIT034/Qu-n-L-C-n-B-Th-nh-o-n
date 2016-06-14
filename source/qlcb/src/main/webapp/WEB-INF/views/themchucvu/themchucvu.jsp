@@ -20,7 +20,7 @@
 	<%@include file ="../layout/header.jsp" %>
 	<!---header--->
 	
-	<div class="content" style="padding-top: 30px; ">
+	<div class="container content" style="padding-top: 30px; ">
 	
 	<div class="container">
 <div class="row">
@@ -246,8 +246,8 @@
 	<%@include file="../layout/footer.jsp" %>
 	<!---footer--->
 
-<script src="<c:url value="/resources/lylich_canbo/js/jquery-2.2.2.js"/>"></script> 
-<script src="<c:url value="/resources/lylich_canbo/js/bootstrap.min.js"/>"></script> 
+<%-- <script src="<c:url value="/resources/lylich_canbo/js/jquery-2.2.2.js"/>"></script> 
+<script src="<c:url value="/resources/lylich_canbo/js/bootstrap.min.js"/>"></script>  --%>
 <script src="<c:url value="/resources/lylich_canbo/js/jquery-ui.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/myjs.js"/>"></script> 
 <script src="<c:url value="/resources/lylich_canbo/js/create.js"/>"></script>

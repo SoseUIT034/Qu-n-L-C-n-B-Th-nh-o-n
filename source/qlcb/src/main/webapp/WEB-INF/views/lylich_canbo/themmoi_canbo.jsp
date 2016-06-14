@@ -9,7 +9,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
-<html lang="en">
+<html >
 <head>
 <!-- <c:url value="/resources/lylich_canbo/css/bootstrap.min.css"/> -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -48,8 +48,8 @@
  		
  		<sec:authorize access="hasAnyRole('Admin','Employee')">
  		
-		<form:form class="container" commandName="Lylich" action="create"  accept-charset="utf-8" style="border: rebeccapurple; border-style: dotted;" enctype="multipart/form-data" method="POST"  >
-			<%request.setCharacterEncoding("UTF-8");%>
+		<form:form class="container" commandName="Lylich" action="create"  accept-charset="UTF-8" style="border: rebeccapurple; border-style: dotted;" enctype="multipart/form-data" method="POST"  >
+			<%request.setCharacterEncoding("UTF-8") ;%>
 			 
 			  <div class="col-xs-12" style="display: none">
 			      <form:input path="macanbo" id="maCanBo"  class="form-control" type="text"/>
