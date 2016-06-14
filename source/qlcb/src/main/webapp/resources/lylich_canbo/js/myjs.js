@@ -31,6 +31,7 @@ function WindowsSize() {
 
 
 $(document).ready(function() {
+	WindowsSize();
 	$('.datepicker').datepicker();
 	$.get('Provinces.xml', function(d) {
 		$(d).find('Item[type="province"]').each(function() {

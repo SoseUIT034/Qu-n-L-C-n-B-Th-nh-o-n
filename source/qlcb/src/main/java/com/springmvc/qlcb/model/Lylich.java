@@ -23,8 +23,10 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -44,8 +46,11 @@ public class Lylich implements java.io.Serializable {
 	private Tongiao tongiao;
 	private Trinhdochinhtri trinhdochinhtri;
 	private Trinhdochuyenmon trinhdochuyenmon;
+	@Length(min=0, max=50, message="từ 0 tới 50 ký tự")
 	private String tenGoiKhac;
+	@Length(min=1, max=50, message="không để trống")
 	private String tenCanBo;
+	@Length(min=1, max=10, message="không để trống")
 	private String ngaySinh;
 	private Boolean gioiTinh;
 	private String noiSinh;
@@ -87,11 +92,14 @@ public class Lylich implements java.io.Serializable {
 	private String nhanXetCapTren;
 	private Boolean daXacNhan;
 	private String hinhanh;
+	@Length(min=1, max=50, message="không để trống")
 	private String sohieucongchuc;
 	private String soTruong;
 	private String khenThuongCaoNhat;
 	private String kyLuatCaoNhat;
+	@Length(min=1, max=50, message="không để trống")
 	private String noiSuDung;
+	@Length(min=1, max=50, message="không để trống")
 	private String noiQuanLy;
 	private Dacdienlichsubanthan dacdienlichsubanthan;
 	private Set<Dienbienluong> dienbienluongs = new HashSet<Dienbienluong>(0);

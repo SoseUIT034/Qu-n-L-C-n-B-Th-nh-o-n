@@ -45,7 +45,8 @@
 	<div class="content" style="padding-top: 30px; ">
  		 
 		<c:url var="actionUrl"  value="create" />
-		<form:form class="container" commandName="donvi" action="edittongiao" style="border: rebeccapurple; border-style: dotted;" method="POST" >
+		<sec:authorize access="hasAnyRole('Admin')">
+		<form:form class="container" commandName="donvi" action="editdonvi" style="border: rebeccapurple; border-style: dotted;" method="POST" >
 			   
 			  <div class="row">
 			    <div class="col-xs-12 col-md-4">
@@ -69,6 +70,7 @@
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="tenDonVi" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/> 
+			      <form:errors path="tenDonVi"  class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  <div class="row">
@@ -86,6 +88,7 @@
 				           	  </c:forEach> 
 				           	 
 			            </form:select>
+			            <form:errors path="maKhoi"  class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  <div class="row">
@@ -94,6 +97,7 @@
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="moTa" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/> 
+			      <form:errors path="moTa"  class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  <div class="row">
@@ -111,6 +115,7 @@
 				           	  </c:forEach> 
 				           	 
 			            </form:select>
+			            <form:errors path="maTruongDonVi"  class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  
@@ -143,6 +148,7 @@
 			    <!-- /.modal --> 
 			  </div>
 			</form:form>
+			</sec:authorize>
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>

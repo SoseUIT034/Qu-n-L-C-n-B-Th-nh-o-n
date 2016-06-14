@@ -514,7 +514,9 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 			if(matkhau.length()>0)
 			{
 				Taikhoan tk=taikhoanDAO.getTKById(macb);
-				tk.setPassword( getMD5(matkhau));
+				if(!tk.getPassword().equals(matkhau))
+				{
+					tk.setPassword( getMD5(matkhau));
 				/*
 				tk.setMaCanBo(macb);
 				tk.setUsername(""+macb);
@@ -522,6 +524,7 @@ public class LyLichServiceImpl extends HibernateUtils implements LyLichService {
 				tk.setStatus(UserStatus.ACTIVE);
 				taikhoanDAO.saveUser(tk);*/
 				taikhoanDAO.editUser(tk);
+			}
 			}
 		}
 		

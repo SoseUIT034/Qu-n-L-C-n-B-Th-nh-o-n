@@ -44,7 +44,7 @@
 	
 	<div class="content container"  style="padding-top:30px; border: rebeccapurple; border-style: dotted; padding:50px">
  		 <a href="createngoaingu">Thêm mới</a>
- 		 
+ 		 <sec:authorize access="hasAnyRole('Admin','Employee')">
  		 <table class="table table-hover table-striped">
  		 	<thead>
 		 		 <tr>
@@ -65,7 +65,7 @@
 				 </c:forEach>
 	 		  </tbody>
  		 </table>
-		
+		</sec:authorize>
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>

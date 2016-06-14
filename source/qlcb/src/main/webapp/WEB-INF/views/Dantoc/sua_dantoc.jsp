@@ -45,6 +45,7 @@
 	<div class="content" style="padding-top: 30px; ">
  		 
 		<c:url var="actionUrl"  value="create" />
+		<sec:authorize access="hasAnyRole('Admin')">
 		<form:form class="container" commandName="dantoc" action="editdantoc" style="border: rebeccapurple; border-style: dotted;" method="POST" >
 			   
 			  <div class="row">
@@ -57,7 +58,7 @@
 			  </div>
 			  <div class="row" style="display: none">
 			    <div class="col-xs-12 col-md-4">
-			      <label>Mã trình dộ chính trị</label>
+			      <label> </label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="maDanToc" class="form-control" type="text"    /> 
@@ -65,10 +66,11 @@
 			  </div>
 			 <div class="row">
 			    <div class="col-xs-12 col-md-4">
-			      <label>Tên trình độ chuyên môn</label>
+			      <label>Tên dân tộc</label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="tenDanToc" class="form-control" type="text"/> 
+			      <form:errors path="tenDanToc" class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  
@@ -97,6 +99,7 @@
 			    <!-- /.modal --> 
 			  </div>
 			</form:form>
+			</sec:authorize>
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>

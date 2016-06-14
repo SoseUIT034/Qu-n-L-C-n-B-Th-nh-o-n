@@ -44,6 +44,7 @@
 	
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
+ 		<sec:authorize access="hasAnyRole('Admin')">
 		<form:form class="container" commandName="ngoaingu" action="createngoaingu" style="border: rebeccapurple; border-style: dotted;" method="POST" >
 			   
 			  <div class="row" disabled="true" style="display:none;">
@@ -60,6 +61,7 @@
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="tenNgoaiNgu"  class="form-control" type="text"/> 
+			      <form:errors path="tenNgoaiNgu" class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  
@@ -88,6 +90,7 @@
 			    <!-- /.modal --> 
 			  </div>
 			</form:form>
+			</sec:authorize>
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>

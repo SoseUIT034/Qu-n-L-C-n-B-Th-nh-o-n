@@ -1,8 +1,15 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/springmvc/qlcb/controller/DangNhapsController.java=UTF-8
 encoding//src/main/java/com/springmvc/qlcb/controller/ThemChucVuController.java=UTF-8
+encoding//src/main/java/com/springmvc/qlcb/model/Dantoc.java=UTF-8
+encoding//src/main/java/com/springmvc/qlcb/model/Daotaochuyenmon.java=UTF-8
+encoding//src/main/java/com/springmvc/qlcb/model/Donvi.java=UTF-8
 encoding//src/main/java/com/springmvc/qlcb/model/Lylich.java=UTF-8
+encoding//src/main/java/com/springmvc/qlcb/model/Ngoaingu.java=UTF-8
 encoding//src/main/java/com/springmvc/qlcb/model/Taikhoan.java=UTF-8
+encoding//src/main/java/com/springmvc/qlcb/model/Tongiao.java=UTF-8
+encoding//src/main/java/com/springmvc/qlcb/model/Trinhdochinhtri.java=UTF-8
+encoding//src/main/java/com/springmvc/qlcb/model/Trinhdochuyenmon.java=UTF-8
 encoding//src/main/java/com/springmvc/qlcb/service/LyLichServiceImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layout/new.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/lylich_canbo/themmoi_canbo.jsp=UTF-8

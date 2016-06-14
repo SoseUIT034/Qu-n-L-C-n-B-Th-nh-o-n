@@ -58,18 +58,7 @@ public class DonViController {
 	@RequestMapping(value = { "/createdonvi"}, method = RequestMethod.GET)
 	public String Create(HttpSession session, HttpServletRequest request,Model model) {
 		
-		// header
-//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-//		if(tk!=null)
-//		{
-//			request.setAttribute("KEY_LOGINED", 1);
-//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-//		}
-//		else
-//		{
-//			request.setAttribute("KEY_LOGINED", 0);
-//		}
-		//
+
 		
 		model.addAttribute("donvi", new Donvi());  
 		model.addAttribute("listKhoi", k.listKhoi());  
@@ -80,10 +69,18 @@ public class DonViController {
 	
 
 	@RequestMapping(value = { "/createdonvi"}, method = RequestMethod.POST)
-	public String DoCreate(@Valid @ModelAttribute(value = "donvi")  Donvi  data ,BindingResult bindingResult,  Map<String, Object> model ) 
+	public String DoCreate(@Valid @ModelAttribute(value = "donvi")  Donvi  data ,BindingResult bindingResult, Model model ) 
 	{
- 
-		    tg.save(data);
+			if(bindingResult.hasErrors())
+			{
+				model.addAttribute("listKhoi", k.listKhoi());  
+				model.addAttribute("listtruongdonvi", ll.listLyLich());  
+				return "/Donvi/themmoi_donvi";
+			}
+			else {
+				tg.save(data);
+			}
+		    
 		 
 			return "redirect:/listdonvi"; 
 	}
@@ -93,18 +90,7 @@ public class DonViController {
 	@RequestMapping(value = { "/listdonvi"}, method = RequestMethod.GET)
 	public String List( HttpSession session, HttpServletRequest request,Model model) {
 		
-		// header
-//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-//		if(tk!=null)
-//		{
-//			request.setAttribute("KEY_LOGINED", 1);
-//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-//		}
-//		else
-//		{
-//			request.setAttribute("KEY_LOGINED", 0);
-//		}
-		//-dropdownlist----
+		
 		
 		 
 	 
@@ -122,25 +108,14 @@ public class DonViController {
 	
 	
 	@RequestMapping(value = { "/editdonvi/{id}"}, method = RequestMethod.GET)
-	public String Edit(@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
+	public String Edit(@PathVariable int id,HttpSession session, HttpServletRequest request,Model  model) {
 		
-		// header
-//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-//		if(tk!=null)
-//		{
-//			request.setAttribute("KEY_LOGINED", 1);
-//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-//		}
-//		else
-//		{
-//			request.setAttribute("KEY_LOGINED", 0);
-//		}
-		//-dropdownlist----
+		
 		
 		 
-		model.addAttribute("donvi", tg.getDonViById(id));  
-		model.addAttribute("listKhoi", k.listKhoi());  
-		model.addAttribute("listtruongdonvi", ll.listLyLich());  
+		((Model) model).addAttribute("donvi", tg.getDonViById(id));  
+		((Model) model).addAttribute("listKhoi", k.listKhoi());  
+		((Model) model).addAttribute("listtruongdonvi", ll.listLyLich());  
  
 		
 		return "/Donvi/sua_donvi";
@@ -148,11 +123,21 @@ public class DonViController {
 	
 	
 	@RequestMapping(value = { "/editdonvi/{id}"}, method = RequestMethod.POST) 
-	public String Edit(@Valid @ModelAttribute(value = "donvi")  Donvi  data ,BindingResult bindingResult,  Map<String, Object> model ) 
+	public String Edit(@Valid @ModelAttribute(value = "donvi")  Donvi  data ,BindingResult bindingResult,  Model model ) 
 	{
- 
-		     tg.update(data);
+		if(bindingResult.hasErrors())
+		{ 
+			model.addAttribute("listKhoi", k.listKhoi());  
+			model.addAttribute("listtruongdonvi", ll.listLyLich());  
+				return "/Donvi/sua_donvi";
+		}
+		else {
+			tg.update(data);
+		}
+		return "redirect:/listdonvi"; 
+			 
+		     
 		 
-		     return "redirect:/listdonvi"; 
+		    
 	}
 }

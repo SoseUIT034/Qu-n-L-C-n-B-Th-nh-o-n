@@ -44,9 +44,11 @@
 	
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
+ 		<sec:authorize access="hasAnyRole('Admin')">
 		<form:form class="container" commandName="dantoc" action="createdantoc" style="border: rebeccapurple; border-style: dotted;" method="POST" >
 			   <%request.setCharacterEncoding("UTF-8"); %>
 			   <%response.setCharacterEncoding("UTF-8"); %>
+			   <form:errors path="dantoc.*" class="btn btn-danger"></form:errors>
 			  <div class="row" disabled="true" style="display:none;">
 			    <div class="col-xs-12 col-md-4">
 			      <label>Mã dan toc</label>
@@ -61,6 +63,7 @@
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="tenDanToc"  class="form-control" type="text"/> 
+			      <form:errors path="tenDanToc" class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  
@@ -89,6 +92,7 @@
 			    <!-- /.modal --> 
 			  </div>
 			</form:form>
+			</sec:authorize>
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>

@@ -45,8 +45,9 @@
 	<div class="content" style="padding-top: 30px; ">
  		 
 		<c:url var="actionUrl"  value="create" />
+		<sec:authorize access="hasAnyRole('Admin','Employee')">
 		<form:form class="container" commandName="trinhdochinhtri" action="edittrinhdochinhtri" style="border: rebeccapurple; border-style: dotted;" method="POST" >
-			   
+			   <form:errors path="trinhdochinhtri.*"></form:errors>
 			  <div class="row">
 			    <div class="col-xs-12 col-md-4">
 			      <label>Mã trình dộ chính trị</label>
@@ -66,9 +67,11 @@
 			 <div class="row">
 			    <div class="col-xs-12 col-md-4">
 			      <label>Tên trình dộ chính trị</label>
+			      
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="tenTrinhDoChinhTri" class="form-control" type="text"/> 
+			      <form:errors path="tenTrinhDoChinhTri" class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  
@@ -97,6 +100,7 @@
 			    <!-- /.modal --> 
 			  </div>
 			</form:form>
+			</sec:authorize>
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>

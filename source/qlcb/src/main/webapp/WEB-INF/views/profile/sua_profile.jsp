@@ -45,7 +45,7 @@
 	<div class="content" style="padding-top: 30px; ">
  		<c:url var="actionUrl"  value="create" />
  		
- 		<sec:authorize access="hasAnyRole('Admin','Employee')">
+ 		 
  		
 		<form:form class="container" enctype="multipart/form-data" commandName="Lylich" action="" style="border: rebeccapurple; border-style: dotted; padding:50px" method="POST" >
 			  <div class="col-xs-12" style="display: none">
@@ -867,7 +867,7 @@
 			  </div>
 			</form:form>
 	
-		</sec:authorize>
+	 
 	
 	</div>				
 	<!---footer--->

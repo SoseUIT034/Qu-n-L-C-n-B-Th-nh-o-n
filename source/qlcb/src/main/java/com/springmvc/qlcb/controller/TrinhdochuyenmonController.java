@@ -77,10 +77,16 @@ public class TrinhdochuyenmonController {
 	@RequestMapping(value = { "/createtrinhdochuyenmon"}, method = RequestMethod.POST)
 	public String DoCreate(@Valid @ModelAttribute(value = "trinhdochuyenmon")  Trinhdochuyenmon  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
- 
-		    tg.save(data);
-		 
-			return "redirect:/listtrinhdochuyenmon"; 
+			if(bindingResult.hasErrors())
+			{
+				return "/Trinhdochuyenmon/themmoi_trinhdochuyenmon";
+			}
+			else {
+				tg.save(data);
+				 
+				return "redirect:/listtrinhdochuyenmon"; 
+			}
+		    
 	}
 	
 	
@@ -142,11 +148,17 @@ public class TrinhdochuyenmonController {
 	
 	
 	@RequestMapping(value = { "/edittrinhdochuyenmon/{id}"}, method = RequestMethod.POST) 
-	public String Edit(@Valid @ModelAttribute(value = "trinhdochuyenmon")  Trinhdochuyenmon  data  ) 
+	public String Edit(@Valid @ModelAttribute(value = "trinhdochuyenmon")  Trinhdochuyenmon  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
- 
-		     tg.update(data);
-		 
-		     return "redirect:/listtrinhdochuyenmon"; 
+			if(bindingResult.hasErrors())
+			{
+				return "/Trinhdochuyenmon/sua_trinhdochuyenmon";
+			}
+			else {
+				 tg.update(data);
+				 
+			     return "redirect:/listtrinhdochuyenmon"; 
+			}
+		    
 	}
 }

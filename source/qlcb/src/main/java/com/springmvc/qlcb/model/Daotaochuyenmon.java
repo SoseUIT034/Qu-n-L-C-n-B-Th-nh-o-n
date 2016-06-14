@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -29,6 +30,7 @@ public class Daotaochuyenmon implements java.io.Serializable {
 	private String toiNgay;
 	private String hinhThucDaoTao;
 	private String chuyenNganhDaoTao;
+	@Length( max=50,min=0, message="Không bỏ trống")
 	private String truong;
 	private String chungChiDatDuoc;
 

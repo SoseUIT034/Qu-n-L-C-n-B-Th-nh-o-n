@@ -45,7 +45,8 @@
 	<div class="content" style="padding-top: 30px; ">
  		 
 		<c:url var="actionUrl"  value="create" />
-		<form:form class="container" commandName="ngoaingu" action="editngoaingu" style="border: rebeccapurple; border-style: dotted;" method="POST" >
+		<sec:authorize access="hasAnyRole('Admin')">
+		<form:form class="container" commandName="ngoaingu"   style="border: rebeccapurple; border-style: dotted;" method="POST" >
 			   
 			  <div class="row">
 			    <div class="col-xs-12 col-md-4">
@@ -57,7 +58,7 @@
 			  </div>
 			  <div class="row" style="display: none">
 			    <div class="col-xs-12 col-md-4">
-			      <label>Mã trình dộ chính trị</label>
+			      <label> </label>
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="maNgoaiNgu" class="form-control" type="text"    /> 
@@ -69,6 +70,7 @@
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="tenNgoaiNgu" class="form-control" type="text"/> 
+			      <form:errors path="tenNgoaiNgu" class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  
@@ -97,6 +99,7 @@
 			    <!-- /.modal --> 
 			  </div>
 			</form:form>
+			</sec:authorize>
 	</div>				
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>

@@ -97,39 +97,56 @@ public class CanBosController {
 	
 
 	@RequestMapping(value = { "/create"}, method = RequestMethod.POST)
-	public String DoCreate(@Valid @ModelAttribute(value = "Lylich")  Lylich  data ,HttpServletRequest request,BindingResult bindingResult,  Map<String, Object> model  ) 
+	public String DoCreate(@Valid @ModelAttribute(value = "Lylich")  Lylich  data ,BindingResult bindingResult,HttpServletRequest request,  Map<String, Object> model  ) 
 	{ 
-		String fileName = data.getFileLTN().getOriginalFilename();
-		String realPath = request.getSession().getServletContext().getRealPath("/");
-		String relativePath = "resources" + File.separator + "upload" + File.separator + "images";
-		String storedFolderLocation = realPath + relativePath;
-
-		//if(data.getFileLTN()!=null)
-		if(fileName!="")
+		if(bindingResult.hasErrors())
 		{
-			File dir = new File(storedFolderLocation);
-			if (!dir.exists()) {
-				dir.mkdirs();
-			}
-			try {
-				byte[] bytes = data.getFileLTN().getBytes();
-				String storedFileLocation = storedFolderLocation + File.separator + fileName;
-				System.out.println(storedFileLocation);
-				File serverFile = new File(storedFileLocation);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-				data.setHinhanh(storedFileLocation);
-				l.save(data);
-				return "redirect:/list"; 
-	
-			} catch (Exception e) {
-				e.printStackTrace();
-			}	
+			((Model) model).addAttribute("listdantoc", dt.listDanToc() );
+			((Model) model).addAttribute("listtocgiao", tg.listTonGiao());
+			((Model) model).addAttribute("listchuyenmon", tdcm.listTrinhDoChuyenMon() );
+			((Model) model).addAttribute("listchinhtri", tdct.listTrinhDoChinhTri());
+			((Model) model).addAttribute("listngoaingu", nn.listNgoaiNgu());
+			
+			 
+			/*Lylich l = new Lylich();
+			 l.setFileLTN(null);
+			model.addAttribute("Lylich", l);  */
+			return "/lylich_canbo/themmoi_canbo";
 		}
-				
-			l.save(data);
-		    return "redirect:/list"; 
+		else {
+			String fileName = data.getFileLTN().getOriginalFilename();
+			String realPath = request.getSession().getServletContext().getRealPath("/");
+			String relativePath = "resources" + File.separator + "upload" + File.separator + "images";
+			String storedFolderLocation = realPath + relativePath;
+
+			//if(data.getFileLTN()!=null)
+			if(fileName!="")
+			{
+				File dir = new File(storedFolderLocation);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+				try {
+					byte[] bytes = data.getFileLTN().getBytes();
+					String storedFileLocation = storedFolderLocation + File.separator + fileName;
+					System.out.println(storedFileLocation);
+					File serverFile = new File(storedFileLocation);
+					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+					stream.write(bytes);
+					stream.close();
+					data.setHinhanh(storedFileLocation);
+					l.save(data);
+					return "redirect:/list"; 
+		
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
+			}
+					
+				l.save(data);
+			    return "redirect:/list"; 
+		}
+		
 	}
 	
 	
@@ -174,8 +191,8 @@ public class CanBosController {
 		
 		return "/lylich_canbo/chitiet_canbo";
 	}
-	@RequestMapping(value = { "/profile"}, method = RequestMethod.GET)
-	public String profile(HttpSession session, HttpServletRequest request,Model model) {
+	@RequestMapping(value = { "/profile/{id}"}, method = RequestMethod.GET)
+	public String profile(@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
 //		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
@@ -206,7 +223,7 @@ public class CanBosController {
 		// model
 		Lylich lylich = new Lylich();
 		
-		lylich= l.getLyLichById(0);
+		lylich= l.getLyLichById(id);
 		 
 		
 		 	
@@ -215,10 +232,10 @@ public class CanBosController {
 		
 		return "/profile/sua_profile";
 	}
-	@RequestMapping(value = { "/profile"}, method = RequestMethod.POST)
-	public String Doprofile(@Valid @ModelAttribute(value = "Lylich")  Lylich  data   ,HttpSession session, HttpServletRequest request,Model model) {
+	@RequestMapping(value = { "/profile/{id}"}, method = RequestMethod.POST)
+	public String Doprofile(@Valid @ModelAttribute(value = "Lylich")  Lylich  data   ,@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
 	   
-		Lylich 	tempdata = l.getLyLichById(0); 
+		Lylich 	tempdata = l.getLyLichById(id); 
 		tempdata.setMatkhauLTN(data.getMatkhauLTN());
 		l.updatefrfile(tempdata); 
 		return "/profile/sua_profile"; 
@@ -295,40 +312,55 @@ public class CanBosController {
 	
 	
 	@RequestMapping(value = { "/edit/{id}"}, method = RequestMethod.POST) 
-	public String Edit(@Valid @ModelAttribute(value = "Lylich")  Lylich  data  , HttpServletRequest request, BindingResult bindingResult,  Map<String, Object> model ) 
+	public String Edit(@Valid @ModelAttribute(value = "Lylich")  Lylich  data  , BindingResult bindingResult, HttpServletRequest request, Map<String, Object> model ) 
 	{
-		
-		String fileName = data.getFileLTN().getOriginalFilename();
-		String realPath = request.getSession().getServletContext().getRealPath("/");
-		String relativePath = "resources" + File.separator + "upload" + File.separator + "images";
-		String storedFolderLocation = realPath + relativePath;
-
-		if(data.getFileLTN().getSize()!=0)
+		if(bindingResult.hasErrors())
 		{
-			File dir = new File(storedFolderLocation);
-			if (!dir.exists()) {
-				dir.mkdirs();
-			}
-			try {
-				byte[] bytes = data.getFileLTN().getBytes();
-				String storedFileLocation = storedFolderLocation + File.separator + fileName;
-				System.out.println(storedFileLocation);
-				File serverFile = new File(storedFileLocation);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-				data.setHinhanh(storedFileLocation);
-				l.update(data);
-				return "redirect:/list"; 
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}	 
+			((Model) model).addAttribute("listdantoc", dt.listDanToc() );
+			((Model) model).addAttribute("listtocgiao", tg.listTonGiao());
+			((Model) model).addAttribute("listchuyenmon", tdcm.listTrinhDoChuyenMon() );
+			((Model) model).addAttribute("listchinhtri", tdct.listTrinhDoChinhTri());
+			((Model) model).addAttribute("listngoaingu", nn.listNgoaiNgu()); 
+			// model
+			  
+			((Model) model).addAttribute("Lylich", data);  
+			
+			return "/lylich_canbo/sua_canbo";
 		}
-		Lylich temp = l.getLyLichById(data.getMacanbo());
-		data.setHinhanh(temp.getHinhanh());
-		l.update(data); 
-		return "redirect:/list"; 
+		else {
+			String fileName = data.getFileLTN().getOriginalFilename();
+			String realPath = request.getSession().getServletContext().getRealPath("/");
+			String relativePath = "resources" + File.separator + "upload" + File.separator + "images";
+			String storedFolderLocation = realPath + relativePath;
+
+			if(data.getFileLTN().getSize()!=0)
+			{
+				File dir = new File(storedFolderLocation);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+				try {
+					byte[] bytes = data.getFileLTN().getBytes();
+					String storedFileLocation = storedFolderLocation + File.separator + fileName;
+					System.out.println(storedFileLocation);
+					File serverFile = new File(storedFileLocation);
+					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+					stream.write(bytes);
+					stream.close();
+					data.setHinhanh(storedFileLocation);
+					l.update(data);
+					return "redirect:/list"; 
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	 
+			}
+			Lylich temp = l.getLyLichById(data.getMacanbo());
+			data.setHinhanh(temp.getHinhanh());
+			l.update(data); 
+			return "redirect:/list"; 
+		}
+		
 	}
 
 

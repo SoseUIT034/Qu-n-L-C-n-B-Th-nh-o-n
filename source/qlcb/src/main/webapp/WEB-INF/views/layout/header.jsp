@@ -111,7 +111,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Cán bộ<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-							<li><a href="${pageContext.request.contextPath}/profile">Thông tin cá nhân</a></li>
+							<li><a href="${pageContext.request.contextPath}/profile/<sec:authentication property="name" />">Thông tin cá nhân</a></li>
+							<li><a href="${pageContext.request.contextPath}/canbo/themchucvu/<sec:authentication property="name" />">Thông tin chức vụ</a></li>
+							<%-- <li><a href="${pageContext.request.contextPath}/canbo/themchucvu/$">Thông tin cá nhân</a></li> --%>
 								<li><a href="${pageContext.request.contextPath}/create">Thêm cán bộ</a></li>
 								<li><a href="${pageContext.request.contextPath}/list">Danh sách cán bộ</a></li>
 								 

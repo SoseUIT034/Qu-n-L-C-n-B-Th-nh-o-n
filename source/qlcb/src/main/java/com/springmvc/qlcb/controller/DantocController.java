@@ -47,43 +47,31 @@ public class DantocController {
  
 	@Autowired
 	private DanTocService  tg ;
-	 
-	 
- 
+	  
 	
 	@RequestMapping(value = { "/createdantoc"}, method = RequestMethod.GET)
 	public String Create(HttpSession session, HttpServletRequest request,Model model) {
-		
-		// header
-//		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
-//		if(tk!=null)
-//		{
-//			request.setAttribute("KEY_LOGINED", 1);
-//			request.setAttribute("NAME_LOGINED", tk.getTenDangNhap());
-//		}
-//		else
-//		{
-//			request.setAttribute("KEY_LOGINED", 0);
-//		}
-		//
+		 
 		
 		model.addAttribute("dantoc", new Dantoc());  
 		return "/Dantoc/themmoi_dantoc";
 	}
-	
-	
-
+	 
 	@RequestMapping(value = { "/createdantoc"}, method = RequestMethod.POST)
 	public String DoCreate(@Valid @ModelAttribute(value = "dantoc")  Dantoc  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
- 
-		    tg.save(data);
-		 
+			if(bindingResult.hasErrors())
+			{
+				return "/Dantoc/themmoi_dantoc";
+			}
+			else {
+				tg.save(data);
+			}
+		    
+		    
 			return "redirect:/listdantoc"; 
 	}
-	
-	
-
+	 
 	@RequestMapping(value = { "/listdantoc"}, method = RequestMethod.GET)
 	public String List( HttpSession session, HttpServletRequest request,Model model) {
 		
@@ -141,10 +129,17 @@ public class DantocController {
 	
 	
 	@RequestMapping(value = { "/editdantoc/{id}"}, method = RequestMethod.POST) 
-	public String Edit(@Valid @ModelAttribute(value = "dantoc")  Dantoc  data  ) 
+	public String Edit(@Valid @ModelAttribute(value = "dantoc") Dantoc  data,BindingResult bindingResult   ) 
 	{
- 
-		     tg.update(data);
+			if(bindingResult.hasErrors())
+			{
+				return "/Dantoc/sua_dantoc";
+			}
+			else 
+			{
+				tg.update(data);
+			}
+		     
 		 
 		     return "redirect:/listdantoc"; 
 	}

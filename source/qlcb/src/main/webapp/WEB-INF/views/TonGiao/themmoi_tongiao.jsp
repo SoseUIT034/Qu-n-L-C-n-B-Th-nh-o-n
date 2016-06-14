@@ -62,6 +62,7 @@
 			    </div>
 			    <div class="col-xs-12 col-md-8">
 			      <form:input path="tenTonGiao" id="cqdvtxt"    name="cqdbtxt" class="form-control" type="text"/> 
+			       <form:errors path="tenTonGiao" class="btn btn-danger"></form:errors>
 			    </div> 
 			  </div>
 			  

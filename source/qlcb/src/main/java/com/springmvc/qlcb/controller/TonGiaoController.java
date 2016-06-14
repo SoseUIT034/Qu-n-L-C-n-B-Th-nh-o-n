@@ -74,10 +74,17 @@ public class TonGiaoController {
 	@RequestMapping(value = { "/createTonGiao"}, method = RequestMethod.POST)
 	public String DoCreate(@Valid @ModelAttribute(value = "tongiao")  Tongiao  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
- 
-		    tg.save(data);
+			if(bindingResult.hasErrors())
+			{
+				return "/TonGiao/themmoi_tongiao";
+			}
+			else {
+				tg.save(data);
+				return "redirect:/listtongiao"; 
+			}
+		    
 		 
-			return "redirect:/listtongiao"; 
+			
 	}
 	
 	
@@ -141,9 +148,15 @@ public class TonGiaoController {
 	@RequestMapping(value = { "/edittongiao/{id}"}, method = RequestMethod.POST) 
 	public String Edit(@Valid @ModelAttribute(value = "tongiao")  Tongiao  data ,BindingResult bindingResult,  Map<String, Object> model ) 
 	{
- 
-		     tg.update(data);
-		 
+		if(bindingResult.hasErrors())
+		{
+			return "/TonGiao/sua_tongiao";
+		}
+		else {
+			tg.update(data);
+			 
 		     return "redirect:/listtongiao"; 
+		}
+		     
 	}
 }

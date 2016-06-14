@@ -74,12 +74,19 @@ public class NgoainguController {
 	
 
 	@RequestMapping(value = { "/createngoaingu"}, method = RequestMethod.POST)
-	public String DoCreate(@Valid @ModelAttribute(value = "ngoaingu")  Ngoaingu  data ,BindingResult bindingResult,  Map<String, Object> model ) 
+	public String DoCreate(@Valid @ModelAttribute(value = "ngoaingu")  Ngoaingu  data ,BindingResult bindingResult,  Model model ) 
 	{
- 
-		    tg.save(data);
-		 
-			return "redirect:/listngoaingu"; 
+			if(bindingResult.hasErrors())
+			{
+				 
+				return "/Ngoaingu/themmoi_ngoaingu";
+			}
+			else {
+				tg.save(data);
+				 
+				return "redirect:/listngoaingu"; 
+			}
+		    
 	}
 	
 	
@@ -113,7 +120,7 @@ public class NgoainguController {
 	
 	
 	@RequestMapping(value = { "/editngoaingu/{id}"}, method = RequestMethod.GET)
-	public String Edit(@PathVariable int id,HttpSession session, HttpServletRequest request,Model model) {
+	public String Edit(@PathVariable String id,HttpSession session, HttpServletRequest request,Model model) {
 		
 		// header
 //		Taikhoan tk = (Taikhoan) session.getAttribute("loggedInUser");
@@ -132,7 +139,7 @@ public class NgoainguController {
 		// model
 		Ngoaingu tongiao = new Ngoaingu();
 		
-		tongiao= tg.getNgoaiNguById(id);
+		tongiao= tg.getNgoaiNguById(Integer.parseInt(id));
 		 
 		model.addAttribute("ngoaingu", tongiao);  
 		
@@ -141,11 +148,17 @@ public class NgoainguController {
 	
 	
 	@RequestMapping(value = { "/editngoaingu/{id}"}, method = RequestMethod.POST) 
-	public String Edit(@Valid @ModelAttribute(value = "ngoaingu")  Ngoaingu  data  ) 
+	public String Edit(@Valid @ModelAttribute(value = "ngoaingu")  Ngoaingu  data  ,BindingResult bindingResult,  Model model) 
 	{
- 
-		     tg.update(data);
-		 
-		     return "redirect:/listngoaingu"; 
+			if(bindingResult.hasErrors())
+			{
+				return "/Ngoaingu/sua_ngoaingu";
+			}
+			else {
+				tg.update(data);
+				 
+			     return "redirect:/listngoaingu";
+			}
+		      
 	}
 }

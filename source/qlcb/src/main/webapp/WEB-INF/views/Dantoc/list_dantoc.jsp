@@ -41,7 +41,7 @@
 	<!---header--->
 	<%@include file ="../layout/header.jsp" %>
 	<!---header--->
-	
+	<sec:authorize access="hasAnyRole('Admin','Employee')">
 	<div class="content container"  style="padding-top:30px; border: rebeccapurple; border-style: dotted; padding:50px">
  		 <a href="createdantoc">Thêm mới</a>
  		 
@@ -66,7 +66,8 @@
 	 		  </tbody>
  		 </table>
 		
-	</div>				
+	</div>	
+	</sec:authorize>			
 	<!---footer--->
 	<%@include file="../layout/footer.jsp" %>
 	<!---footer--->
